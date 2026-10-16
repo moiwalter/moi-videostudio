@@ -1,0 +1,7 @@
+{
+ "id":"layered-talking-head","version":1,"label":"Layered Talking Head",
+ "aliases":["resources behind the speaker","recorte con recursos detrás"],
+ "resourcePolicy":"real-first","continuousOverlayCoverage":false,"captionPolicy":"explicit-in-brief","reviewMode":"scene-by-scene",
+ "principles":["Original video, background resource, synchronized subject cutout, then captions.","Base and foreground share source, time origin, FPS and one pose/transform definition.","Test difficult hair, hands and head movement before processing a long matte.","Use the current client's brand and actual recording geometry; do not copy 0910 timings."],
+ "reference":"2026-09-cvander-0910/pipeline.json"
+}

@@ -1,0 +1,214 @@
+{
+  "name": "nacho",
+  "label": "Nacho — Ignacio, CEO Stacksync (persona NACHO)",
+  "source": "Stacksync Visual Identity V1.0 (marzo 2026) → `Stacksync/01_brand_resources/brand_colors.md` (rampa Carbon completa) + `Stacksync/05_card_generator/00_card_color_guidelines.md` (la asignación por persona). Ningún hex salió a ojo: los 19 son tokens declarados de esa rampa.",
+  "_intake": "Contestado contra los documentos de marca de Stacksync + dos decisiones de dirección de Walter (22-ago-2026). Lo que ningún documento contesta queda en `_pendiente`.",
+  "_origen": "La persona NACHO ya gobernaba dos piezas: las cards estáticas de LinkedIn y el film `stacksync-gtm/content/video_demos/2026-08-nacho-gtm-film` (override de Walter del 13-ago-2026 que sacó el azul de marca #0000EE en favor de esta rampa verde). Esta marca es la continuación de ese override, no una identidad nueva.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "void": "#000000",
+    "ink": "#161616",
+    "ink-soft": "#262626",
+    "ui": "#393939",
+    "rule": "#525252",
+    "dead": "#8D8D8D",
+    "dead-soft": "#C6C6C6",
+    "paper": "#F4F4F4",
+    "white": "#FFFFFF",
+    "moss": "#071908",
+    "holly": "#022D0D",
+    "zuccini": "#044317",
+    "jewel": "#0E6027",
+    "jewel-mid": "#198038",
+    "eucalyptus": "#24A148",
+    "chateau": "#42BE65",
+    "pastel": "#6FDC8C",
+    "madang": "#A7F0BA",
+    "ice": "#DEFBE6"
+  },
+  "_paletteSource": {
+    "_rampa": "Los 10 verdes son la rampa Greens COMPLETA de `brand_colors.md`, de White Ice a Midnight Moss. Los 9 neutros son la rampa Neutrals de la misma fuente (Carbon gray). Nada agregado, nada inventado.",
+    "void": "Black — el corte a negro y el fondo de las tomas de mayor peso.",
+    "ink": "Cod Gray. Es el `$background` de Carbon y el fondo declarado de las personas RUBEN y ALEXIS. Acá es el campo por defecto.",
+    "ink-soft": "Mine Shaft #262626 — `$layer-01` de Carbon. Panel sobre ink.",
+    "ui": "Mine Shaft #393939 — `$layer-02`. Cromo de UI, bordes de card.",
+    "rule": "Emperor — la hairline de Carbon. ⛔ 2.32:1 sobre ink: es LÍNEA, jamás texto.",
+    "dead": "Gray #8D8D8D — el estado MUERTO. En esta pieza el gris no es neutro, es el rot.",
+    "dead-soft": "Silver #C6C6C6 — el estado que se está apagando (paso intermedio hacia dead).",
+    "paper": "Wild Sand. En la persona NACHO original es el FONDO; acá invertido a tinta (ver _inversion).",
+    "moss": "Midnight Moss — el verde-negro. El campo cuando la escena tiene que respirar podredumbre y no neutralidad.",
+    "holly": "English Holly — superficie oscura con verde ya legible.",
+    "zuccini": "Zuccini — placa oscura.",
+    "jewel": "Jewel dark. ⛔ 2.34:1 sobre ink — COLOR DE PLACA, NO DE TINTA.",
+    "jewel-mid": "Jewel mid #198038 — 3.61:1 sobre ink, sólo texto grande.",
+    "eucalyptus": "Eucalyptus — EL acento de la persona NACHO. 5.40:1 sobre ink: sí funciona como tinta.",
+    "chateau": "Chateau Green — acento secundario declarado de la persona.",
+    "pastel": "Pastel Green — highlight declarado de la persona. 10.59:1 sobre ink: es el verde que MÁS lee, el fósforo.",
+    "madang": "Madang — verde claro de la rampa, para washes y estados encendidos suaves.",
+    "ice": "White Ice — el wash. En el film era 'el ahora'."
+  },
+  "_inversion": "⛔ LA DECISIÓN QUE DEFINE ESTA MARCA (Walter, 22-ago-2026). La persona NACHO está declarada como **lienzo CLARO** — fondo Wild Sand #F4F4F4, energía 'cálida, GTM momentum, approachable'. Este video es una pieza APOCALÍPTICA sobre brain rot: sobre Wild Sand no existe. Se invierte la POLARIDAD sin tocar la rampa: el campo pasa a `ink`/`moss`, `paper` pasa de fondo a tinta, y los verdes dejan de ser acento amable para volverse EMISIVOS (fósforo). Ni un hex nuevo — es la misma rampa Carbon leída desde el extremo oscuro. Y el significado se da vuelta con ella: **acá el verde ES la máquina y el gris es la muerte cognitiva**; el verde nunca marca 'bien'.",
+  "roles": {
+    "surface": "ink",
+    "surface-alt": "ink-soft",
+    "surface-void": "moss",
+    "surface-dark": "void",
+    "accent": "eucalyptus",
+    "accent-strong": "pastel",
+    "signal": "chateau",
+    "wash": "ice",
+    "deep": "jewel",
+    "text": "paper",
+    "text-alt": "white",
+    "text-muted": "dead-soft",
+    "text-dead": "dead",
+    "text-invert": "ink",
+    "emphasis": "pastel",
+    "emphasis-on": "ink",
+    "rule": "rule"
+  },
+  "_roles": "⛔ TRES PARES QUE NO SE CRUZAN:\n  • Campo `ink`/`moss` + tinta `paper` (16.45:1) o `pastel` (10.59:1). Es el par por defecto.\n  • Placa `eucalyptus` + tinta `ink` (5.40:1). **NO blanco (3.35) ni paper (3.05)** — sobre el acento la tinta es OSCURA, al revés de lo que el instinto pide. Misma falla que ya costó una ronda en la marca uplabs.\n  • Placa `jewel` + tinta `paper` (7.02) o `pastel` (4.52). `jewel` NUNCA es texto: 2.34:1 sobre ink.\n`text-dead` (#8D8D8D, 5.45:1) es legible a propósito: el gris tiene que LEERSE, porque es el sujeto del video, no ruido de fondo. `rule` #525252 es 2.32:1 — es hairline y nada más.",
+  "_contraste": {
+    "_nota": "Ratios WCAG MEDIDOS el 22-ago-2026 (no estimados). Umbrales: ≥4.5 texto chico · ≥3.0 sólo texto grande (≥32px, peso ≥500) · <3.0 no usar como texto.",
+    "sobre-ink #161616": {
+      "paper #F4F4F4": "16.45",
+      "ice #DEFBE6": "16.41",
+      "madang #A7F0BA": "13.63",
+      "pastel #6FDC8C": "10.59",
+      "dead-soft #C6C6C6": "10.59",
+      "chateau #42BE65": "7.57",
+      "dead #8D8D8D": "5.45",
+      "eucalyptus #24A148": "5.40",
+      "jewel-mid #198038": "3.61 — sólo texto grande",
+      "jewel #0E6027": "2.34 — ⛔ placa",
+      "rule #525252": "2.32 — ⛔ hairline"
+    },
+    "sobre-moss #071908": {
+      "_": "±0.1 respecto de ink en toda la columna — son intercambiables para decidir legibilidad; se eligen por temperatura, no por contraste."
+    },
+    "sobre-eucalyptus #24A148": {
+      "void #000000": "6.27",
+      "ink #161616": "5.40 — EL PAR CORRECTO",
+      "ink-soft #262626": "4.52",
+      "white #FFFFFF": "3.35 — sólo texto grande",
+      "paper #F4F4F4": "3.05 — sólo texto grande",
+      "madang #A7F0BA": "2.52 — ⛔",
+      "jewel #0E6027": "2.30 — ⛔"
+    },
+    "sobre-jewel #0E6027": {
+      "white #FFFFFF": "7.72",
+      "paper #F4F4F4": "7.02",
+      "madang #A7F0BA": "5.81",
+      "pastel #6FDC8C": "4.52",
+      "chateau #42BE65": "3.23 — sólo texto grande",
+      "eucalyptus #24A148": "2.30 — ⛔ dos verdes vecinos son barro"
+    }
+  },
+  "fonts": {
+    "display": "IBM Plex Sans",
+    "displayWeight": 600,
+    "displayUse": "títulos, frases, cifras. Carbon aprieta los display: letter-spacing negativo (-0.01 a -0.02em) en cuerpos grandes, line-height 1.05-1.15.",
+    "sans": "IBM Plex Sans",
+    "sansWeights": [
+      300,
+      400,
+      500,
+      600
+    ],
+    "sansUse": "cuerpo, bajadas, labels.",
+    "mono": "IBM Plex Mono",
+    "monoUse": "kickers, etiquetas de sistema, contadores, terminal. Es el rasgo que hace leer 'máquina' — y en esta pieza la máquina es el sujeto.",
+    "kicker": "IBM Plex Mono 400, UPPERCASE, letter-spacing 0.14em. El label de sección de Carbon."
+  },
+  "_fonts": "⛔ NO EXISTE IBM PLEX SANS BOLD EN DISCO. Las caras servidas son Light 300, Regular 400, Medium 500, SemiBold 600 — **el tope real es 600**. Un `font-weight:700` da faux-bold del navegador, que en video se nota como engorde sucio del trazo. Si hace falta más peso, se sube el CUERPO, no el weight.\n⚠️ Y contra el estándar Moi: `SCENE_PLAYBOOK §3` marca IBM Plex como FALLA DE MARCA desde el 12-ago-2026 — pero eso vale para la marca **Moi**, que se alineó a Geist. Acá Plex es lo correcto: es la tipografía de Carbon y la que Stacksync usa. El .ttf sigue en `design_system/fonts` justamente porque nunca dejó de hacer falta.",
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "IBM Plex Sans": {
+      "300": "IBMPlexSans-Light.ttf",
+      "400": "IBMPlexSans-Regular.ttf",
+      "500": "IBMPlexSans-Medium.ttf",
+      "600": "IBMPlexSans-SemiBold.ttf"
+    },
+    "IBM Plex Mono": {
+      "400": "IBMPlexMono-Regular.ttf"
+    }
+  },
+  "surfaces": {
+    "card": "rgba(38,38,38,.96)",
+    "cardDark": "rgba(7,25,8,.96)",
+    "cardRadius": "0px",
+    "rim": "inset 0 0 0 1px rgba(82,82,82,.85)",
+    "shadowMax": 4
+  },
+  "_surfaces": "⛔ **RADIO CERO.** Carbon no redondea: sus superficies son rectángulos rectos separados por hairline de 1px. Una card con radio 8-28px se lee como Moi o como Material, no como Carbon — es la falla de marca más visible y la más fácil de cometer.\n⛔ **La separación es por BORDE, no por sombra** (`shadowMax: 4`, y ese 4 es contacto, no elevación). Vale doble acá: `SCENE_PLAYBOOK §3b` regla 1 mide que toda sombra oscura >8px se hornea en el alpha como mancha.\n⛔ **Card oscura ⇒ opacidad ≥ .92** (regla 3 de §3b): si es translúcida se le ve la cara detrás.",
+  "components": {
+    "_source": "Lenguaje Carbon + los arquetipos que el film 2026-08-nacho-gtm-film ya validó en 9:16.",
+    "kicker": "Plex Mono 400 uppercase, tracking 0.14em, en `accent` sobre campo oscuro. Arriba a la izquierda del bloque, con una hairline de 1px debajo.",
+    "grid": "La retícula Carbon de 1px en `rule` al 18-22%, paso 120px. Es el sustrato de toda escena full-frame — el 'sistema' que después se muere.",
+    "nodo": "Cuadrado recto (nunca círculo) de 1px de borde. VIVO = relleno `eucalyptus` + tinta `ink`. MURIENDO = `dead-soft`. MUERTO = borde `rule` y relleno vacío. La transición entre los tres estados es EL vocabulario visual de esta pieza.",
+    "scanline": "Bandas horizontales de 2px en `void` al 6-10%, paso 4px, SÓLO sobre escenas full-frame (takeover). Nunca sobre la cara.",
+    "lower-third": "Placa `ink-soft` recta, hairline `rule`, nombre en `paper` Plex Sans 600 y cargo en `dead-soft` Plex Sans 400. Abajo-izquierda, cajas ajustadas al texto, radio 0."
+  },
+  "logo": {
+    "tipo": "⚠️ PENDIENTE — esta pieza es de la persona NACHO, no del wordmark de Stacksync. Salvo que Walter pida cierre de marca, no hay logo propio en cuadro.",
+    "wordmark": null,
+    "isotipo": null
+  },
+  "mimesis": {
+    "_regla": "Un color que es FIDELIDAD a algo real no es color inventado — pero va acá, con nombre y dueño, o el gate lo marca como falla.",
+    "terminator-eye": {
+      "hex": "#DA1E28",
+      "fuente": "Alizarin Crimson — de la rampa Reds de `brand_colors.md`, no un rojo suelto.",
+      "uso": "SÓLO el ojo del endoesqueleto en la escena de la falsa apocalipsis. La persona NACHO prohíbe rojos; esto es una cita, no un acento. ⚠️ Confirmar con Walter en el preview de S02: la lectura alternativa es hacer el ojo `pastel` #6FDC8C, que subvierte el cliché y refuerza la tesis (la máquina es verde, no roja).",
+      "prohibido": "cualquier otro uso del rojo en toda la pieza"
+    },
+    "logos-terceros": {
+      "regla": "Los logos entran con SU identidad de marca. Un logo es una CITA: no se repinta a la paleta. Lo nuestro es el marco (el chip Carbon y su rim); lo de adentro es de ellos. Misma doctrina que capturar-noticia.py para capturas de prensa.",
+      "_correccion": "22-ago-2026 (Walter). La primera version de S01 tenia los 8 logos tenidos de --pastel: eso era repintar marcas ajenas a nuestra paleta, justo lo que esta regla prohibe.",
+      "openai": "#FFFFFF",
+      "anthropic": "#D97757",
+      "meta": "#0081FB",
+      "nvidia": "#76B900",
+      "x": "#FFFFFF",
+      "deepseek": "#4D6BFE",
+      "gemini-a": "#4285F4",
+      "gemini-b": "#9B72CB",
+      "gemini-c": "#D96570",
+      "microsoft-1": "#F25022",
+      "microsoft-2": "#7FBA00",
+      "microsoft-3": "#00A4EF",
+      "microsoft-4": "#FFB900",
+      "_blanco": "OpenAI y xAI/X tienen lockup NEGRO en origen: sobre el chip oscuro serian invisibles. El blanco NO es un repintado nuestro — es su propio lockup de modo oscuro, la version que ellos mismos publican para fondos negros.",
+      "_muerte": "Al desplomarse NO se recolorean uno por uno (Microsoft tiene 4 colores y Gemini es un degradado): se les aplica grayscale+brightness, que los mata a todos igual sin tocar la identidad de cada marca."
+    }
+  },
+  "energy": "grave",
+  "energyNotes": "NO es la energía 'cálida y rápida' que declara la persona NACHO para sus cards — esa es su energía de GTM. Esta pieza es una advertencia: entradas lentas y pesadas (power2.out, power3.out), holds largos, cero overshoot, cero back.out, cero micro-shake. Lo que se mueve rápido acá es la DEGRADACIÓN (un nodo que se apaga, un glifo que se corrompe), nunca la entrada de un elemento. El ritmo lo pone lo que se muere, no lo que aparece.",
+  "watermark": null,
+  "sponsors": {},
+  "prohibido": [
+    "el azul de marca de Stacksync #0000EE — la persona NACHO lo sustituye por la rampa verde (override de Walter, 13-ago-2026)",
+    "el lienzo CLARO #F4F4F4 como fondo — invertido a propósito para esta pieza (ver _inversion)",
+    "la paleta de Moi (#FD551D naranja, Geist, dorado) — es otra identidad",
+    "radios de esquina: Carbon es radio 0. Un radio de 8-28px es la falla de marca más visible",
+    "IBM Plex Sans a 700+ — la cara no existe en disco, el navegador la falsea",
+    "sombras >8px: se hornean en el alpha como mancha (SCENE_PLAYBOOK §3b regla 1)",
+    "`jewel` #0E6027 o `rule` #525252 como color de TEXTO (2.34 y 2.32 sobre ink)",
+    "blanco o paper como tinta CHICA sobre placa eucalyptus (3.35 y 3.05) — ahí la tinta es `ink`",
+    "dos verdes vecinos encimados (eucalyptus sobre jewel = 2.30) — barro",
+    "el verde como señal de 'bien' — en esta pieza el verde ES la máquina",
+    "círculos como nodos — Carbon es rectangular",
+    "cifras inventadas: el habla no tiene un solo número, así que ningún contador puede aparecer sin fuente",
+    "rojo fuera de `mimesis.terminator-eye` — EXCEPTO los colores de marca de terceros en `mimesis.logos-terceros` (el rojo de Microsoft y el coral de Anthropic son suyos, no acentos nuestros)",
+    "teñir un logo ajeno a nuestra paleta: es una cita, se respeta su color"
+  ],
+  "_pendiente": [
+    "¿cierre de marca? Hoy asumido NO (default de la receta talking-head).",
+    "el ojo del Terminator: rojo cita (#DA1E28) vs. verde fósforo (#6FDC8C). Se decide mirando S02.",
+    "¿esta pieza sale por el canal de Nacho o por el de Stacksync? Cambia si hace falta wordmark."
+  ]
+}

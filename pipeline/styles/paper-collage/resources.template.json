@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "resources": [
+    {
+      "id": "replace-with-resource-id",
+      "file": null,
+      "sourceUrl": null,
+      "creatorOrPublisher": null,
+      "capturedOrPublishedAt": null,
+      "retrievedAt": null,
+      "licenseOrAccess": null,
+      "claimOrScenePurpose": null,
+      "crop": null,
+      "derivatives": [],
+      "review": "pending"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "tulibro",
+  "label": "Tu Libro Bolivia — tulibrobolivia.com",
+  "source": "~/Projects/imprimelibro/src/lib/theme.ts (MUI createTheme — la marca en código de la web viva). Los hex se copiaron uno por uno, no a ojo.",
+  "_alineacion": "5-sep-2026 — creado para el motor de ads (ads-engine). Los nombres de token son semánticos (navy/gold/ivory) porque la web no declara :root custom properties: declara palette.primary/secondary/background en MUI. Si theme.ts cambia, este archivo quedó viejo — la web es la fuente.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "_canvas": "Sólo aplica al pipeline de video. Los formatos de ads (1080x1080 / 1080x1350 / 1080x1920) viven en ads-engine/brands/tulibro.json.",
+  "palette": {
+    "navy": "#1B2A4A",
+    "navy-light": "#2C3E6B",
+    "navy-deep": "#111D35",
+    "gold": "#C9A96E",
+    "gold-light": "#D4BC8E",
+    "gold-dark": "#A8884D",
+    "ivory": "#FAF8F5",
+    "paper": "#FFFFFF"
+  },
+  "_paletteSource": "theme.ts: primary.main #1B2A4A 'Midnight navy — classic, literary, trust' · primary.light #2C3E6B · primary.dark #111D35 · secondary.main #C9A96E 'Antique gold — warmth, premium, accent' · secondary.light #D4BC8E · secondary.dark #A8884D · background.default #FAF8F5 'Warm ivory — like aged paper' · background.paper #FFFFFF 'Card/surface background'.",
+  "roles": {
+    "accent": "gold",
+    "accent-strong": "gold-dark",
+    "surface": "paper",
+    "surface-dark": "navy",
+    "emphasis": "gold",
+    "text": "navy",
+    "text-muted": "navy-light"
+  },
+  "_roles": "El oro es EL acento y el único. El blanco puro (#FFFFFF) es superficie de card, nunca fondo de un ad: el fondo claro es el marfil (papel viejo). Sin negative/positive: la web no los define y no se inventan.",
+  "fonts": {
+    "display": "Poppins",
+    "displayWeight": 800,
+    "displayUse": "UNA familia en todo el ad: barra 800 en minúsculas (title case), línea de arriba 300, oferta 600, kicker 500. Elegida por Walter el 6-sep-2026 entre 10 pairings ('Straight: Poppins 800 / 300'). PENDIENTE WEB: theme.ts sigue en Inter.",
+    "sans": "Poppins",
+    "sansWeights": [
+      300,
+      500,
+      600,
+      800
+    ],
+    "mono": null,
+    "monoUse": "la web no declara mono — no usar var(--font-mono)"
+  },
+  "_fonts": "6-sep-2026: cuatro rondas (Literata serif → Bricolage → IBM Plex Sans → pairings). Walter eligió Poppins 800/300 de la hoja de 10 pairings libres. Inter queda declarada sólo porque es la web. Las otras 20 familias siguen en design_system/fonts (OFL) pero fuera de la marca.",
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "Poppins": {
+      "300": "Poppins-Light.ttf",
+      "500": "Poppins-Medium.ttf",
+      "600": "Poppins-SemiBold.ttf",
+      "800": "Poppins-ExtraBold.ttf"
+    },
+    "Inter": {
+      "400": "Inter-Regular.ttf",
+      "500": "Inter-Medium.ttf",
+      "600": "Inter-SemiBold.ttf",
+      "700": "Inter-Bold.ttf",
+      "800": "Inter-ExtraBold.ttf",
+      "900": "Inter-Black.ttf"
+    }
+  },
+  "_fontLicense": "Inter 4.1 — SIL OFL 1.1 (Copyright 2016 The Inter Project Authors). Copia en design_system/fonts/INTER-LICENSE.txt. Bajada de github.com/rsms/inter/releases (v4.1) el 5-sep-2026.",
+  "surfaces": {
+    "card": "#FFFFFF",
+    "cardRadius": "8-12px",
+    "rim": "none",
+    "shadowMax": 3
+  },
+  "_surfaces": "theme.ts: shape.borderRadius 8 · MuiCard 12px con boxShadow '0 1px 3px rgba(0,0,0,0.08)'. Un radio, siempre el mismo (fairpx, HN #16838611). Sombra máxima 3px: la web es plana.",
+  "energy": "sobria",
+  "energyNotes": "literario, cálido, de confianza — 'papel viejo + tinta', no un dashboard. Nada de overshoot ni punch.",
+  "watermark": {
+    "text": "tulibrobolivia.com",
+    "position": "abajo-izquierda",
+    "font": "sans"
+  },
+  "preview": {
+    "bg": "#6E7378",
+    "uso": "sólo fondo del preview de video; no aplica a ads"
+  },
+  "sponsors": {},
+  "prohibido": [
+    "look tech/SaaS (gradientes, glow, glassmorphism) — es papel y tinta, no Stripe",
+    "blanco puro (#FFFFFF) como fondo de un ad — sólo superficie de card; el fondo claro es ivory",
+    "mostrar precio por página al cliente (regla de la web: NUNCA)",
+    "'courier' — se dice 'flota'; '2 a 4 días hábiles' — se dice 'hasta 2 semanas'; 'menos de 24 horas' — se dice 'en 1 hora'",
+    "peso 900 en display (era la firma de Ad Forge v1)",
+    "stock genérico de 'gente feliz leyendo' — foto de libro impreso real o papel, o nada"
+  ]
+}

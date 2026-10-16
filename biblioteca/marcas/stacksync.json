@@ -1,0 +1,120 @@
+{
+  "name": "stacksync",
+  "label": "Stacksync",
+  "source": "stacksync-gtm/design-system/platform-design-system/src/tokens/colors.js (conteo de usos en las pantallas reales) + stacksync_logo/*.svg (fills del logo). Fuentes: design-system/fonts (IBM Plex Sans + Mono). Ni un color muestreado a ojo.",
+  "_intake": "Creada el 12-oct-2026 para el motor de ads (imagen del post de Ruben 'Claude works for people. Genies work for companies.'). Base Carbon/IBM: blanco, grises neutros, azul 60 como único acento.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "blue": "#0F62FE",
+    "blue-deep": "#0043CE",
+    "blue-light": "#4589FF",
+    "blue-night": "#0B216F",
+    "logo-blue": "#0000EE",
+    "blue-wash": "#EDF5FF",
+    "blue-tint": "#D0E2FF",
+    "green": "#24A148",
+    "ink": "#161616",
+    "paper": "#FFFFFF",
+    "soft": "#F4F4F4",
+    "rule": "#E0E0E0",
+    "mute": "#6F6F6F",
+    "secondary": "#525252",
+    "green-wash": "#DEFBE6",
+    "green-deep": "#0E6027"
+  },
+  "_paletteSource": {
+    "blue": "colors.js blue 60 = $primary, ~669 usos. EL acento.",
+    "blue-deep": "blue 70 (hover/pressed).",
+    "blue-light": "blue 50 — la capa clara del icono del logo; el azul que lee sobre fondo oscuro.",
+    "blue-night": "blue 90 — placa profunda bajo texto claro.",
+    "logo-blue": "fill #0000EE de la capa oscura del icono (Stacksync icon.svg).",
+    "blue-wash": "blue 10 — fondo de fila seleccionada / superficies suaves.",
+    "blue-tint": "blue 20.",
+    "green": "green 50 = $success. Para 'aprobado/firmado'.",
+    "green-wash": "green 10.",
+    "ink": "gray 100, texto primario (~2649 usos).",
+    "paper": "gray 0.",
+    "soft": "gray 10, fondo de página.",
+    "rule": "gray 20, borde sutil.",
+    "mute": "gray 60.",
+    "secondary": "gray 70, texto secundario (el color más usado).",
+    "green-deep": "green 70 (colors.js) — texto sobre green-wash; el green 50 sobre green-wash no llega a 4,5:1."
+  },
+  "mimesis": {
+    "claude": {
+      "clay": "#D97757",
+      "ivory": "#FAF9F5",
+      "sand": "#F0EEE6"
+    }
+  },
+  "_mimesis": "Colores de la UI de Claude (claude.ai) para que la ventana de chat se reconozca. Sólo dentro de la representación de Claude, nunca como color de Stacksync.",
+  "roles": {
+    "accent": "blue",
+    "accent-on-dark": "blue-light",
+    "accent-strong": "blue-deep",
+    "surface": "paper",
+    "surface-alt": "soft",
+    "surface-dark": "ink",
+    "surface-plate": "blue",
+    "text": "ink",
+    "text-muted": "secondary",
+    "text-invert": "paper",
+    "emphasis": "blue",
+    "positive": "green",
+    "rule": "rule"
+  },
+  "fonts": {
+    "display": "IBM Plex Sans",
+    "displayWeight": 600,
+    "displayUse": "Plex Sans 600 para titulares, 400 para cuerpo, Mono 400 para etiquetas. Es la tipografía del producto (Carbon).",
+    "sans": "IBM Plex Sans",
+    "sansWeights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "mono": "IBM Plex Mono",
+    "monoUse": "etiquetas en mayúsculas con tracking, nombres de sistema"
+  },
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "IBM Plex Sans": {
+      "300": "IBMPlexSans-Light.ttf",
+      "400": "IBMPlexSans-Regular.ttf",
+      "500": "IBMPlexSans-Medium.ttf",
+      "600": "IBMPlexSans-SemiBold.ttf",
+      "700": "IBMPlexSans-Bold.ttf"
+    },
+    "IBM Plex Mono": {
+      "400": "IBMPlexMono-Regular.ttf"
+    }
+  },
+  "surfaces": {
+    "card": "#FFFFFF",
+    "cardRadius": "0-8px",
+    "rim": "1px rule",
+    "shadowMax": 0
+  },
+  "energy": "sobria",
+  "watermark": {
+    "text": "stacksync.com",
+    "position": "abajo-izquierda",
+    "font": "sans"
+  },
+  "preview": {
+    "bg": "#6E7378",
+    "uso": "sólo fondo del preview de video"
+  },
+  "sponsors": {},
+  "prohibido": [
+    "gradientes, glow, glassmorphism — Carbon es plano",
+    "inventar logos de partners o conectores: se usan los oficiales de design-system/",
+    "más de un acento: azul 60 y nada más (verde sólo para 'aprobado')"
+  ]
+}

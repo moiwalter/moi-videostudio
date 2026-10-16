@@ -1,0 +1,163 @@
+{
+  "name": "startupeable",
+  "label": "Startupeable — Enzo Cavalie",
+  "source": "CSS VIVO de startupeable.com (custom properties del :root, leídas con getComputedStyle vía Playwright el 16-ago-2026) + muestreo de píxeles de sus YouTube Shorts para la capa que la web no declara. Ningún hex salió a ojo de una captura.",
+  "_intake": "Contestado contra el sitio, no contra el cliente. Lo que el sitio NO puede contestar queda en `_pendiente` — no se rellenó para que el JSON se viera completo. Ver brands/INTAKE.md.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "ink": "#000000",
+    "ink-deep": "#0A0909",
+    "ink-soft": "#262626",
+    "paper": "#FFFFFF",
+    "paper-muted": "#F2F4F6",
+    "teal": "#03989E",
+    "hot": "#FCC600",
+    "gray": "#66676D",
+    "gray-soft": "#A8AAB2",
+    "rule": "#E9ECEF"
+  },
+  "_paletteSource": {
+    "ink": "--cs-color-primary + --cs-color-headings. Es además el 98% del área de texto de la home (49.6M px sobre 164 nodos).",
+    "ink-deep": "--cs-color-navbar-background. El negro del navbar NO es #000: es #0A0909. Se usa para las barras/superficies oscuras.",
+    "ink-soft": "--cs-color-submenu-background.",
+    "paper": "--cs-color-site-background. Fondo dominante de la home (3.5M px).",
+    "paper-muted": "--cs-color-secondary-background.",
+    "teal": "--cs-color-accent Y --cs-color-link — el mismo hex declarado dos veces. Confirmado en 3 superficies: fondo del CTA 'Suscríbete', color de 27 nodos de texto, y los 5 únicos bordes de color de la página.",
+    "hot": "⚠️ RECIBO DE VIDEO, NO DE LA WEB. Muestreado de sus YouTube Shorts (placa con el nombre del invitado). El sitio no lo declara en ningún lado. Si Enzo tiene manual de marca, este es el hex a confirmar primero.",
+    "gray": "--cs-color-excerpt (bajadas y sumarios).",
+    "gray-soft": "--cs-color-secondary.",
+    "rule": "--cs-color-contrast-200 — las líneas bajo los títulos de sección."
+  },
+  "_paletteDescartado": "Los ~90 `--wp--preset--color--*` y los `--cs-palette-color-*` NO entraron: son la paleta de fábrica de WordPress/Gutenberg (pale-pink, vivid-purple, luminous-vivid-amber…), no decisiones de marca. Meterlos habría dado una paleta de 20 colores que Startupeable jamás usó.",
+  "roles": {
+    "accent": "teal",
+    "accent-strong": "hot",
+    "surface": "teal",
+    "surface-alt": "paper",
+    "surface-dark": "ink-deep",
+    "emphasis": "hot",
+    "emphasis-on": "ink",
+    "text": "paper",
+    "text-alt": "ink",
+    "text-muted": "gray",
+    "text-invert": "ink"
+  },
+  "_roles": "⚠️ EL CAMPO DOMINANTE ES EL TEAL, NO EL BLANCO — decisión de Walter, 16-ago-2026: «para startupeable el color principal puede ser el celeste, no el blanco». Su WEB es tinta negra sobre papel blanco, pero para VIDEO mandan sus shorts, donde el teal es el campo (marco, píldoras) y el blanco es lo que se apoya encima. Por eso hay DOS pares superficie/texto y hay que usar el par completo, nunca cruzarlos:\n  • `surface` (teal) + `text` (paper) → el campo del video, títulos, frases.\n  • `surface-alt` (paper) + `text-alt` (ink) → cards, placas y CAPTURAS de noticias apoyadas sobre el teal.\n`text-muted` (gray) SÓLO es legible sobre `surface-alt`; sobre teal desaparece — es la misma falla que el gris flotante de Moi. El `accent-strong` (#FCC600) NO es un acento decorativo: en su material sólo aparece como placa de nombre, y ahora además como `emphasis`, porque sobre teal el propio teal ya no puede resaltar nada.",
+  "fonts": {
+    "display": "HK Grotesk",
+    "displayWeight": 700,
+    "displayUse": "títulos, frases, nombres. Su h1 va con letter-spacing POSITIVO (+0.5px) y line-height 1.0 — al revés que Moi, que aprieta a -0.02em.",
+    "sans": "Open Sans",
+    "sansWeights": [
+      400,
+      600,
+      700
+    ],
+    "sansUse": "cuerpo, bajadas, labels. Su h2/p llevan letter-spacing -0.55px.",
+    "mono": null,
+    "kicker": "HK Grotesk 700, UPPERCASE, letter-spacing 1.8px — es el rasgo tipográfico más reconocible de la marca (navbar, links de sección, botones). Reemplaza al rol que en Moi cumple la mono."
+  },
+  "_fonts": "⛔ NO EXISTE HK GROTESK BLACK. Su sitio pide `font-weight:900` en el h1 pero sólo sirve tres caras (Medium 500, SemiBold 600, Bold 700): **el 900 que se ve en su web es faux-bold del navegador**. En video eso se nota. El tope real es 700. Si hace falta un Black de verdad, el sustituto de linaje correcto es **Hanken Grotesk** (Google Fonts, SIL OFL, pesos 100–900 reales, del mismo diseñador) — pero es una decisión de marca que confirma Enzo, no un arreglo silencioso.",
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "HK Grotesk": {
+      "500": "HKGrotesk-Medium.ttf",
+      "600": "HKGrotesk-SemiBold.ttf",
+      "700": "HKGrotesk-Bold.ttf"
+    },
+    "Open Sans": {
+      "400": "OpenSans-400.ttf",
+      "600": "OpenSans-600.ttf",
+      "700": "OpenSans-700.ttf"
+    }
+  },
+  "_fontFiles": "HK Grotesk: los .woff que su propio WordPress sirve (wp-content/uploads/2020/05/), convertidos a .ttf con fontTools. Open Sans: de Google Fonts (Apache 2.0). Sin estos archivos en disco, `brand.mjs tokens` emite el NOMBRE de la fuente sin el @font-face y la escena cae en Georgia sin un solo error.",
+  "_fontLicense": "⚠️ PENDIENTE. HK Grotesk (Hanken Design Co.) se distribuyó gratis, pero no hay archivo de licencia junto a los .woff de su servidor. Se usan por ser el asset del propio cliente para su propio video. Si el video sale fuera de sus canales, pedirle a Enzo la licencia — o pasar a Hanken Grotesk (OFL, verificable).",
+  "_capturas": "⛔ ANTE UNA CAPTURA DE PRENSA, LA QUE CEDE ES LA MARCA (Walter, 16-ago-2026). La captura y el logo del medio son datos INMUTABLES: valen porque conservan la identidad del medio, así que no se repintan. Pero la marca tiene tres superficies legítimas (teal, ink-deep, paper), y la escena elige la que no pelee. Medido: el verde de TechCrunch (#088830) contra el teal son dos saturados a 8° de tono — barro. Sobre `ink-deep` el mismo verde se despega y además el lockup blanco de TechCrunch da 19.9:1. Lo calcula `tools/capturar-noticia.py --marca startupeable` y lo deja en `superficie.elegida` del meta.json: la superficie tiene que servirle al campo del medio Y a su logo a la vez.",
+  "_contraste": {
+    "_nota": "Ratios WCAG MEDIDOS el 16-ago-2026, no estimados. Umbrales: ≥4.5 texto chico · ≥3.0 sólo texto grande (≥32px bold) · <3.0 no usar. Existen porque el campo pasó a ser teal y eso invalidó los reflejos heredados de una marca de fondo blanco.",
+    "sobre-teal": {
+      "paper #FFFFFF": "3.51 — sólo texto grande. ES EL CORRECTO igual: su CTA y sus píldoras de subtítulo son blanco sobre teal. Para labels chicos, no sirve: va placa.",
+      "ink #000000": "5.99 — el MÁS legible sobre teal, por encima del blanco. No lo hace el correcto: la fidelidad de marca manda blanco. Usar ink cuando la legibilidad gane a la fidelidad (texto chico suelto sobre teal).",
+      "hot #FCC600": "2.21 — NO como texto. Sólo placa.",
+      "gray / gray-soft": "1.61 / 1.51 — desaparecen."
+    },
+    "sobre-paper": {
+      "ink": "21.00",
+      "gray": "5.64",
+      "teal": "3.51 — sólo texto grande",
+      "hot": "1.59 — no usar"
+    },
+    "sobre-hot": {
+      "ink": "13.22 — el par correcto",
+      "paper": "1.59 — no usar"
+    }
+  },
+  "surfaces": {
+    "card": "rgba(255,255,255,.97)",
+    "cardDark": "rgba(10,9,9,.97)",
+    "cardRadius": "3-10px",
+    "rim": "inset 0 0 0 3px rgba(0,0,0,.10)",
+    "shadowMax": 0
+  },
+  "_surfaces": "⛔ `shadowMax: 0` NO es pereza: el barrido de la home no encontró **una sola** box-shadow. Su lenguaje de superficie es borde y bloque plano, no elevación. Y los radios son chicos (3px botones, 5px CTA, 10px tarjetas) — nada de las esquinas de 20-28px de Moi. Una card redondeada con sombra suave se lee como otra marca.",
+  "components": {
+    "_source": "Muestreados de sus YouTube Shorts (9:16 — nuestro mismo formato) el 16-ago-2026. Son su lenguaje vertical REAL, no una propuesta.",
+    "lower-third": "Nombre del invitado en tinta negra sobre placa #FCC600, y debajo cargo/empresa en negro sobre blanco. Abajo-izquierda, cajas ajustadas al texto, sin radius.",
+    "subtitulo": "Píldora teal (#03989E) con texto blanco bold, centrada. Es el subtítulo de marca — no una cursiva blanca genérica.",
+    "marco": "Borde teal alrededor del cuadro y en la costura del split de dos cámaras.",
+    "gradiente": "linear-gradient(#03989E 0%, #000000 100%) — el fondo del hero de su home. Es la única mezcla de color de la marca."
+  },
+  "logo": {
+    "tipo": "TIPOGRÁFICO — confirmado por Walter el 16-ago-2026. El logo de Startupeable ES el wordmark, no hay isotipo que valga como marca.",
+    "wordmark": "STARTUPEABLE en HK Grotesk 700, uppercase, letter-spacing 1.8px, color según fondo (ink sobre paper, paper sobre ink-deep).",
+    "isotipo": "assets/startupeable.png (192×192, opaco, cuadrado negro con 'S.' blanca) es su AVATAR/favicon, NO el logo. Usarlo sólo si hace falta un chip cuadrado; nunca como firma de marca."
+  },
+  "_logo": "✅ No hace falta pedir SVG: al ser tipográfico, el logo se ESCRIBE con la fuente que ya está en design_system/fonts. Eso lo hace nítido a cualquier escala, animable letra por letra, y con el color como token en vez de horneado en un PNG. ⛔ Jamás pegar el wordmark como bitmap: a 1080×1920 un PNG de 192px se deshace, y el kerning se congela.",
+  "energy": "sobria",
+  "energyNotes": "CONFIRMADO por Walter el 16-ago-2026. Coincide con lo que dice su material: cero sombras, radios chicos, dos colores y un acento, prueba social de prensa (Forbes, Bloomberg, Business Insider). Entradas limpias (power2/3.out), sin overshoot marcado, sin stamp, sin micro-shake. El punch de escala en un número aterrizando sí cabe; el back.out(2.2) de Moi no.",
+  "watermark": {
+    "text": "STARTUPEABLE",
+    "position": "abajo-izquierda",
+    "font": "display",
+    "case": "uppercase",
+    "tracking": "1.8px"
+  },
+  "sponsors": {},
+  "prohibido": [
+    "la paleta de Moi (#FD551D naranja, Geist) — es otra identidad, no un preset",
+    "gris (gray o gray-soft) sobre teal: 1.6:1 y 1.5:1 medidos — desaparece",
+    "hot #FCC600 como COLOR DE TEXTO sobre teal: 2.2:1, ilegible. Es color de PLACA con texto ink encima (13.2:1)",
+    "restilizar una captura de prensa a la paleta: una captura vale porque conserva la identidad del medio — si se repinta deja de ser evidencia",
+    "HK Grotesk a 900 — la cara no existe, el navegador la falsea (tope real: 700)",
+    "box-shadows: su lenguaje es plano, borde y bloque",
+    "radios de 20-28px — los suyos van de 3 a 10px",
+    "usar #FCC600 como acento general: en su material es SÓLO placa de nombre",
+    "serif de display",
+    "inventar un positivo/negativo hasta que Enzo confirme (ver _pendiente)"
+  ],
+  "_resuelto": {
+    "energia": "sobria — confirmada por Walter, 16-ago-2026.",
+    "logo": "tipográfico, sin isotipo — confirmado por Walter, 16-ago-2026. Ya no hace falta pedir vector."
+  },
+  "_pendiente": {
+    "positivo-negativo": "Su web NO declara ninguno. Los verde/rojo que aparecen en el CSS son presets de fábrica de WordPress. No se inventaron: si una escena necesita ✓/✗, se le pregunta a Enzo o se resuelve con teal (positivo) contra gris (negativo).",
+    "manual-de-marca": "Si existe, manda sobre este archivo — que está reconstruido desde superficies públicas.",
+    "licencia-tipografica": "Ver _fontLicense."
+  },
+  "qc": {
+    "cara": [
+      400,
+      880
+    ],
+    "banda": [
+      1320,
+      1520
+    ]
+  },
+  "_qc": "Encuadre de Enzo en el CRUDO, sin escala de cámara. Medido el 30-ago-2026 mirando 3 tomas de fuente-48k.mp4 (12s/48s/88s) con grilla de 192px: cabeza ~400, mentón ~870. ⚠️ Si el video aplica escala de cámara, el valor OPERATIVO es otro y va en el data-qc-cara del #frame: en tecnico-vs-no-tecnico, con base 1.20 anclada arriba (originY:0), da 470,1150 — que es exactamente 400x1.2 y 880x1.2 con margen. Enzo está MÁS ALTO en cuadro que Walter (700-1150): no se hereda de moi.json."
+}

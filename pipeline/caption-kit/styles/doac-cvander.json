@@ -1,0 +1,69 @@
+{
+  "id": "doac-cvander",
+  "dna": "documentary",
+  "note": "DOAC del kit existente con Rubik Bold y Lineal recuperadas del proyecto AI slop de cvander. Nueva variante para 0910.",
+  "layout": {
+    "plane": "left: 8%; top: 67%; width: 84%; height: 23%; text-align: left;"
+  },
+  "_layout": "Banda sobre el pecho. En 0910, override narr-tail top 77% desde 77.566667 s para mantener libre la cara.",
+  "grouping": {
+    "maxWords": 4,
+    "maxChars": 24,
+    "maxRows": 2,
+    "pauseBreak": 0.26,
+    "pageBreak": 0.3,
+    "emEvery": 13,
+    "clauseGap": 0.45
+  },
+  "_grouping": "2,3 palabras por linea y 1-3 filas en pantalla es lo medido en DOAC. Con 3,3-5 palabras y 4 filas acumuladas el bloque lee como parrafo en vez de golpes. maxChars 24 y no 18: DOAC habla ingles y sus palabras son mas cortas — en espanol 18 caracteres parte 'donde trabajes' al medio. emEvery=13: una palabra caliente cada ~13 habladas; el color y el salto de cuerpo solo significan algo si son escasos. DOS umbrales distintos a proposito: pauseBreak (0.26) decide donde CORTAR linea; clauseGap (0.45) decide donde esta PROHIBIDO fusionar. Con un solo umbral, una pausa de 0,20 s —que no es fin de idea— dejaba palabras huerfanas que la regla de composicion no podia reparar.",
+  "leading": {
+    "same": 0.02,
+    "jump": 0.1
+  },
+  "_leading": "Ajustado a las métricas de Rubik Bold y Lineal; validado sin solapamientos en 0910. Aplicado por tighten.py.",
+  "tiers": {
+    "base": {
+      "size": 0.035,
+      "weight": 700,
+      "tracking": "-0.022em",
+      "family": "'Rubik', sans-serif"
+    },
+    "mid": {
+      "size": 0.047,
+      "weight": 700,
+      "tracking": "-0.032em",
+      "family": "'Rubik', sans-serif"
+    },
+    "hit": {
+      "size": 0.066,
+      "weight": 900,
+      "tracking": "-0.035em",
+      "upper": true,
+      "family": "'Lineal', sans-serif"
+    },
+    "close": {
+      "size": 0.066,
+      "weight": 900,
+      "tracking": "-0.035em",
+      "upper": true,
+      "family": "'Lineal', sans-serif"
+    }
+  },
+  "_tiers": "Rubik Bold base/mid; Lineal 900 para énfasis y cierre. Cambio de familia según solicitud de Walter.",
+  "shadow": "0 3px 12px rgba(0,0,0,.62), 0 1px 3px rgba(0,0,0,.5)",
+  "_shadow": "⛔ Sombra suave, NUNCA contorno. Un anillo de 8 sombras a offset 0 dibuja un borde de sticker. DOAC no contornea nada.",
+  "color": {
+    "fg": "#FFFFFF",
+    "hitDark": "#f6cae6",
+    "hitBright": "#eee6e1",
+    "lumaSplit": 150
+  },
+  "_color": "Blanco base; rosa/crema de cvander para énfasis según luminancia. Sin naranja DOAC.",
+  "tones": [
+    "soft",
+    "present"
+  ],
+  "_tones": "Las líneas de cuerpo alternan entrada; las 'hit'/'close' van siempre en impact. Que todo entre igual es lo que delata que lo hizo una máquina.",
+  "needsMatte": false,
+  "_needsMatte": "En modo fg global render-and-composite SALTEA el matte (usa solo bg_plus_caps.mp4, que ya trae video + subtitulos). frames_fg no se toca nunca. Por eso el matte —5 a 20 min de u2net en CPU por clip— es costo puro para este estilo y caption.sh lo saltea."
+}

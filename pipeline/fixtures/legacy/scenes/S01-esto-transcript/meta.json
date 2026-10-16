@@ -1,0 +1,22 @@
+{
+  "_comment": "generado por map-beats.mjs desde fixture.srt. La duración la manda el data-duration del index.html.",
+  "id": "S01",
+  "name": "esto-transcript",
+  "brand": "moi",
+  "type": "alpha",
+  "timing": {
+    "fps": 30,
+    "durationFrames": 126
+  },
+  "beat": {
+    "label": "ESTO TRANSCRIPT",
+    "words": "Esto es un transcript de prueba y no pertenece a ningún video real.",
+    "start": "0:00.0",
+    "end": "0:04.2",
+    "money": false
+  },
+  "place": "0:00.0",
+  "zone": null,
+  "seam": null,
+  "approved": false
+}

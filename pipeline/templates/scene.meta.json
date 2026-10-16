@@ -1,0 +1,30 @@
+{
+  "_comment": "meta.json por escena (Moi talking-head) — LA VERDAD DE MÁQUINA del kit. fps fijo 30, vertical 1080x1920. Lo valida `node tools/validate-kit.mjs <slug>`; la tabla del KIT_README se GENERA de acá (--tabla), no se teclea.",
+
+  "id": "S01",
+  "name": "nombre-corto",
+
+  "type": "alpha",
+  "_type": "alpha = overlay transparente sobre el talking-head · full = escena full-frame que TAPA el talking head (hook frío, cutaway, prueba) · footage = Walter a cámara, sin index.html, se corta en CapCut",
+
+  "timing": { "fps": 30, "durationFrames": 150 },
+  "_timing": "durationFrames se DERIVA del data-duration del index.html × fps. El html manda: si no coinciden, el validador falla. No lo edites a mano esperando que cambie el clip.",
+
+  "beat": {
+    "label": "EL GIRO",
+    "words": "frase VERBATIM del transcript que dispara la escena",
+    "start": "0:49.5",
+    "end": "0:54.6",
+    "money": false
+  },
+  "_beat": "`words` tiene que ser texto LITERAL del corte (el validador lo busca en el .srt y verifica que `start` caiga donde de verdad se dice). Si pones una descripción en vez de la cita, el chequeo de colocación no puede correr. `money` = uno de los 2–4 beats más fuertes del video.",
+
+  "place": "0:49.5",
+  "_place": "Dónde entra el clip en el corte. Por defecto = beat.start. De acá sale la columna 'Entra en' del KIT_README.",
+
+  "zone": "centro",
+  "_zone": "superior | centro | lateral-izq | lateral-der | inferior | full. Sirve para detectar que dos overlays simultáneos NO se tapen: apilar en zonas distintas es legal, en la misma zona es un error. Respeta la silueta: nunca cara ni cuerpo.",
+
+  "seam": null,
+  "_seam": "OPCIONAL y solo entre dos escenas `full` CONTIGUAS (sin footage en medio). null = corte duro, decidido a propósito — es lo correcto cuando la idea cambia o cuando vuelve la cara de Walter. Para calzar una transición, el elemento compartido viaja: { \"carry\": \"numero-10x\", \"exit\": { \"pos\": [540, 400], \"scale\": 0.6, \"opacity\": 1 } } en la escena que sale, y el mismo objeto como \"entry\" en la que entra — el validador exige que sean idénticos. Mínimo 12 frames (0.4 s) de pista en las dos, o es parpadeo y no transición."
+}

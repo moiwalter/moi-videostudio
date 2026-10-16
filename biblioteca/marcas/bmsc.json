@@ -1,0 +1,62 @@
+{
+  "name": "bmsc",
+  "label": "Banco Mercantil Santa Cruz / KOIN",
+  "source": "CSS del sitio oficial https://www.bmsc.com.bo/Koin, consultado 23-sep-2026. Borrador de producción, no manual de identidad.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "green": "#0A8D43",
+    "forest": "#296140",
+    "deep": "#1D3D2C",
+    "lime": "#A7D342",
+    "white": "#FFFFFF",
+    "mist": "#DDE9DF"
+  },
+  "roles": {
+    "accent": "green",
+    "accent-strong": "lime",
+    "accent-on-dark": "lime",
+    "surface": "deep",
+    "surface-dark": "deep",
+    "text": "white",
+    "text-muted": "mist",
+    "emphasis": "lime"
+  },
+  "fonts": {
+    "display": "Roboto",
+    "displayWeight": 700,
+    "sans": "Roboto",
+    "sansWeights": [
+      400,
+      700
+    ]
+  },
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "Roboto": {
+      "400": "Roboto-400.woff2",
+      "700": "Roboto-700.woff2"
+    }
+  },
+  "energy": "sobria",
+  "energyNotes": "Tres intervenciones gráficas. Subtítulos adaptados de Diary of a CEO con jerarquía y acento verde; sin saltos de cámara añadidos.",
+  "prohibido": [
+    "Comparaciones de superioridad con otras billeteras",
+    "Logos competidores nítidos en esta pieza",
+    "Garantías de ganancias o seguridad absoluta"
+  ],
+  "qc": {
+    "cara": [
+      300,
+      1050
+    ],
+    "banda": [
+      1240,
+      1530
+    ]
+  },
+  "_qc": "Intervalos del episodio first.mp4; revisar cada encuadre. No patrón del setup doméstico."
+}

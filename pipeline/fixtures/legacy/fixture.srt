@@ -1,0 +1,11 @@
+1
+00:00:00,000 --> 00:00:04,200
+ Esto es un transcript de prueba y no pertenece a ningún video real.
+
+2
+00:00:04,200 --> 00:00:09,000
+ Nivel 1, el fixture existe para que las herramientas no escriban en proyectos publicados.
+
+3
+00:00:09,000 --> 00:00:13,500
+ Pero acá viene lo importante, y son 5 razones con 250 dólares de ejemplo.

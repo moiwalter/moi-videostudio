@@ -1,0 +1,120 @@
+{
+  "name": "moi",
+  "label": "Moi — Walter Alvarez",
+  "source": "video-edit/BRAND.md (fuente de verdad en prosa). Este archivo es su versión computable.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "navy": "#192A56",
+    "gold": "#F7D794",
+    "gold-vivo": "#FFD700",
+    "gold-pale": "#FFE873",
+    "cream": "#EDE8DA",
+    "ink": "#0B0B09",
+    "rose": "#EDA6A3",
+    "green": "#7CFC9A",
+    "g50": "#6B7177",
+    "deep": "#022C43",
+    "bo-red": "#ED1C24"
+  },
+  "roles": {
+    "accent": "gold",
+    "accent-strong": "gold-vivo",
+    "surface": "cream",
+    "surface-dark": "deep",
+    "emphasis": "navy",
+    "text": "ink",
+    "text-muted": "g50",
+    "negative": "rose",
+    "positive": "green"
+  },
+  "fonts": {
+    "display": "Cormorant Garamond",
+    "displayWeight": 700,
+    "displayUse": "títulos, preguntas, frases, nombres",
+    "sans": "IBM Plex Sans",
+    "sansWeights": [
+      400,
+      500,
+      600
+    ],
+    "mono": "IBM Plex Mono",
+    "monoUse": "captions, tags, meta, URLs, kickers (uppercase + letter-spacing)"
+  },
+  "_fontFiles": "Los archivos reales. Sin esto, `brand.mjs tokens` emitiría el NOMBRE de la fuente sin el @font-face que la carga, y la escena caía en Georgia EN SILENCIO (HyperFrames avisa, pero el render sale igual). Solo estos pesos existen — pedir otro da 404 + fallback feo.",
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "Cormorant Garamond": {
+      "600": "CormorantGaramond-SemiBold.ttf",
+      "700": "CormorantGaramond-Bold.ttf"
+    },
+    "IBM Plex Sans": {
+      "300": "IBMPlexSans-Light.ttf",
+      "400": "IBMPlexSans-Regular.ttf",
+      "500": "IBMPlexSans-Medium.ttf",
+      "600": "IBMPlexSans-SemiBold.ttf"
+    },
+    "IBM Plex Mono": {
+      "400": "IBMPlexMono-Regular.ttf"
+    }
+  },
+  "surfaces": {
+    "card": "rgba(237,232,218,.97)",
+    "cardRadius": "20-28px",
+    "rim": "inset 0 0 0 3px rgba(255,255,255,.16)",
+    "shadowMax": 8
+  },
+  "energy": "efusiva",
+  "energyNotes": "overshoot marcado (back.out 1.9–2.2) · punch de scale cuando un número aterriza (1→1.15→1) · palabras clave en stamp (scale 2→1 + micro-shake) · pulso de glow en el acento. Nada tímido/enterprise.",
+  "watermark": {
+    "text": "MOI",
+    "position": "abajo-izquierda",
+    "font": "mono"
+  },
+  "preview": {
+    "bg": "#3a3d42",
+    "uso": "fondo gris SOLO del mp4 de preview, nunca del alpha"
+  },
+  "sponsors": {
+    "wallbit": {
+      "blue": "#0D99FF",
+      "dark": "#14161C",
+      "uso": "SOLO escenas sponsored de Wallbit"
+    }
+  },
+  "_mimesis": "Colores que NO son de la marca sino FIDELIDAD a una UI real que la escena replica (arquetipo 20 del SCENE_LIBRARY: 'UI-mockup fiel'). Se permiten, pero hay que NOMBRAR qué se está replicando — así un hex suelto sin dueño sigue siendo una falla.",
+  "mimesis": {
+    "macos-window": {
+      "close": "#FF5F57",
+      "min": "#FEBC2E",
+      "max": "#28C840",
+      "uso": "los tres botones de una ventana macOS en mockups de terminal"
+    },
+    "terminal": {
+      "bg": "#0B0D10",
+      "chrome": "#14171C",
+      "deep": "#00151F",
+      "uso": "cromo de terminal en escenas de herramientas"
+    },
+    "excel": {
+      "green": "#21A366",
+      "uso": "verde de Excel en la escena del nivel 3"
+    },
+    "gold-dark": {
+      "hex": "#C9A227",
+      "uso": "oro apagado para degradés y bordes del oro de marca"
+    }
+  },
+  "prohibido": [
+    "escenas de solo texto (eso es un subtítulo, no un overlay)",
+    "velo oscuro / scrim global — legibilidad por text-shadow",
+    "destellos o wipes champán entre escenas",
+    "HEVC con alpha para CapCut (muestra fondo negro) — siempre ProRes 4444",
+    "concatenar con -c copy (rompe timestamps)",
+    "números sin separador de miles o cifras incoherentes",
+    "camera movement interpolado (zoom / Ken-Burns)"
+  ]
+}

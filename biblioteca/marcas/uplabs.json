@@ -1,0 +1,180 @@
+{
+  "name": "uplabs",
+  "label": "Uplabs AI — Andrés Cardozo",
+  "source": "CSS VIVO de uplabsai.com (17-ago-2026). Next.js: /_next/static/css/781c7b523403ce5f.css + aa46ffd3df9d9d4d.css. Los hex salieron de las custom properties `--color-*` y del conteo de frecuencia sobre los dos bundles. Ni un color muestreado a ojo de una captura.",
+  "_intake": "Contestado contra el SITIO, no contra el cliente. Lo que el sitio no prueba está marcado ⚠️ PENDIENTE DE ANDRÉS. Decisiones de Walter (17-ago-2026): carril MASTER · energía gráfica fuerte sobre su paleta · fuente = el corte de WhatsApp tal cual.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "royal": "#5E17EB",
+    "violet-soft": "#AD82FF",
+    "indigo": "#7423FF",
+    "violet-deep": "#4D278E",
+    "dark": "#05000E",
+    "charcoal": "#1A1A1C",
+    "paper": "#FFFFFF",
+    "logo-gray": "#DDDEDF",
+    "cyan": "#82ECFF",
+    "pink": "#FD82FF",
+    "emerald": "#89FAB7",
+    "red": "#F87171",
+    "gray": "#9CA3AF",
+    "gray-deep": "#626262"
+  },
+  "_paletteSource": {
+    "royal": "--color-royal-600-custom. EL acento: 20 apariciones en los bundles, el hex más repetido del sitio con diferencia. Es también el arranque del gradiente firma.",
+    "violet-soft": "--color-violet-300-custom. El final del gradiente firma `linear-gradient(90deg,#5E17EB,#AD82FF)`. ⚠️ Es EL VIOLETA QUE LEE sobre fondo oscuro — ver _contraste.",
+    "indigo": "--color-indigo-600-custom. Violeta secundario, 4 usos. Para estados/hover, no para el acento principal.",
+    "violet-deep": "--color-deep-violet-custom. Arranque del segundo gradiente `linear-gradient(90deg,#4D278E,#9A6BFF)`. Sirve de placa profunda bajo texto claro.",
+    "dark": "--color-dark. El fondo de la marca. NO es negro puro: lleva tinte violeta (#05000E). Usarlo en vez de #000 es lo que hace que el violeta se sienta de la misma familia y no pegado encima.",
+    "charcoal": "--color-charcoal. Superficie de tarjeta, un escalón por encima de dark.",
+    "paper": "--foreground: 0 0% 100%. Blanco puro, el color de texto por defecto del sitio.",
+    "logo-gray": "el fill de los 9 paths de /logo-uplabs-svg.svg. El logo NO es blanco puro — es este gris.",
+    "cyan": "--color-cyan-300-custom (#82ECFF) — el más legible de los secundarios sobre dark (15.20).",
+    "pink": "--color-pink-300-custom.",
+    "emerald": "--color-tertiary-4 (#89FAB7). El POSITIVO. Su hermano --color-emerald-400-custom #34D399 es más oscuro y no lee tan bien sobre dark.",
+    "red": "--color-red-400-custom. El NEGATIVO.",
+    "gray": "--color-tertiary-11 / -7 / -8, los tres el mismo #9CA3AF. Texto secundario.",
+    "gray-deep": "--color-gray-600-custom. Reglas y bordes."
+  },
+  "_paletteDescartado": "Los `--fd-*` (Fumadocs, el tema de su sección /docs) y los `--chart-*` (shadcn por defecto, sin tocar) NO son marca — son defaults de librería. Tampoco entran los `--sidebar-*`. Se descartó `--primary:217 91% 60%` (#3B82F6, azul shadcn de fábrica) porque convive con un `--primary:0 0% 98%` en el mismo bundle: es tema sin configurar, no decisión de marca.",
+  "roles": {
+    "accent": "royal",
+    "accent-on-dark": "violet-soft",
+    "accent-strong": "indigo",
+    "surface": "dark",
+    "surface-alt": "charcoal",
+    "surface-dark": "dark",
+    "surface-plate": "royal",
+    "text": "paper",
+    "text-muted": "gray",
+    "text-invert": "dark",
+    "emphasis": "violet-soft",
+    "emphasis-on": "dark",
+    "positive": "emerald",
+    "negative": "red",
+    "rule": "gray-deep"
+  },
+  "_roles": "⛔ LA REGLA QUE NO SE VUELVE A DESCUBRIR: el acento de Uplabs (#5E17EB) tiene 2.76 de contraste contra su propio fondo (#05000E). ES COLOR DE PLACA, NO DE TINTA. Como texto sobre oscuro va `violet-soft` #AD82FF (7.32). Como placa, lleva `paper` encima (7.51). Por eso `accent` y `accent-on-dark` son roles distintos: una escena que use `--accent` para un titular sobre el fondo produce texto ilegible que en el preview 'casi se ve'.",
+  "_contraste": {
+    "_nota": "Ratios WCAG MEDIDOS el 17-ago-2026 contra los hex del CSS, no estimados. Umbrales: ≥4.5 texto normal · ≥3.0 sólo texto grande · <3.0 nunca como texto.",
+    "sobre-dark #05000E": {
+      "paper #FFFFFF": "20.73 — el par por defecto",
+      "emerald #89FAB7": "16.21",
+      "logo-gray #DDDEDF": "15.39 — el logo lee limpio sobre su propio fondo",
+      "cyan #82ECFF": "15.20",
+      "pink #FD82FF": "9.69",
+      "gray #9CA3AF": "8.17 — texto secundario, válido",
+      "red #F87171": "7.50",
+      "violet-soft #AD82FF": "7.32 — ✅ EL violeta que lee sobre oscuro",
+      "indigo #7423FF": "3.38 — sólo texto grande",
+      "royal #5E17EB": "2.76 — ⛔ NUNCA como texto sobre el fondo",
+      "violet-deep #4D278E": "1.97 — ⛔ sólo placa",
+      "charcoal #1A1A1C": "1.19 — separación por borde, no por contraste"
+    },
+    "sobre-royal #5E17EB": {
+      "paper #FFFFFF": "7.51 — ✅ el par correcto de la placa",
+      "emerald #89FAB7": "5.87",
+      "logo-gray #DDDEDF": "5.57",
+      "cyan #82ECFF": "5.50",
+      "pink #FD82FF": "3.51 — sólo texto grande",
+      "gray #9CA3AF": "2.96 — ⛔ desaparece",
+      "dark #05000E": "2.76 — ⛔ no invertir la placa",
+      "violet-soft #AD82FF": "2.65 — ⛔ barro violeta sobre violeta"
+    },
+    "sobre-violet-soft #AD82FF": {
+      "dark #05000E": "7.32 — ✅ el par correcto: tinta oscura sobre violeta claro",
+      "charcoal #1A1A1C": "6.14",
+      "violet-deep #4D278E": "3.71 — sólo texto grande",
+      "paper #FFFFFF": "2.83 — ⛔ el blanco NO lee sobre violet-soft"
+    },
+    "sobre-paper #FFFFFF": {
+      "dark #05000E": "20.73",
+      "violet-deep #4D278E": "10.52",
+      "royal #5E17EB": "7.51 — ✅ acá SÍ funciona como tinta",
+      "indigo #7423FF": "6.13",
+      "gray #9CA3AF": "2.54 — ⛔ no usar sobre blanco"
+    }
+  },
+  "gradients": {
+    "firma": "linear-gradient(90deg,#5E17EB,#AD82FF)",
+    "profundo": "linear-gradient(90deg,#4D278E,#9A6BFF)"
+  },
+  "_gradients": "Los dos únicos gradientes de color declarados en todo el CSS del sitio (el resto son overlays negros a .5 y stops de Tailwind sin valores). `firma` es el que va: es el que pinta sus CTA y sus títulos. ⚠️ #9A6BFF sólo aparece dentro de `profundo` — no es un token suelto, no se usa por su cuenta.",
+  "fonts": {
+    "display": "Monda",
+    "displayWeight": 700,
+    "displayUse": "titulares, rótulos, cifras. Es la que su sitio pide con `font-family:var(--font-monda)` en los h1/h2. Geométrica, ancha, mayúsculas fuertes — aguanta bien el uppercase.",
+    "sans": "Roboto",
+    "sansWeights": [300, 400, 500, 700],
+    "sansUse": "cuerpo, bajadas, labels, listas. Es `--font-roboto`.",
+    "mono": null,
+    "kicker": "Monda 700, UPPERCASE, letter-spacing ~2px. El sitio compone sus secciones así (AI EMPLOYEES / FOR YOUR BUSINESS)."
+  },
+  "_fonts": "✅ SIN PROBLEMA DE LICENCIA — Monda y Roboto son las dos de Google Fonts (OFL / Apache 2.0). No hay que pedirle archivos a nadie, a diferencia del caso HK Grotesk de startupeable. ⚠️ Monda sólo existe en 400 y 700 — NO hay 500/600/900. Una escena que pida `font-weight:900` en Monda recibe el 700 sintetizado o el fallback: pedir 700 y punto. El sitio no declara mono; si una escena necesita cifras monoespaciadas, usar Roboto 500 con `font-variant-numeric: tabular-nums` antes de meter una cuarta tipografía.",
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "Monda": {
+      "400": "Monda-400.woff2",
+      "700": "Monda-700.woff2"
+    },
+    "Roboto": {
+      "300": "Roboto-300.woff2",
+      "400": "Roboto-400.woff2",
+      "500": "Roboto-500.woff2",
+      "700": "Roboto-700.woff2"
+    }
+  },
+  "_fontFiles": "Instancias ESTÁTICAS por peso, bajadas de la API v1 de Google Fonts (`css?family=X:<peso>`) el 17-ago-2026. Son .woff2 a propósito y brand.mjs lo maneja: el hint de format() sale de la extensión. ⛔ NO cambiar a la variable `Monda[wght].ttf`: brand.mjs emite un @font-face por peso con `font-weight` fijo, y un variable así declarado renderiza SIEMPRE en su instancia por defecto — el 700 saldría regular y nadie vería un error.",
+  "surfaces": {
+    "card": "rgba(26,26,28,.97)",
+    "cardDeep": "rgba(5,0,14,.97)",
+    "cardRadius": "8px",
+    "rim": "inset 0 0 0 2px rgba(94,23,235,.45)",
+    "rimSoft": "inset 0 0 0 1px rgba(255,255,255,.10)",
+    "shadowMax": 8
+  },
+  "_surfaces": "`--radius:0.5rem` = 8px, declarado en su CSS. El rim violeta es el recurso con el que su sitio separa tarjetas sobre el fondo oscuro — no usa sombra, usa borde. ⚠️ shadowMax 8 es el techo para G2 (alpha-qc --css): sombras oscuras grandes se hornean en el alpha, y acá además el fondo del footage es una ventana clara — una sombra que se ve bien sobre #05000E es una mancha sobre el cielo de Asunción.",
+  "energy": "efusiva",
+  "energyNotes": "DECISIÓN DE WALTER (17-ago-2026), CONTRA lo que sugiere el posicionamiento. Uplabs es enterprise B2B (banca, seguros, salud) y su sitio se comporta sobrio; el brief fue explícito: 'todo el enfoque de animación bien gráfico... lo que importa es que la animación venda más el video'. Se anima con la energía de Moi — stamps, punch, anticipación, pictogramas, data-viz — pero TODO dibujado en esta paleta. La intención se pide por nombre a design_system/motion.js (snap · settle · alive · pop · weight), ninguna escena teclea un ease.",
+  "logo": {
+    "tipo": "LOCKUP — isotipo + wordmark en un solo SVG",
+    "archivo": "assets/uplabs-logo.svg",
+    "isotipo": "cuatro barras verticales de alturas distintas con el borde superior escalonado, tipo ecualizador/onda ascendente. Va a la izquierda del wordmark.",
+    "wordmark": "UPLABS AI, uppercase, letterforms geométricas propias (NO es Monda — es un logotipo dibujado, no se re-teclea)",
+    "color": "#DDDEDF monocromo — los 9 paths del SVG llevan el mismo fill",
+    "viewBox": "0 0 159 24",
+    "_nota": "⛔ EL LOGO NO SE RE-TECLEA. A diferencia de startupeable (que es tipográfico y se escribe), acá el wordmark tiene letterforms dibujadas: escribir 'UPLABS AI' en Monda NO da el logo. Se usa el SVG. ⚠️ Es monocromo #DDDEDF: para ponerlo sobre `paper` hay que recolorearlo a `dark` o `royal` — sobre blanco tiene 1.35 de contraste y desaparece."
+  },
+  "watermark": {
+    "text": null,
+    "_nota": "⚠️ PENDIENTE DE ANDRÉS. El sitio no prueba una marca de agua y el corte no la trae. No se inventa una: si se quiere, va el lockup del SVG abajo-izquierda a opacidad baja, y eso lo decide él."
+  },
+  "sponsors": {
+    "linkedin": {
+      "azul": "#0A66C2",
+      "_": "MARCA INVITADA, no de Uplabs. Va en el chip de perfil de Andrés y en la tarjeta de cierre. Su azul NO se mezcla con la paleta: no se usa para nada que no sea el propio lockup de LinkedIn. Marca: assets/linkedin.svg (vector, simple-icons). ⛔ assets/linkedin.png es 64×64 — a tamaño de cuadro sale blando y lo caza el gate de assets de qc-master. Usar el SVG."
+    }
+  },
+  "perfil": {
+    "nombre": "Andrés Cardozo",
+    "cargo": "CEO, Uplabs AI",
+    "linkedin_url": "https://www.linkedin.com/in/andr%C3%A9s-cardozo-4073a2252/",
+    "linkedin_en_pantalla": null,
+    "_": "⛔ LA URL NO VA EN PANTALLA. El slug es autogenerado: lleva la cola numérica `4073a2252` y una `é` que se codifica `%C3%A9`. Nadie teclea eso desde un video, y un CTA que no se puede seguir es peor que no tener CTA. En cuadro va la marca de LinkedIn + 'Andrés Cardozo'; el link vive en el post. Si Andrés reclama una vanity URL limpia (linkedin.com/in/andrescardozo), esto cambia y ahí SÍ se pone en pantalla."
+  },
+  "prohibido": [
+    "⛔ #5E17EB como color de TEXTO sobre el fondo oscuro (2.76). Es placa. Sobre oscuro el violeta que lee es #AD82FF.",
+    "⛔ Blanco sobre #AD82FF (2.83). Sobre violeta claro la tinta es #05000E.",
+    "⛔ Negro puro #000000. El negro de esta marca es #05000E y tiene tinte violeta — mezclarlos deja dos negros distintos en el mismo cuadro.",
+    "⛔ Re-teclear el wordmark en Monda. El logo es un SVG dibujado.",
+    "⛔ Pedir pesos de Monda que no existen (500/600/900). Sólo 400 y 700.",
+    "⛔ Scrim (velo negro de legibilidad) sobre el footage. La legibilidad se resuelve con placa sólida de la paleta o con text-shadow, nunca oscureciendo el cuadro entero.",
+    "⛔ Usar los `--fd-*` o los `--chart-*` como si fueran marca: son defaults de Fumadocs y shadcn sin configurar.",
+    "⚠️ Los secundarios (cyan/pink/emerald) NO son acentos libres: en el sitio aparecen como set de datos, no como decoración. Emerald = positivo, red = negativo. Cyan y pink sólo para diferenciar series en una data-viz.",
+    "⚠️ ESTE CORTE ES 464×832 CON SUBTÍTULOS QUEMADOS (amarillo/blanco karaoke) en la franja y≈68–78% del alto. Nada nuestro entra ahí: esa banda está ocupada por una tipografía que no es de esta marca."
+  ]
+}

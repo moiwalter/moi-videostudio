@@ -1,0 +1,9 @@
+{
+  "id": "paper-collage", "version": 1,
+  "label": "Paper Collage", "aliases": ["paper edit", "recortes de papel", "cvandersep2"],
+  "resourcePolicy": "real-first", "continuousOverlayCoverage": false,
+  "captionPolicy": "explicit-in-brief", "reviewMode": "scene-by-scene",
+  "principles": ["Use recognizable real photographs, authentic documents, logos and real footage; keep provenance.", "Build the real hook first and obtain the user's decision before propagating the look.", "Animate the relationship being narrated; give objects meaningful changes after their entrance.", "Select paper, text and emphasis colors from the client's verified brand; preserve resource colors.", "Keep speaker presence, caption treatment and platform margins specific to this recording.", "Inspect the changed scene and its joins first; widen review only for shared causes."],
+  "engines": {"remotion": "production-reference", "hyperframes": "supported-contract; style pilot still required"},
+  "reference": "2026-09-cvandersep2-paper/pipeline.json"
+}

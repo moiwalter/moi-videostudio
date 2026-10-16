@@ -1,0 +1,22 @@
+{
+  "_comment": "generado por map-beats.mjs desde fixture.srt. La duración la manda el data-duration del index.html.",
+  "id": "S03",
+  "name": "pero-viene",
+  "brand": "moi",
+  "type": "alpha",
+  "timing": {
+    "fps": 30,
+    "durationFrames": 135
+  },
+  "beat": {
+    "label": "PERO VIENE",
+    "words": "Pero acá viene lo importante, y son 5 razones con 250 dólares de ejemplo.",
+    "start": "0:09.0",
+    "end": "0:13.5",
+    "money": false
+  },
+  "place": "0:09.0",
+  "zone": null,
+  "seam": null,
+  "approved": false
+}

@@ -1,0 +1,12 @@
+{
+  "id": "S09",
+  "name": "alpha",
+  "brand": "moi",
+  "type": "alpha",
+  "timing": { "fps": 30, "durationFrames": 150 },
+  "beat": { "label": "", "words": "frase VERBATIM del transcript", "start": null, "end": null, "money": false },
+  "place": null,
+  "zone": null,
+  "seam": null,
+  "approved": false
+}

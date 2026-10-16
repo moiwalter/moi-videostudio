@@ -1,0 +1,43 @@
+# ── MEDIA: nada pesado entra al repo ────────────────────────────────────────────────
+# Lo que se versiona es EL PIPELINE (herramientas, docs, contratos y el HTML de cada
+# escena), no sus salidas. Un render se vuelve a hacer; `tools/` no.
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.m4a
+*.mp3
+*.aac
+*.prores
+
+# ── carpetas de salida y de crudos ──────────────────────────────────────────────────
+local/
+renders/
+clips/
+caps/
+footage/
+KIT/
+KIT-CAPCUT/
+_straight_backup/
+snapshots/
+*/master/renders/
+.__capcut_export_temp_folder_*/
+
+# ── pesados que se reinstalan ───────────────────────────────────────────────────────
+node_modules/
+design_system/fonts/
+
+# ── ruido ───────────────────────────────────────────────────────────────────────────
+.DS_Store
+*.log
+
+# scrub del preview de HyperFrames — se regeneran solas
+.thumbnails/
+
+# Unified workspace: physical media, compatibility aliases and migration evidence
+originales/
+entregas/
+.compat/
+archivo/migracion-*/
+biblioteca/design_system/fonts/

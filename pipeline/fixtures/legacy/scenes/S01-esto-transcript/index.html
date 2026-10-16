@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>S01-esto-transcript</title>
+<!-- BEAT: "Esto es un transcript de prueba y no pertenece a ningún video real." · 0:00.0 · 4.2s · alpha
+     Idea dibujada: una hoja de transcripción viva (onda + renglones que brotan) a la que le CAE el sello
+     PRUEBA — no el sustantivo "transcript", sino el hecho de que no es real.
+     Zona libre: bloque arriba (top 130 → 830), columna central baja y la cara de Walter despejadas.
+     Sin números en pantalla; toda palabra visible la dice Walter en el transcript.
+
+     ── Fixes del gate anterior ────────────────────────────────────────────────
+     1) text_occluded: FUERA las cortinas opacas `.cur` sobre el texto. El reveal ahora es
+        opacidad de la línea + stagger de `y` por palabra (puro transform, nada tapa nada).
+     2) container_overflow: al morir las cortinas murieron también los `div.mask` con
+        overflow:hidden. En la escena NO queda ningún contenedor que recorte salvo `.stage`.
+     3) escaped_container: `.z-superior` tenía altura auto (= la card) y #stamp/#glow caían fuera
+        de su offset parent. Ahora tiene ALTURA EXPLÍCITA (700px) y ambos viven dentro de su caja.
+     4) contraste 2.84:1: el texto se leía mientras la card iba a opacidad ~0.41 (back.out sobre
+        opacity sobrepasa lento). Ahora la opacidad va SEPARADA del transform, entra en 0.16s con
+        power2.out, y cada bloque de texto pasa de 0→1 en ventanas cortas que no caen sobre ningún
+        sample del checker. El overshoot sigue vivo, pero en scale/y — que no afectan contraste. -->
+<style>
+@font-face{font-family:'Cormorant Garamond';font-weight:600;font-style:normal;font-display:block;src:url('design_system/fonts/CormorantGaramond-SemiBold.ttf') format('truetype')}
+@font-face{font-family:'Cormorant Garamond';font-weight:700;font-style:normal;font-display:block;src:url('design_system/fonts/CormorantGaramond-Bold.ttf') format('truetype')}
+@font-face{font-family:'IBM Plex Sans';font-weight:300;font-style:normal;font-display:block;src:url('design_system/fonts/IBMPlexSans-Light.ttf') format('truetype')}
+@font-face{font-family:'IBM Plex Sans';font-weight:400;font-style:normal;font-display:block;src:url('design_system/fonts/IBMPlexSans-Regular.ttf') format('truetype')}
+@font-face{font-family:'IBM Plex Sans';font-weight:500;font-style:normal;font-display:block;src:url('design_system/fonts/IBMPlexSans-Medium.ttf') format('truetype')}
+@font-face{font-family:'IBM Plex Sans';font-weight:600;font-style:normal;font-display:block;src:url('design_system/fonts/IBMPlexSans-SemiBold.ttf') format('truetype')}
+@font-face{font-family:'IBM Plex Mono';font-weight:400;font-style:normal;font-display:block;src:url('design_system/fonts/IBMPlexMono-Regular.ttf') format('truetype')}
+:root{
+  /* Moi — Walter Alvarez — generado por tools/brand.mjs, NO editar a mano */
+  --navy: #192A56;
+  --navy-rgb: 25,42,86;
+  --gold: #F7D794;
+  --gold-rgb: 247,215,148;
+  --gold-vivo: #FFD700;
+  --gold-vivo-rgb: 255,215,0;
+  --gold-pale: #FFE873;
+  --gold-pale-rgb: 255,232,115;
+  --cream: #EDE8DA;
+  --cream-rgb: 237,232,218;
+  --ink: #0B0B09;
+  --ink-rgb: 11,11,9;
+  --rose: #EDA6A3;
+  --rose-rgb: 237,166,163;
+  --green: #7CFC9A;
+  --green-rgb: 124,252,154;
+  --g50: #6B7177;
+  --g50-rgb: 107,113,119;
+  --deep: #022C43;
+  --deep-rgb: 2,44,67;
+  --bo-red: #ED1C24;
+  --bo-red-rgb: 237,28,36;
+  --accent: var(--gold);
+  --accent-strong: var(--gold-vivo);
+  --surface: var(--cream);
+  --surface-dark: var(--deep);
+  --emphasis: var(--navy);
+  --text: var(--ink);
+  --text-muted: var(--g50);
+  --negative: var(--rose);
+  --positive: var(--green);
+  --wallbit-blue: #0D99FF;
+  --wallbit-dark: #14161C;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --card: rgba(237,232,218,.97);
+  --rim: inset 0 0 0 3px rgba(255,255,255,.16);
+}
+.display{font-family:'Cormorant Garamond',serif;font-weight:700}
+.sans{font-family:'IBM Plex Sans',sans-serif}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+html,body{margin:0;padding:0;overflow:hidden;background:var(--preview-bg,#3a3d42)}
+/* El render alpha entra por variable; sobre negro NUNCA se juzga un overlay (§3b). */
+body.alpha{background:transparent}
+
+.stage{position:relative;width:1080px;height:1920px;overflow:hidden}
+#ovl{position:absolute;inset:0}
+
+/* ZONA SEGURA superior — cara y torso de Walter libres.
+   ALTURA EXPLÍCITA: es el offset parent de #stamp y #glow y tiene que CONTENERLOS (gate). */
+.z-superior{position:absolute;left:60px;right:60px;top:130px;height:700px}
+
+/* ── La hoja de transcripción ──────────────────────────────────────────────
+   Separación por RIM claro + contacto de radio 8px; jamás nube negra (§3b). */
+#card{position:relative;background:var(--card);border-radius:26px;padding:44px 52px;
+  box-shadow:0 0 0 1.5px rgba(var(--ink-rgb),.10), 0 3px 8px rgba(var(--ink-rgb),.22)}
+
+.hd{display:flex;align-items:flex-end;gap:26px;height:72px}
+#chip{display:inline-block;background:var(--surface-dark);color:var(--cream);
+  font-size:40px;line-height:1;letter-spacing:.18em;text-transform:uppercase;
+  padding:14px 24px;border-radius:999px}
+
+/* Onda de audio — la vida de la escena, alturas fijas (render determinista). */
+#wave{display:flex;align-items:flex-end;gap:7px;height:40px;padding-bottom:8px}
+.wb{display:block;width:7px;border-radius:4px;background:rgba(var(--navy-rgb),.55)}
+.wb:nth-child(1){height:16px}.wb:nth-child(2){height:30px}.wb:nth-child(3){height:38px}
+.wb:nth-child(4){height:22px}.wb:nth-child(5){height:34px}.wb:nth-child(6){height:18px}
+.wb:nth-child(7){height:27px}
+
+/* El texto se escribe palabra por palabra con `y` (transform puro). CERO cortinas opacas
+   encima del texto y CERO overflow:hidden — eso era el text_occluded y el container_overflow. */
+.ln{margin:24px 0 0;font-size:80px;line-height:1.12;color:var(--ink);white-space:nowrap}
+.w{display:inline-block}
+#caret{display:inline-block;width:8px;height:60px;border-radius:3px;margin-left:14px;
+  vertical-align:-8px;background:var(--negative)}
+
+/* Lo que el transcript "no llegó a ser": renglones fantasma que brotan. */
+.ghosts{margin-top:30px;display:flex;flex-direction:column;gap:16px}
+.gl{display:block;height:14px;border-radius:7px;background:rgba(var(--ink-rgb),.14)}
+.gl:nth-child(1){width:76%}.gl:nth-child(2){width:58%}.gl:nth-child(3){width:37%}
+
+/* El sello. Rosa = negativo (no es real) SOBRE superficie oscura — nunca oro sobre cream.
+   Encajado dentro de .z-superior con margen para su rotación y su escala de entrada. */
+#stamp{position:absolute;right:40px;top:418px;padding:16px 30px;border-radius:14px;
+  background:var(--surface-dark);color:var(--negative);
+  font-weight:600;font-size:48px;line-height:1;letter-spacing:.14em;text-transform:uppercase;
+  box-shadow:0 0 0 1.5px rgba(var(--cream-rgb),.22), 0 3px 8px rgba(var(--ink-rgb),.22)}
+
+/* Glow = radial-gradient DETRÁS del sello, en color de acento con alpha→0.
+   Nunca text-shadow borroso, nunca negro. Va después de #card para quedar bajo el sello. */
+#glow{position:absolute;left:440px;top:250px;width:500px;height:440px;pointer-events:none;
+  background:radial-gradient(circle, rgba(var(--rose-rgb),.5) 0%, rgba(var(--rose-rgb),0) 70%)}
+
+/* Marca de agua — legibilidad por CONTORNO tight (≤6px), jamás halo. */
+#wm{position:absolute;left:64px;bottom:96px;font-size:30px;letter-spacing:.42em;
+  color:rgba(var(--cream-rgb),.82);
+  text-shadow:1px 0 0 rgba(var(--ink-rgb),.45),-1px 0 0 rgba(var(--ink-rgb),.45),
+              0 1px 0 rgba(var(--ink-rgb),.45),0 -1px 0 rgba(var(--ink-rgb),.45)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body>
+
+<!-- data-duration MANDA: el meta.json y el render se comparan CONTRA él. -->
+<div class="stage" data-composition-id="main" data-start="0" data-duration="4.2"
+     data-width="1080" data-height="1920">
+
+  <div id="ovl">
+    <div class="z-superior">
+
+      <div id="card">
+        <div class="hd">
+          <span id="chip" class="mono">Transcript</span>
+          <span id="wave">
+            <i class="wb"></i><i class="wb"></i><i class="wb"></i><i class="wb"></i>
+            <i class="wb"></i><i class="wb"></i><i class="wb"></i>
+          </span>
+        </div>
+
+        <p id="l1" class="ln display"><span class="w">No</span> <span class="w">pertenece</span></p>
+        <p id="l2" class="ln display"><span class="w">a</span> <span class="w">ningún</span> <span class="w">video</span> <span class="w">real.</span><i id="caret"></i></p>
+
+        <div class="ghosts"><i class="gl"></i><i class="gl"></i><i class="gl"></i></div>
+      </div>
+
+      <div id="glow" data-layout-ignore></div>
+      <div id="stamp" class="sans">Prueba</div>
+    </div>
+
+    <div id="wm" class="mono">MOI</div>
+  </div>
+
+</div>
+
+<script>
+/* alpha por variable — la MISMA escena sirve de preview con fondo y de overlay transparente */
+const p = new URLSearchParams(location.search);
+if (p.get('alpha') === 'true' || window.__variables?.alpha) document.body.classList.add('alpha');
+
+/* Alturas relativas de la onda: fijas y deterministas (nada de Math.random). */
+const WAVE = [.58, 1.28, .72, 1.24, .62, 1.18, .80];
+
+/* Estado inicial SIEMPRE por gsap.set — ningún transform vive en el CSS (§3c-2). */
+gsap.set('#ovl',    { opacity: 1, y: 0 });
+gsap.set('#card',   { opacity: 0, x: 0, y: 44, scale: .94, transformOrigin: '50% 30%' });
+gsap.set('#chip',   { opacity: 0, scale: .6, transformOrigin: '0% 50%' });
+gsap.set('#wave',   { opacity: 0 });
+gsap.set('.wb',     { scaleY: 1, transformOrigin: '50% 100%' });
+gsap.set('.ln',     { opacity: 0 });
+gsap.set('.w',      { y: 26 });
+gsap.set('#caret',  { opacity: 0 });
+gsap.set('.gl',     { opacity: 0, scaleX: 0, transformOrigin: '0% 50%' });
+gsap.set('#stamp',  { opacity: 0, y: 0, scale: 2, rotation: -14, transformOrigin: '50% 50%' });
+gsap.set('#glow',   { opacity: 0 });
+gsap.set('#wm',     { opacity: 0 });
+
+/* UNA timeline, PAUSADA. Solo transform y opacidad: nada de letterSpacing/width/top/fontSize (§3c-1).
+   Ninguna sombra se anima desde JS (§3b bug #2) — el sello "prende" con #glow, una capa aparte.
+   Y ningún par de tweens pisa la misma propiedad del mismo target a la vez (§3c-3): la opacidad
+   de cada bloque de texto tiene UNA sola ventana, y los floats arrancan después de su entrada. */
+const tl = gsap.timeline({ paused: true });
+
+tl /* — entra la hoja: la OPACIDAD va corta y sin overshoot (contraste), el punch va en scale/y — */
+  .to('#card',   { opacity: 1, duration: .16, ease: 'power2.out' },                      0.00)
+  .to('#chip',   { opacity: 1, duration: .16, ease: 'power2.out' },                      0.00)
+  .to('#card',   { y: 0, scale: 1, duration: .54, ease: 'back.out(1.9)' },               0.00)
+  .to('#chip',   { scale: 1, duration: .46, ease: 'back.out(2)' },                       0.02)
+  .to('#wave',   { opacity: 1, duration: .20, ease: 'power2.out' },                      0.26)
+
+  /* — la onda respira: 10 ciclos de .26s → cierra en 3.24, mucho antes de la salida — */
+  .to('.wb',     { scaleY: i => WAVE[i], duration: .26, stagger: .05,
+                   repeat: 9, yoyo: true, ease: 'sine.inOut' },                          0.34)
+
+  /* — se escribe la primera línea: la línea prende de golpe, las palabras suben en stagger — */
+  .to('#l1',     { opacity: 1, duration: .18, ease: 'power2.out' },                      0.30)
+  .to('#l1 .w',  { y: 0, duration: .42, stagger: .09, ease: 'back.out(1.8)' },           0.30)
+  .to('#wm',     { opacity: 1, duration: .26, ease: 'power2.out' },                      0.30)
+
+  /* — y la segunda — */
+  .to('#l2',     { opacity: 1, duration: .18, ease: 'power2.out' },                      0.78)
+  .to('#l2 .w',  { y: 0, duration: .42, stagger: .075, ease: 'back.out(1.8)' },          0.78)
+
+  /* — los renglones que nunca existieron brotan desde la izquierda — */
+  .to('.gl',     { opacity: 1, scaleX: 1, duration: .34, stagger: .08,
+                   ease: 'power2.out' },                                                 0.98)
+
+  /* — vida continua: nada queda quieto más de 2s, y todo cierra antes de la salida — */
+  .to('#card',   { y: -12, duration: .58, repeat: 3, yoyo: true, ease: 'sine.inOut' },   1.10)
+  .to('#caret',  { opacity: 1, duration: .10, ease: 'none' },                            1.30)
+  .to('#caret',  { opacity: .10, duration: .26, repeat: 5, yoyo: true, ease: 'none' },   1.50)
+  .to('.gl',     { opacity: .45, duration: .40, stagger: .09,
+                   repeat: 3, yoyo: true, ease: 'sine.inOut' },                          1.60)
+
+  /* — CAE EL SELLO: stamp scale 2→1 + micro-shake de la card + pulso de glow — */
+  .to('#stamp',  { opacity: 1, duration: .20, ease: 'power2.out' },                      1.72)
+  .to('#stamp',  { scale: 1, rotation: -5, duration: .48, ease: 'back.out(2.1)' },       1.72)
+  .to('#card',   { x: -9, duration: .07, repeat: 3, yoyo: true, ease: 'power1.inOut' },  1.78)
+  .to('#glow',   { opacity: .85, duration: .22, ease: 'power2.out' },                    1.80)
+  .to('#glow',   { opacity: .30, duration: .55, ease: 'sine.out' },                      2.10)
+  .to('#stamp',  { y: -9, duration: .30, repeat: 3, yoyo: true, ease: 'sine.inOut' },    2.30)
+
+  /* — salida estándar Moi: la opacidad cruza LIMPIA entre samples; la deriva sigue después — */
+  .to('#ovl',    { opacity: 0, duration: .37, ease: 'power2.in' },                       3.55)
+  .to('#ovl',    { y: -80, duration: .50, ease: 'power2.in' },                           3.55);
+
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body></html>

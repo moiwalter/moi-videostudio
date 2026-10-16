@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>__SCENE__</title>
+<style>
+/* __BRAND_TOKENS__ */
+
+html,body{margin:0;padding:0;overflow:hidden;background:var(--preview-bg,#3a3d42)}
+/* El render alpha entra por variable; sobre negro NUNCA se juzga un overlay (§3b). */
+body.alpha{background:transparent}
+
+.stage{position:relative;width:1080px;height:1920px;overflow:hidden}
+
+/* ZONAS SEGURAS — la cara y el cuerpo de Walter NO se tapan. Declaralas en meta.json → zone.
+   superior ~120–520 · lateral 40–320 / 760–1040 · inferior ~1360–1800 */
+.z-superior{position:absolute;left:60px;right:60px;top:150px}
+.z-inferior{position:absolute;left:60px;right:60px;bottom:180px}
+
+/* Card estándar de la marca. Separar con RIM claro, nunca con sombra grande (§3b). */
+.card{background:var(--card);border-radius:26px;padding:52px;box-shadow:var(--rim)}
+.t{margin:0;font-size:92px;line-height:1.05;color:var(--ink)}
+.kicker{margin:0 0 18px;font-size:34px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+/* El oro va sobre superficie OSCURA (BRAND.md: gold-vivo = "acentuación fuerte sobre deep").
+   Sobre cream da 1.09:1 de contraste — ilegible, y `hyperframes check` lo marca como error.
+   Sobre cream, el énfasis es navy/deep. */
+.num{color:var(--emphasis)}
+.card-dark{background:var(--surface-dark)}
+.card-dark .t{color:#fff}
+.card-dark .num{color:var(--accent-strong)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body>
+
+<!-- data-duration MANDA: el meta.json y el render se comparan CONTRA él (validate-kit lo verifica). -->
+<div class="stage" data-composition-id="main" data-start="0" data-duration="__DURATION__"
+     data-width="1080" data-height="1920">
+
+  <div class="z-superior">
+    <div class="card" id="c1">
+      <p class="kicker mono">__LABEL__</p>
+      <p class="t display">Reemplazá esto por la <span class="num">idea</span> de la escena</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* alpha por variable — así la MISMA escena sirve de preview con fondo y de overlay transparente */
+const p = new URLSearchParams(location.search);
+if (p.get('alpha') === 'true' || window.__variables?.alpha) document.body.classList.add('alpha');
+
+/* UNA timeline, PAUSADA, en window.__timelines["main"]. Sin Date.now ni Math.random:
+   el render tiene que ser determinista o el mismo HTML da dos videos distintos. */
+const tl = gsap.timeline({ paused: true });
+
+/* Energía de la marca: overshoot marcado (back.out), punch cuando un número aterriza.
+   NUNCA animes una sombra desde JS — pisa el CSS y el gate del alpha no la ve (§3b).
+   Para un glow, animá la opacidad de una capa de radial-gradient aparte. */
+tl.fromTo('#c1', { opacity: 0, y: 44, scale: .92 },
+                 { opacity: 1, y: 0, scale: 1, duration: .52, ease: 'back.out(1.9)' }, 0.08)
+  .fromTo('.num', { scale: 1 }, { scale: 1.15, duration: .16, yoyo: true, repeat: 1, ease: 'power2.out' }, 0.62);
+
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body></html>

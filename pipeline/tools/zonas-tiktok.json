@@ -1,0 +1,29 @@
+{
+  "_": "Mapa de lo que la UI de TikTok TAPA sobre un video 1080×1920.",
+  "_porque": "Un hook textual de 5 palabras mal ubicado queda debajo del botón de like y te enterás cuando ya está publicado. Esto convierte esa sorpresa en un chequeo.",
+  "_medido": false,
+  "_advertencia": "⛔ ESTE MAPA TODAVÍA NO ESTÁ MEDIDO. Los valores son los de referencia que usan los equipos de video, no una medición sobre el teléfono de Walter. Hasta que se mida sobre una captura real, `hook-textual --check` avisa que la zona es estimada. Para medirlo: captura de pantalla de un TikTok suyo a pantalla completa, y se leen los bordes reales de cada elemento.",
+  "_como_medir": "Screenshot en el iPhone → el PNG entra a 1080×1920 (o se escala) → se leen los píxeles donde arranca el riel de acciones, dónde empieza el caption y dónde terminan las pestañas de arriba.",
+  "lienzo": { "w": 1080, "h": 1920 },
+  "zonas": [
+    {
+      "id": "pestanas",
+      "que": "Siguiendo / Para ti / lupa, arriba",
+      "x": 0, "y": 0, "w": 1080, "h": 170
+    },
+    {
+      "id": "riel",
+      "que": "columna de acciones: foto, like, comentar, guardar, compartir, disco",
+      "x": 906, "y": 620, "w": 174, "h": 1160
+    },
+    {
+      "id": "pie",
+      "que": "usuario, caption, música, barra de progreso",
+      "x": 0, "y": 1570, "w": 1080, "h": 350
+    }
+  ],
+  "seguro": {
+    "_": "El rectángulo que queda libre de las tres zonas, con un respiro de 24 px.",
+    "x": 24, "y": 194, "w": 858, "h": 1352
+  }
+}

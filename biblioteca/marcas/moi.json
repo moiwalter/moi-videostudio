@@ -1,0 +1,139 @@
+{
+  "name": "moi",
+  "label": "Moi — Walter Alvarez",
+  "source": "video-edit/BRAND.md (fuente de verdad en prosa). Este archivo es su versión computable.",
+  "_alineacion": "12-ago-2026 — REESCRITO para que coincida con la web viva (moiwalter.github.io/pvp-web). Los nombres de token son los MISMOS que declara la web en su :root, a propósito: un solo vocabulario para los dos medios. Antes de esto el video era cream+navy+dorado con Cormorant y la web era negro+naranja con Geist — dos identidades distintas, mientras BRAND.md juraba que eran la misma. La paleta vieja quedó en git.",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "palette": {
+    "ink": "#141314",
+    "ink-muted": "#1A1A1A",
+    "surface": "#333333",
+    "fg": "#EEEEEE",
+    "fg-muted": "#818081",
+    "brand": "#FD551D",
+    "brand-muted": "#FD8D68",
+    "hot": "#FAD146",
+    "sand": "#FAF8F5",
+    "green": "#007934",
+    "navy-deep": "#111D35"
+  },
+  "_paletteSource": "Verificados uno por uno contra el :root de la web el 12-ago-2026: --bg #141314 · --bg-muted #1a1a1a · --surface #333 · --fg #eee · --fg-muted #818081 · --brand #fd551d · --brand-muted/--rose #fd8d68 · --hot #fad146. sand y green salen del cuerpo de la página (#faf8f5, #007934). navy-deep #111d35 es el azul profundo que usa en secciones oscuras.",
+  "roles": {
+    "accent": "brand",
+    "accent-strong": "hot",
+    "surface": "ink-muted",
+    "surface-dark": "ink",
+    "emphasis": "brand",
+    "text": "fg",
+    "text-muted": "fg-muted",
+    "negative": "brand-muted",
+    "positive": "green"
+  },
+  "_roles": "⚠️ La identidad se DIO VUELTA: antes era tinta oscura sobre cards cream; ahora es texto claro sobre fondo casi negro. Cualquier escena vieja copiada sin revisar sale con texto oscuro sobre fondo oscuro. El naranja es EL acento (no el dorado) y el amarillo #FAD146 es el golpe fuerte, no un segundo acento decorativo.",
+  "fonts": {
+    "display": "Geist",
+    "displayWeight": 900,
+    "displayUse": "títulos, preguntas, frases, nombres — Black, apretado (letter-spacing -0.02em)",
+    "sans": "Geist",
+    "sansWeights": [
+      400,
+      500,
+      600,
+      700
+    ],
+    "mono": "Geist Mono",
+    "monoUse": "captions, tags, meta, URLs, kickers (uppercase + letter-spacing)"
+  },
+  "_fonts": "⛔ Cormorant Garamond e IBM Plex SALIERON el 12-ago-2026. La web no tiene una sola serif: declara --font-sans:'Geist' y nada más. Un display serif sobre esta paleta lee como otra marca. Los .ttf de Cormorant/Plex siguen en design_system/fonts por si algún video viejo se re-renderiza — no usarlos en material nuevo. Si alguna vez se quiere una serif de display, es cambiar estas dos líneas, pero es una decisión de marca, no un gusto por escena.",
+  "_fontFiles": "Los archivos reales. Sin esto, `brand.mjs tokens` emitiría el NOMBRE de la fuente sin el @font-face que la carga, y la escena caía en Georgia EN SILENCIO (HyperFrames avisa, pero el render sale igual). Solo estos pesos existen — pedir otro da 404 + fallback feo.",
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "Geist": {
+      "400": "Geist-Regular.ttf",
+      "500": "Geist-Medium.ttf",
+      "600": "Geist-SemiBold.ttf",
+      "700": "Geist-Bold.ttf",
+      "900": "Geist-Black.ttf"
+    },
+    "Geist Mono": {
+      "400": "GeistMono-Regular.ttf"
+    }
+  },
+  "_fontLicense": "Geist y Geist Mono son SIL OFL 1.1 (Copyright 2024 The Geist Project Authors). Copia en design_system/fonts/GEIST-LICENSE.txt. Bajados de github.com/vercel/geist-font el 12-ago-2026.",
+  "surfaces": {
+    "card": "rgba(26,26,26,.97)",
+    "cardRadius": "20-28px",
+    "rim": "inset 0 0 0 3px rgba(255,255,255,.10)",
+    "shadowMax": 8
+  },
+  "_surfaces": "Card oscura sobre el corte, con rim claro para despegarla. La card cream de antes ya no aplica: sobre esta paleta un bloque cream es el elemento más brillante del cuadro y se come la cara.",
+  "energy": "efusiva",
+  "energyNotes": "overshoot marcado (back.out 1.9–2.2) · punch de scale cuando un número aterriza (1→1.15→1) · palabras clave en stamp (scale 2→1 + micro-shake) · pulso de glow en el acento. Nada tímido/enterprise.",
+  "watermark": {
+    "text": "MOI",
+    "position": "abajo-izquierda",
+    "font": "mono"
+  },
+  "preview": {
+    "bg": "#6E7378",
+    "uso": "fondo gris SOLO del mp4 de preview, nunca del alpha. Se aclaró de #3a3d42 el 12-ago: con la paleta oscura nueva, un preview gris oscuro esconde exactamente los bordes que hay que juzgar. El QC de verdad sigue siendo sobre el corte real, nunca sobre negro."
+  },
+  "sponsors": {
+    "wallbit": {
+      "blue": "#0D99FF",
+      "dark": "#14161C",
+      "uso": "SOLO escenas sponsored de Wallbit"
+    }
+  },
+  "_mimesis": "Colores que NO son de la marca sino FIDELIDAD a una UI real que la escena replica (arquetipo 20 del SCENE_LIBRARY: 'UI-mockup fiel'). Se permiten, pero hay que NOMBRAR qué se está replicando — así un hex suelto sin dueño sigue siendo una falla.",
+  "mimesis": {
+    "macos-window": {
+      "close": "#FF5F57",
+      "min": "#FEBC2E",
+      "max": "#28C840",
+      "uso": "los tres botones de una ventana macOS en mockups de terminal"
+    },
+    "terminal": {
+      "bg": "#0B0D10",
+      "chrome": "#14171C",
+      "deep": "#00151F",
+      "uso": "cromo de terminal en escenas de herramientas"
+    },
+    "excel": {
+      "green": "#21A366",
+      "uso": "verde de Excel en la escena del nivel 3"
+    },
+    "bolivia": {
+      "red": "#ED1C24",
+      "yellow": "#F9E300",
+      "green": "#007A33",
+      "uso": "la bandera en assets/bolivia.svg — fidelidad, no marca"
+    }
+  },
+  "prohibido": [
+    "escenas de solo texto (eso es un subtítulo, no un overlay)",
+    "velo oscuro / scrim global — legibilidad por text-shadow",
+    "destellos o wipes champán entre escenas",
+    "HEVC con alpha para CapCut (muestra fondo negro) — siempre ProRes 4444",
+    "concatenar con -c copy (rompe timestamps)",
+    "números sin separador de miles o cifras incoherentes",
+    "camera movement interpolado (zoom / Ken-Burns)",
+    "dorado, cream y navy de la paleta vieja — son de otra identidad, no de esta",
+    "serif de display (Cormorant) en material nuevo"
+  ],
+  "qc": {
+    "cara": [
+      700,
+      1150
+    ],
+    "banda": [
+      1320,
+      1520
+    ]
+  },
+  "_qc": "Dónde está Walter en el cuadro y dónde va la banda de subtítulos. Lo lee qc-master para poder decir 'esta placa le tapa la cara'. MEDIDO el 30-ago-2026 mirando 3 tomas de tu-carrera (8s/55s/92s) con grilla de 192px: cabeza 740-1100, constante en las tres. Va acá y no en cada video porque el encuadre es del SETUP —mismo cuarto, misma cámara, misma distancia—, no del corte. Un cliente con otro encuadre declara el suyo en SU marca, una vez. El data-qc-cara del #frame sigue mandando por encima para el caso raro."
+}

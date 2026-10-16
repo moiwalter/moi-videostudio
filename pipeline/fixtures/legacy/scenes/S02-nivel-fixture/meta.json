@@ -1,0 +1,22 @@
+{
+  "_comment": "generado por map-beats.mjs desde fixture.srt. La duración la manda el data-duration del index.html.",
+  "id": "S02",
+  "name": "nivel-fixture",
+  "brand": "moi",
+  "type": "alpha",
+  "timing": {
+    "fps": 30,
+    "durationFrames": 144
+  },
+  "beat": {
+    "label": "NIVEL FIXTURE",
+    "words": "Nivel 1, el fixture existe para que las herramientas no escriban en proyectos publicados.",
+    "start": "0:04.2",
+    "end": "0:09.0",
+    "money": false
+  },
+  "place": "0:04.2",
+  "zone": null,
+  "seam": null,
+  "approved": false
+}

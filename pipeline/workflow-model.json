@@ -1,0 +1,412 @@
+{
+  "date": "2026-09-20",
+  "purpose": "Implemented pipeline contracts with explicit automated checks and human review responsibilities",
+  "gates": [
+    {
+      "id": "G00",
+      "title": "Resume and task scope",
+      "owner": "Agent",
+      "current": "mixed",
+      "scope": "Every request, including corrections and render-only requests.",
+      "passed": "For a newly supplied local input, first select/create the video folder, move the recording into originales/ (supporting assets into recursos/), verify the move and immediately report its exact new path. This routine move is authorized and does not wait for creative decisions. Then recover the exact project/variant, latest direction, approval scope, current export and next task.",
+      "failed": "If the project cannot be identified from context, create a clearly labeled provisional project under proyectos/por-clasificar/, move the input there and report that location; resolve missing routing facts afterward. Do not write into an ambiguous existing project. Report actual missing-file or filesystem errors instead of claiming a successful move.",
+      "evidence": "ENTRADA-DE-ARCHIVOS.md is the mandatory agent intake procedure. PROYECTO.json records the centralized location and provenance. pipeline.json selects engine, variant, nextAction and export identity; workflow-state.mjs records select/reopen. Existing historical deliveries stay closed unless a change is requested. Legacy recovery reconciles dated decisions across brief/direction/map; concept selection is distinct from scene approval. START_HERE.md is the current concise entry point; old recipes are archived.",
+      "dont": "Do not ask permission to move a supplied input, leave its working source in Downloads/Desktop, or wait for style/hook approval before filing it. Respect an explicit request to leave a file in place. Do not repeat fresh intake for a small correction or treat a reference video as the new source."
+    },
+    {
+      "id": "G01",
+      "title": "Project, engine and delivery lane",
+      "owner": "Agent + tools",
+      "current": "automated",
+      "scope": "After project selection; preserve existing engine.",
+      "passed": "Explicit entry point/composition, engine/version, and MASTER, KIT, or BOTH are known. Caption-only work uses its existing owner. Unsupported layouts get an explicit native fallback.",
+      "failed": "Missing adapter or an unrecognized custom path is UNVERIFIABLE for automation, not proof the video is invalid. Use recorded native commands; do not migrate automatically.",
+      "evidence": "project.mjs resolves exact or unique names; pipeline.json declares lane, engine/version, native entry/composition, custom paths and variant. flujo recognizes both Cvander references. preview-video.mjs and render-video.mjs use the declared engine. Both engine scaffolds adopt a declared intake-pending project with an empty editor, preserve media/provenance and register it in the catalog. Existing editors cannot be reinitialized.",
+      "dont": "Do not confuse a style with an engine or a delivery lane. Do not use AJENO/exit 0 as production readiness."
+    },
+    {
+      "id": "G02",
+      "title": "Brand, style and editorial preferences",
+      "owner": "Agent proposes; user supplies unresolved direction",
+      "current": "mixed",
+      "scope": "Fresh project or an explicit direction/brand change.",
+      "passed": "Load verified client palette/fonts/logos and select Paper Collage, Layered Talking Head, or another appropriate existing workflow. Keep episode choices separate.",
+      "failed": "Request missing brand evidence or propose a clearly labeled substitution. Apply the current request before stored defaults.",
+      "evidence": "EDITING_STYLES.md; styles/*/style.json and STYLE.md; brand.mjs brief <brand> <style>; project BRIEF. The chosen style suppresses legacy brand workflow defaults. Brand does not choose a universal face position or caption policy.",
+      "dont": "Do not inherit Christian’s purple, AI terminology, or full-screen hook into another client automatically. Do not force five concepts when direction is already given."
+    },
+    {
+      "id": "G03",
+      "title": "Destination and framing",
+      "owner": "Agent + user only if unresolved",
+      "current": "mixed",
+      "scope": "Before the first designed preview.",
+      "passed": "Set canvas/FPS, platform, organic/paid placement, speaker framing, caption lane, and review margins for this recording.",
+      "failed": "Adapt layout to the actual face and destination. If placement matters and is unknown, ask once.",
+      "evidence": "pipeline.json distribution records width/height/fps/placement. geometry.faceRange is recording-specific; reuseBrandSetup must be explicit. Actual mobile preview and Instagram draft remain visual checks; no universal safe-zone guarantee.",
+      "dont": "Do not treat one recording’s face coordinates or editorial Instagram margins as universal platform guarantees."
+    },
+    {
+      "id": "G04",
+      "title": "Source media and clock identity",
+      "owner": "Tools + agent",
+      "current": "mixed",
+      "scope": "Any new source, revised cut, or source replacement.",
+      "passed": "The received file has been moved into its video project and its new location has been communicated. The selected working source is readable; dimensions, duration, FPS, audio streams and time origin are known. Record the exact chosen file and content identity.",
+      "failed": "Missing/corrupt media: report the specific path/issue. Multiple candidates: resolve which is authoritative before timing work.",
+      "evidence": "G00 and ENTRADA-DE-ARCHIVOS.md handle the physical move and PROYECTO.json location record. source-state.mjs checks the explicit timeline source.file SHA256; an additional received asset does not replace the active source. Registered projects do not guess the largest MP4. Bind the actual edited cut before timing/map work.",
+      "dont": "Do not choose an export as the source by size or assume two videos of equal duration are the same recording."
+    },
+    {
+      "id": "G05",
+      "title": "Cut decision and aligned timing",
+      "owner": "Agent within authorized editing scope",
+      "current": "mixed",
+      "scope": "Only when trimming/reordering/retiming is requested or included in the edit.",
+      "passed": "If keeping footage intact, bypass recut. Otherwise preserve intended speech/pauses, align cuts to output frames, and identify the new cut.",
+      "failed": "Incorrect cut: fix it before mapping. Any changed cut invalidates dependent transcript timing, beats, captions and scene approvals.",
+      "evidence": "recut.py remains the existing frame-aligned cutter. Bind the resulting cut, not the old original, with source-state.mjs --bind. A source change invalidates dependent scene/review fingerprints.",
+      "dont": "Do not remove meaningful pauses automatically or alter footage in a captions-only request. Source replacement is not merely changing a path."
+    },
+    {
+      "id": "G06",
+      "title": "Transcript and caption text",
+      "owner": "Tools + agent listening",
+      "current": "mixed",
+      "scope": "When spoken content drives captions or scene timing. No speech: explicitly N/A and use the supplied script/beat source.",
+      "passed": "Transcript belongs to the exact cut, matches spoken languages, has valid word timing, and uncertain names/numbers/gaps are resolved or explicitly tracked.",
+      "failed": "Wrong cut/language or hallucinated repeats: retranscribe affected input. Unclear words: listen; ask only if still unresolved.",
+      "evidence": "source-state.mjs binds transcript file/hash/language/sourceSha256 and unresolved spans. Hash equality proves identity, not transcription accuracy; listen to doubtful words. Silent graphics require an explicit notApplicable reason. Source validation and binding follow the active variant; binding speech removes a stale notApplicable exemption without erasing unresolved spans.",
+      "dont": "Do not label duration/mtime matching as proof of identity, silently translate, invent speech, or call caption gaps complete."
+    },
+    {
+      "id": "G07",
+      "title": "Scene map and narrative intent",
+      "owner": "Agent proposes; user directs",
+      "current": "mixed",
+      "scope": "New recording or changed narrative scope.",
+      "passed": "Each scene records ID, frame range, spoken beat, intended visual meaning, speaker mode, asset needs, treatment and review state. Existing direction is honored.",
+      "failed": "Revise the affected beats; do not author the whole video against an undecided direction.",
+      "evidence": "MASTER map uses paths.map and beat.entry; KIT uses scene meta.json. map-beats remains an HTML authoring helper and refuses Remotion HTML emission. Human narrative purpose and selected next scene are recorded in the map/brief.",
+      "dont": "Do not manually maintain a second timeline, force zoom/takeover quotas, or count completed fields as user sign-off."
+    },
+    {
+      "id": "G08",
+      "title": "Real resources and factual fit",
+      "owner": "Agent researches; user reviews the recommendation",
+      "current": "mixed",
+      "scope": "Scenes needing photographs, logos, screenshots, external clips or factual evidence.",
+      "passed": "Actual candidate is recognizable at the intended crop/size and matches the spoken idea. Preserve originals and source/date/archive/license information where available.",
+      "failed": "Wrong/unclear/stale asset: search or reframe before extensive animation. Unavailable account access: request the specific asset or offer an accessible candidate.",
+      "evidence": "resources.mjs accepts actual local files, rejects missing inputs and remote dependencies, and labels placeholder opt-in as draft. build-master uses this check. A manifest records provenance, date, license/access and intended crop; actual relevance remains visual/editorial.",
+      "dont": "Do not substitute cables for a meaningful data-center shot, fabricate photos/documents, infer recency from page date, or assume Envato access. Decorative paper graphics are allowed."
+    },
+    {
+      "id": "G09",
+      "title": "Conditional cutout and media preparation",
+      "owner": "Agent + media tools",
+      "current": "manual",
+      "scope": "Only for selected masks, cutouts, footage conversions or media treatments.",
+      "passed": "Use the least preparation needed. For moving subject mattes, test difficult hair/hands/motion and synchronize base/foreground from one pose and clock.",
+      "failed": "Bad mask: repair or choose a viable composition. Recheck all uses of a defective shared matte.",
+      "evidence": "Keep original and derivative paths, transformation, timing and difficult-frame evidence. Segmentation is conditional. HyperFrames tooling can prepare assets while Remotion remains the renderer; this does not change the project engine.",
+      "dont": "Do not process an entire matte unnecessarily, crop hair to hide defects, or use paper-frame cropping as a substitute for subject segmentation."
+    },
+    {
+      "id": "G10",
+      "title": "Hook and visual direction approval",
+      "owner": "User; agent prepares the concrete preview",
+      "current": "manual",
+      "scope": "New full edit with an opening; skip when irrelevant to the requested operation.",
+      "passed": "Show the real speaker, real opening resources, title, captions, brand and destination framing in motion. Record the user’s approval of this revision/direction.",
+      "failed": "Apply hook feedback here before propagating the treatment. The user can choose another scene first.",
+      "evidence": "Native full-timeline preview of the actual hook, with voice if present. Establish the visual direction and record the actual user decision. For new clients do not copy Christian’s full-screen hook or brand choices automatically.",
+      "dont": "Do not spread an unreviewed look through all scenes or hardcode Cvander’s exact opening as every client’s hook."
+    },
+    {
+      "id": "G11",
+      "title": "Build the selected scene",
+      "owner": "Agent + engine-specific checks",
+      "current": "mixed",
+      "scope": "Only the next selected/authorized scene, or the affected correction.",
+      "passed": "Implement the approved meaning with local assets, readable hierarchy and seekable motion. The scene advances the idea: reveal, compare, exchange, collide, change focus, or hold deliberately.",
+      "failed": "Fix the specific construction fault. If the same issue repeats, diagnose the cause rather than re-running a full build blindly.",
+      "evidence": "Author the selected scene in the existing native engine. build-master/build-kit --verify are read-only partial checks and return 2 when complete output checks have not run. Their optional --delegate mode is only for explicitly requested delegation.",
+      "dont": "Do not create decorative motion without meaning, duplicate people accidentally, or invoke delegated CLI builders without authorization for delegation."
+    },
+    {
+      "id": "G12",
+      "title": "Captions and language treatment",
+      "owner": "Agent + applicable caption workflow",
+      "current": "mixed",
+      "scope": "If captions are requested. Otherwise record N/A.",
+      "passed": "Correct speech/timing, readable grouping/contrast, intentional emphasis and clear face/UI margins. Define explicitly whether captions remain over takeovers.",
+      "failed": "Fix text/timing/layout in the affected span; shared style changes invalidate dependent scenes.",
+      "evidence": "Caption policy belongs to style + episode brief. Native Remotion captions stay native. subtitulos.mjs explicitly rejects non-Moi/non-HTML workflows instead of applying its suppression rules. Preserve verbatim speech and recorded terminology preferences.",
+      "dont": "Do not apply SUBTITULOS.md’s old Moi suppression rule to every client, highlight words not spoken, or reuse one brand’s caption style globally."
+    },
+    {
+      "id": "G13",
+      "title": "Voice, music and SFX",
+      "owner": "Agent; user only for unresolved creative choices",
+      "current": "mixed",
+      "scope": "Audio-bearing deliverables. Silent deliverable: record N/A.",
+      "passed": "One intended voice track; supporting clips muted unless requested; music/SFX have a purpose; event alignment, level, clipping and intelligibility checked. Preserve no-music choices.",
+      "failed": "Duplicate/delayed/overpowering audio: correct the affected mix/timing. Missing evidence is pending, not pass.",
+      "evidence": "loudness.mjs measures actual audio without normalization; qc-sonido.mjs checks streams, measurable signal, true peak and any declared LUFS/sample-rate target. Voice sync and mix quality require listening. Music/SFX remain optional editorial choices.",
+      "dont": "Do not force music, reuse the measured 42.667 ms AAC correction blindly, or turn unvalidated sound-plan thresholds into universal creative bans."
+    },
+    {
+      "id": "G14",
+      "title": "Visual and native playback review",
+      "owner": "Agent",
+      "current": "manual",
+      "scope": "Before presenting each built or changed scene.",
+      "passed": "Check entrance, meaningful middle states, exit and nearby transitions in native Studio, with voice. Inspect resources, text, layers, masks, face clearance and play/pause/seek.",
+      "failed": "Repair the observed defect; broaden checks only if its cause is shared.",
+      "evidence": "Native preview-video.mjs opens the recorded full composition. Inspect motion, resource readability, layer order, hook, speaker, captions and joins at delivery size. Capture actual evidence; static images alone do not prove playback quality.",
+      "dont": "Do not pass an attractive still as proof of motion, substitute another player for native Studio, edit during playback auditing, or run competing Chromium audits."
+    },
+    {
+      "id": "G15",
+      "title": "Scene approval and revision validity",
+      "owner": "User; agent records actual decision",
+      "current": "mixed",
+      "scope": "After the user sees the concrete scene. Prior authorization remains valid within its scope.",
+      "passed": "The exact reviewed scene and dependencies are approved, or the user explicitly changes the review mode. Record feedback, decision, revision and affected inputs.",
+      "failed": "Requested correction: loop only the affected scene. Waiting for required creative approval: keep it pending; independent preparation may continue.",
+      "evidence": "scene-state.mjs / approve.sh / approve-master.mjs record the actual decision with scene/content fingerprints. Linked media, local imports, CSS/fonts, timing, source/transcript, brand and relevant config are covered. No automatic editorial approval.",
+      "dont": "Do not self-approve, treat QA as editorial approval, or retain approval after a relevant unseen change. Do not ask again for authorization already given."
+    },
+    {
+      "id": "G16",
+      "title": "Assembly and lane-specific technical checks",
+      "owner": "Tools + agent",
+      "current": "mixed",
+      "scope": "After selected scenes are ready, before final delivery.",
+      "passed": "Complete sequence reflects the map; joins, frames, assets, text, layering and intentional speaker-only intervals work. Run MASTER checks, KIT contract checks, or both as applicable.",
+      "failed": "Fix the responsible scene or shared dependency. If a check cannot run, report UNVERIFIABLE and resolve it or document an equivalent native check.",
+      "evidence": "preflight.mjs enforces applicable scene approvals/resources and MASTER review. qc-master measures its supported HTML contract; unknown recording geometry returns 2. validate-kit --final requires approved, current outputs. BOTH must complete both lanes.",
+      "dont": "Do not impose Moi’s continuous overlay coverage on every style, invent quotas, run HTML gates on React, or treat a contract pass as visual approval."
+    },
+    {
+      "id": "G17",
+      "title": "Current review evidence",
+      "owner": "Agent + receipt tool",
+      "current": "automated",
+      "scope": "Before claiming preview/export has been checked.",
+      "passed": "Record meaningful notes, evidence and the actual input fingerprint for the stage. Include imported scripts, media, fonts, props, layout and relevant configuration.",
+      "failed": "Stale/missing evidence: review the changed scope and update the record. A check that did not run remains unverified.",
+      "evidence": "review-video.mjs checks schema 1, exact registered entry, current input fingerprint, notes and existing local evidence; export also requires matching output hash. input-graph covers local HTML/CSS/JS/TS/React imports, literal media and conservative public-tree coverage for dynamic staticFile. Unresolved imports fail closed. Preflight rejects invalid stages/lanes and checks the active variant destination.",
+      "dont": "Do not write pass without inspection, count file existence as quality, or treat project-specific REVIEW.json formats as automatically compatible."
+    },
+    {
+      "id": "G18",
+      "title": "Render authorization and preflight",
+      "owner": "User authorization + agent execution",
+      "current": "mixed",
+      "scope": "When producing a requested deliverable.",
+      "passed": "Existing request authorizes the output; required applicable checks are current; exact composition/variant and destination are known.",
+      "failed": "If authorization is absent, stop at the requested preview. If a technical precondition fails, fix it; if an unresolved user decision blocks delivery, ask only that decision.",
+      "evidence": "render-video.mjs requires --authorization quoting the user’s existing render request, a new output name and current preflight. Do not ask again for permission already supplied. Shared KIT final/alpha commands require current approval and source identity.",
+      "dont": "Do not ask again after “render,” render the guide composition, overwrite a parallel approved variant, or assume a raw renderer enforces the workflow."
+    },
+    {
+      "id": "G19",
+      "title": "MASTER render",
+      "owner": "Engine + agent",
+      "current": "automated",
+      "scope": "Complete video delivery.",
+      "passed": "Render the selected native composition with the intended resolution/FPS/codecs/audio; retain editable source and an unambiguous output filename.",
+      "failed": "Inspect renderer errors; repair cause and retry the required output. Verify any render-affecting engine change.",
+      "evidence": "render-video.mjs dispatches native Remotion or pinned HyperFrames using exact entry, composition/variant and props; records request/command and technical QA. A two-second 1080×1920 Remotion fixture validates the route; this is not a new client video or a HyperFrames Paper Collage style pilot.",
+      "dont": "Do not use the A render script for B or upgrade/migrate a closed project during a read-only review. Explicit engine choice wins over defaults."
+    },
+    {
+      "id": "G20",
+      "title": "KIT render and packaging",
+      "owner": "Tools + agent",
+      "current": "mixed",
+      "scope": "Assets for assembly in CapCut; BOTH also runs MASTER branch.",
+      "passed": "Render approved/current full-frame clips and alpha layers. Alpha for CapCut passes premultiplication and visual composition checks. Footage-only items route directly. Generate placement table from metadata.",
+      "failed": "Failed alpha/duration/placement or missing required clip: fix before delivery. Treat final package completeness separately from preview readiness.",
+      "evidence": "alpha.sh enforces approval, lint, ProRes alpha, premultiplication and post-checks. final.sh enforces preflight/lint. scene-state records output hash, input fingerprint, format and full decode. lock-all queues only approved/current scenes; validate-kit --final checks complete package requirements.",
+      "dont": "Do not deliver straight alpha or HEVC alpha to CapCut, rename linked KIT clips, type timings manually, or require KIT premultiplication for an opaque MASTER."
+    },
+    {
+      "id": "G21",
+      "title": "Inspect the actual exported files",
+      "owner": "Tools + agent",
+      "current": "mixed",
+      "scope": "Every newly generated final output; existing valid evidence can be reused for the identical file.",
+      "passed": "Verify file duration/resolution/FPS/streams and full decode; inspect critical exported frames; check actual voice alignment, clipping and continuity. Check KIT alpha on real footage.",
+      "failed": "Output defect: return to affected source/render stage, then check the new output. Measure before any timestamp correction.",
+      "evidence": "verify-export.mjs probes resolution/fps/frame count, decodes all frames, measures audio and records output hash. It deliberately leaves image and voice-sync review pending. Review actual output and complete export receipt; tools cannot listen or grant user approval.",
+      "dont": "Do not claim the MP4 is checked because Studio passed. Do not equate written pass notes or a successful render with full output QA."
+    },
+    {
+      "id": "G22",
+      "title": "Delivery, archive and next-session handoff",
+      "owner": "Agent; publishing only within explicit scope",
+      "current": "mixed",
+      "scope": "After output verification or at any legitimate pause.",
+      "passed": "Current source, variant, export/hash, evidence, user decisions, unresolved items and next action are recorded. Deliver the actual file; mark closure as a fact.",
+      "failed": "Conflicting current pointers: reconcile them. On a new correction to a closed video, create/reopen the relevant revision without destroying history.",
+      "evidence": "flujo --entregado now requires delivery preflight, actual MASTER technical QA and every KIT output. Records current variant delivery manifest. Existing historical exports retain their original evidence; CONTEXT/brief point to pipeline.json. New changes explicitly reopen the current variant.",
+      "dont": "Do not mark a preview delivered, claim publication from a render, rewrite closed work on every status check, or ask the user to reconstruct the session."
+    },
+    {
+      "id": "G23",
+      "title": "Change scope and invalidation",
+      "owner": "Agent + dependency tracking",
+      "current": "mixed",
+      "scope": "Every correction, asset replacement, new source or shared change.",
+      "passed": "Identify what changed, invalidate only affected scene approvals/evidence plus final export freshness, and run proportionate checks. Preserve unrelated approved work.",
+      "failed": "Scene-local change → scene + joins. Shared caption/brand/motion change → dependents. Cut/source change → clock/transcript/map and dependent work.",
+      "evidence": "scene-state and review fingerprints invalidate changed dependencies rather than using mtime. Local changes leave unrelated scene approvals valid; dynamic public assets can conservatively invalidate more scenes. Source/cut changes reopen timing work. Refresh only relevant evidence unless a shared cause warrants wider review.",
+      "dont": "Do not restart intake for a caption move, re-audit the entire video for each small adjustment, or retain stale approvals after shared changes."
+    }
+  ],
+  "findings": [
+    [
+      "F01",
+      "P0",
+      "Implemented · Valid projects are invisible to the status router",
+      "Original audit: Reproduced: both Cvandersep2 Remotion and Cvander0910 custom-path HyperFrames return AJENO, zero scenes and exit 0.",
+      "tools/flujo.mjs:97",
+      "Registered Remotion B/A and custom HyperFrames v5; exact engine/entry/variant/export identity is visible to the shared router."
+    ],
+    [
+      "F02",
+      "P0",
+      "Implemented · Automation exit codes can claim success without verification",
+      "Original audit: Reproduced: a synthetic UNVERIFIABLE result exits 2 in text mode and 0 in JSON. Quick mode says every check ran after skipping technical gates.",
+      "tools/flujo.mjs:542",
+      "Unified status exits and aggregate failure reporting; quick status explicitly reports omitted checks. Historical state is separate from new production readiness."
+    ],
+    [
+      "F03",
+      "P0",
+      "Implemented · Approval does not survive change consistently",
+      "Original audit: Reproduced: an edited KIT scene is still approved and queued. MASTER media bytes can change while approval remains valid. MASTER/BOTH do not traverse KIT’s approval/lock branch in flujo.",
+      "tools/approve-master.mjs:35",
+      "Approval receipts bind the actual scene dependencies and decision. Both lanes feed preflight; stale dates/booleans cannot authorize a new render."
+    ],
+    [
+      "F04",
+      "P0",
+      "Implemented · Real-resource workflow conflicts with executable builder policy",
+      "Original audit: Reproduced: MASTER G5 rejects a real image path and instructs the agent to make Walter supply the asset.",
+      "tools/build-master.mjs:164",
+      "Replaced placeholder-only MASTER gate with local resource validation. Missing/remote inputs and unresolved placeholders block final readiness."
+    ],
+    [
+      "F05",
+      "P1",
+      "Implemented · Transcript/source matching is heuristic",
+      "Original audit: Source review and probe: duration plus newer timestamp can return OK without any content identity. Source selection may use the largest root MP4.",
+      "tools/lib-corte.mjs:35",
+      "Explicit cut/transcript hashes, language and unresolved spans; registered source selection no longer guesses by file size."
+    ],
+    [
+      "F06",
+      "P1",
+      "Implemented · Review fingerprint does not discover React imports",
+      "Original audit: Reproduced: changing an imported TSX dependency leaves the fingerprint unchanged unless explicitly listed. Existing tests validate HTML/CSS behavior only.",
+      "tools/review-video.mjs:16",
+      "Expanded input graph for local React/TS imports, JSON, media, CSS/fonts, public assets and config. Unsupported dynamic imports are UNVERIFIABLE."
+    ],
+    [
+      "F07",
+      "P1",
+      "Implemented · Verification commands and direct exports have inconsistent boundaries",
+      "Original audit: Source review: build-master --verify can emit HTML and write its log; build-kit verify writes logs. Direct final/alpha scripts do not check approval and tolerate lint failure; alpha post-QC failure is tolerated.",
+      "tools/build-master.mjs:322",
+      "Verify is read-only and partial checks are labeled; final/alpha enforce approvals and failures; native final wrapper records the existing render request and checks output."
+    ],
+    [
+      "F08",
+      "P1",
+      "Implemented · Brand, style, captions and framing are coupled",
+      "Original audit: Source review: cvander profile forces 0910 layering; SUBTITULOS describes a global-looking suppression rule; face QC can fall back to another video’s geometry.",
+      "brands/cvander.json:70",
+      "Style catalog and brand/style brief separation; recording geometry is explicit; legacy caption helper stays within its own style."
+    ],
+    [
+      "F09",
+      "P1",
+      "Implemented · Audio quality automation is still a proposal",
+      "Original audit: qc-sonido.mjs and loudness.mjs are absent; SOUND-PLAN contains unchecked implementation steps and unresolved creative choices.",
+      "SOUND-PLAN.md:82",
+      "Measured loudness and technical audio QC implemented. Creative audio policy and voice synchronization remain listening decisions."
+    ],
+    [
+      "F10",
+      "P1",
+      "Implemented · Current state has multiple drifting summaries",
+      "Original audit: B REVIEW points at a verified full export while VARIANT-B-BRIEF still says preview-only. Paper Collage catalog/style files are still proposed.",
+      "2026-09-cvandersep2-paper/VARIANT-B-BRIEF.md",
+      "Canonical per-variant pipeline.json, select/reopen command and durable session instructions. Corrected Cvander current-state summaries."
+    ],
+    [
+      "F11",
+      "P1",
+      "Implemented · Incomplete KIT can pass a contract while still needing exports",
+      "Original audit: Source review: validate-kit reports missing renders as warnings; lock checks freshness against HTML mtime rather than all dependencies.",
+      "tools/validate-kit.mjs:299",
+      "Output receipts bind the exact rendered bytes to inputs; final package readiness requires every applicable clip."
+    ],
+    [
+      "F12",
+      "P2",
+      "Implemented · Project/version selection can vary by entry command",
+      "Original audit: Source review: several tools choose first partial slug match; flujo detects ambiguity. Shared HF_VERSION is 0.8.29 while project records use other versions. No latest-version assertion was tested.",
+      "tools/approve.sh:12",
+      "Shared exact/unique project and scene resolver and per-project engine pin. No production engine upgrade or migration performed."
+    ],
+    [
+      "F13",
+      "P1",
+      "Implemented · Intake and scaffold did not connect",
+      "Existing intake folders were rejected; HyperFrames MASTER exited before catalog registration.",
+      "tools/project.mjs; tools/new-video.sh",
+      "Both engine scaffolds safely adopt intake-pending folders with empty editors, preserve provenance and register all supported lanes. Six isolated fresh/intake combinations pass."
+    ],
+    [
+      "F14",
+      "P1",
+      "Implemented · Speech binding could preserve an old exemption",
+      "Binding speech retained notApplicable; source checks ignored active-variant overrides.",
+      "tools/source-state.mjs",
+      "Bind/check the active variant, reject missing argument values, remove old no-speech exemptions and preserve unresolved speech for listening."
+    ],
+    [
+      "F15",
+      "P1",
+      "Implemented · Invalid preflight options could omit MASTER review",
+      "An unknown lane fell through scene discovery while skipping its MASTER review branch; placement read the base configuration.",
+      "tools/preflight.mjs",
+      "Reject unsupported stages/lanes and mismatched project lanes; use the active variant placement."
+    ],
+    [
+      "F16",
+      "P1",
+      "Implemented · Legacy resume mixed dates and obscured missing approvals",
+      "Legacy status dumped approval dependency lists without an actionable pending-approval block; Enzo direction paused in August while the map records a September concept choice.",
+      "tools/flujo.mjs; START_HERE.md",
+      "Summarize pending/stale approvals with an action, reserve APPROVED for an actual decision, reconcile dated notes, and keep a current resume guide. No client scene approved or rendered by this audit. Historical-delivery text status now shares the status-code function with JSON; read-only equivalence is tested."
+    ]
+  ],
+  "diagrams": {
+    "Entry and routing": "flowchart TD\n  R[New request] --> INPUT{Local file supplied for this video?}\n  INPUT -->|yes| MOVE[Select or create project folder; move file inside without asking]\n  MOVE --> NOTICE[Verify move; report exact new path]\n  NOTICE --> G00{G00: existing project?}\n  INPUT -->|no| G00\n  G00 -->|yes| S[Load current variant, brief, decisions and evidence]\n  G00 -->|no| N[Resolve source, client, style and destination]\n  S --> OP{Requested operation}\n  OP -->|review only| AU[Read-only audit; no render or upgrade]\n  OP -->|small correction| G23[G23: classify changed dependencies]\n  OP -->|render only| G18[G18: current preflight and existing authorization]\n  OP -->|new edit or revision| G01\n  N --> G01{G01: engine and lane supported?}\n  G01 -->|yes| B[G02-G03: brand, style, destination]\n  G01 -->|no| U[UNVERIFIABLE automation; use documented native route]\n  U --> B\n  B --> G04[G04: source identity and media probe]\n  G04 --> C{G05: cut needed and authorized?}\n  C -->|no| T[G06: transcript of this exact cut]\n  C -->|yes| CUT[Frame-aligned cut; invalidate dependent timing]\n  CUT --> T\n  T --> V{Correct speech and timing?}\n  V -->|no| FIX[Listen or retranscribe affected span]\n  FIX --> T\n  V -->|yes| MAP[G07: propose scene map; user directs]\n",
+    "Scene loop": "flowchart TD\n  M[G07: scene map and chosen next scene] --> R[G08: source actual resources]\n  R --> FIT{Relevant, authentic and readable?}\n  FIT -->|no| R\n  FIT -->|yes| MAT{G09: mask or preprocessing needed?}\n  MAT -->|yes| P[Test difficult motion; prepare verified derivative]\n  P --> BUILD\n  MAT -->|no| BUILD[G10-G11: hook first; build selected scene]\n  BUILD --> SUB[G12: captions if requested]\n  SUB --> AUD[G13: voice, SFX and optional music]\n  AUD --> QA[G14: native preview, layers, motion, joins]\n  QA --> GOOD{Checks pass for this scope?}\n  GOOD -->|no| FIX[Repair affected scene or shared cause]\n  FIX --> BUILD\n  GOOD -->|yes| SHOW[Show concrete scene with voice]\n  SHOW --> A{G15: user approves this revision?}\n  A -->|changes| FB[Record feedback and G23 scope]\n  FB --> BUILD\n  A -->|pending| WAIT[Keep pending; independent preparation can continue]\n  WAIT --> A\n  A -->|yes| LOCK[Record decision and input fingerprint]\n  LOCK --> MORE{More selected scenes?}\n  MORE -->|yes| M\n  MORE -->|no| G16[G16: assembly and lane checks]\n",
+    "Delivery branches": "flowchart TD\n  A[G16: assembly and applicable lane checks] --> B[G17: current evidence and dependency fingerprint]\n  B --> C{G18: render requested or already authorized?}\n  C -->|no| P[Deliver requested preview and save next action]\n  C -->|yes| L{Delivery lane}\n  L -->|MASTER| M[G19: exact composition and variant render]\n  L -->|KIT| K[G20: approved current scene outputs]\n  L -->|BOTH| BOTH[Run and verify both branches]\n  BOTH --> M\n  BOTH --> K\n  K --> AL{Transparent layer for CapCut?}\n  AL -->|yes| PM[ProRes 4444; premultiply; inspect over footage]\n  AL -->|no| O[Opaque clip or original footage]\n  PM --> PK[Complete package and generated placement table]\n  O --> PK\n  M --> Q[G21: inspect actual outputs; decode, image and audio]\n  PK --> Q\n  Q --> PASS{Output checks pass?}\n  PASS -->|no| FIX[Return to responsible source or render stage]\n  FIX --> B\n  PASS -->|yes| D[G22: deliver, record export/hash and current state]\n  D --> PUB{Publication explicitly authorized?}\n  PUB -->|no| END[Delivered; no publication implied]\n  PUB -->|yes| PLATFORM[Destination preview and scoped publishing workflow]\n",
+    "Correction and resume": "flowchart TD\n  F[New feedback or resumed session] --> R[G00: recover current state and authorization]\n  R --> C{G23: what changed?}\n  C -->|scene-local| S[Invalidate affected scene approval and output freshness]\n  C -->|shared style or media| H[Find and invalidate dependent scenes]\n  C -->|source or cut| T[Revalidate source, transcript, map and timing]\n  C -->|render request; no input change| P[Reuse current applicable evidence]\n  S --> Q[Edit and inspect affected interval plus joins]\n  H --> Q\n  T --> G04[G04-G07: rebuild changed dependencies]\n  Q --> V{Problem persists or cause is shared?}\n  V -->|yes| DIAG[Diagnose; broaden only to affected dependencies]\n  DIAG --> Q\n  V -->|no| A[G15: user decision on changed revision]\n  A --> P\n  P --> E[G17-G22: relevant preflight and authorized delivery]\n  E --> SAVE[Save next action and one current pointer per variant]\n"
+  },
+  "validation": {
+    "testsPassed": 44,
+    "testsTotal": 44,
+    "report": "PIPELINE-READINESS-2026-09-20.md",
+    "evidence": "../../archivo/auditoria-pipeline/2026-09-20-readiness/after-tests.log"
+  }
+}
