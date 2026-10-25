@@ -1,0 +1,10 @@
+{
+ "_regla": "Sólo logos OFICIALES descargados de la fuente de la marca (o Wikimedia Commons del archivo oficial). Nunca generados. JPG blanco de fondo, ~680 px de ancho. Para agregar uno: bajar el SVG, rasterizar (Quick Look: qlmanage -t -s 800, si magick rompe los clipPath) y anotarlo acá.",
+ "cloudflare": {"fuente": "Cloudflare press kit · CF_logo_horizontal_singlecolor_wht.svg, wordmark recoloreado #404041 para chip blanco", "fecha": "2026-10-25"},
+ "php": {"fuente": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg", "fecha": "2026-10-25"},
+ "nodejs": {"fuente": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg (rasterizado con Quick Look)", "fecha": "2026-10-25"},
+ "anthropic": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
+ "stanford": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
+ "mercadolibre": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
+ "hackerrank": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"}
+}

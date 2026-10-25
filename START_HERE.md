@@ -20,6 +20,8 @@ proyectos/<cliente>/<video>/
   entregas/     exportaciones finales versionadas
 ```
 
+**Portadas:** `tools/portada.sh <proyecto> <paso>` → todo en `proyecto/portadas/` (estado en `PORTADA.json`), logos oficiales en `biblioteca/logos/`. Método y reglas: [PORTADAS.md](pipeline/docs/PORTADAS.md). No se arman portadas fuera de esta herramienta.
+
 [Catálogo](catalogo.json) · [Mapa de carpetas](CARPETAS.md). Biblioteca común en `biblioteca/`; herramientas, estilos y documentos en `pipeline/`. Las rutas antiguas son alias de compatibilidad.
 
 ## 2. Recuperar decisiones antes de actuar

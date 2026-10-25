@@ -1,0 +1,22 @@
+{
+ "_comment": "Spec de portada de Cvander. La lee tools/portada.py. Cada regla tiene su lección (02-projects/cvander/lessons.md en el vault).",
+ "canvas": [1080, 1920],
+ "zona_segura": {"x": [143, 937], "y": [442, 1439], "_por": "WORKFLOW 2026-09-25: guía original +30 %"},
+ "texto": {"prohibido": ["\\bIA\\b"], "_por": "L039: Chris escribe AI, nunca IA"},
+ "referencias_fijas": "referencias/cvander",
+ "referencias_recientes": 2,
+ "_referencias": "L041: se calibra contra las ÚLTIMAS entregadas (entregas/*-portada.png de otros proyectos, por fecha), no sólo contra las fijas. JPG chico: los PNG pesados tiran 'network error'.",
+ "chris": {"escala": 1.0, "margen_bajo_chips": 25,
+           "_por": "L054: cerca, cara grande, hombros saliendo del cuadro · L055: foto REAL recortada, escala uniforme, el generador no toca su cuerpo · 25-oct: a escala 1:1 la chaqueta llega a los bordes sin outpaint"},
+ "paletas": {
+  "lila":   "clean white / very light lilac soft background with subtle blurred lilac blobs, lilac/violet corner line pattern (#a43ff1 at low opacity), headline in deep purple #3c0058, accent words in violet #a43ff1.",
+  "morado": "deep purple background #3c0058 with lighter purple corner pattern; headline cream #eee6e1, accent words in pink #f6cae6.",
+  "crema":  "warm cream background #eee6e1 with deep purple #3c0058 corner line pattern; headline deep purple #3c0058, accent words in violet #a43ff1."
+ },
+ "tratamientos": {
+  "color":  "The accent words are simply in the accent color, the biggest line.",
+  "grieta": "The accent words are visibly BROKEN: split by a clean diagonal fracture line with the top half shifted a few pixels, like cracked glass — still perfectly readable.",
+  "bloque": "The accent words are white on a solid violet #a43ff1 rounded block, with a subtle horizontal glitch slice (one thin band displaced sideways) — still perfectly readable."
+ },
+ "prompt": "Create ONE vertical 9:16 Instagram Reels cover BACKGROUND DESIGN (exactly 1080x1920) for the Spanish-language creator \"cvander\" (Christian Van Der Henst). It must look like part of the SAME series as the style reference covers (estilo-*.jpg; the reciente-*.jpg ones are the latest approved): heavy bold condensed geometric sans-serif UPPERCASE headline, a visible geometric pattern of concentric arcs, dotted arcs and diagonal hatch lines in the corners, white rounded logo chips with the logo + name under it.\nIMPORTANT: DO NOT draw any person. The lower area from y=980 to the bottom must stay clean background (pattern only at the far sides), because a real photo of Christian will be composited there later.\n\nTEXT — use EXACTLY these words, spelled exactly like this, nothing added:\nsmall tag line with wide letter-spacing and a short pink underline: \"{tag}\"\nheadline in {n} lines: {lineas}. Keep every accent mark.\n\nLOGO CHIPS (only these, copied faithfully from {logos_ref}, never invented), in one row under the headline: {logos}. Each chip: the logo icon + its name under it, never the name twice.\n\nLAYOUT: tag starts around y=470; headline and chips all inside x=143–937 and y=442–960. Top 15% and sides: pattern only. High contrast, readable as a tiny thumbnail. No other text, no watermark, no fake UI.\nPALETTE: {paleta}\nACCENT: {tratamiento}"
+}
