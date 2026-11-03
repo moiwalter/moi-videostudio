@@ -1,0 +1,127 @@
+{
+  "name": "qmd",
+  "label": "QuoteMyData",
+  "source": "Tokens medidos en el master de goldmine v3.3 (aprobado 2026-11-01), que a su vez salen del sitio quotemydata.com y de las guías de recurso: papel mientras se explora, verde cuando la respuesta aterriza. El look oscuro del explainer se retiró el 31-oct-2026 (Walter: off-brand).",
+  "canvas": { "w": 1080, "h": 1920, "fps": 30 },
+  "canvasHorizontal": { "w": 1920, "h": 1080, "fps": 30 },
+  "palette": {
+    "paper": "#f6f6f2",
+    "paper-2": "#efefe9",
+    "paper-3": "#e7e7e0",
+    "ink": "#13211b",
+    "gray": "#68655e",
+    "hairline": "#e1dfda",
+    "green": "#0b4d35",
+    "green-deep": "#083b29",
+    "green-darkest": "#062e20",
+    "lime": "#8fd9b0",
+    "mint": "#e4f5eb",
+    "sand": "#e1d5b6",
+    "danger": "#b42318",
+    "on-green": "#c9dccf",
+    "on-green-muted": "#9fbfac"
+  },
+  "roles": {
+    "accent": "green",
+    "surface": "paper",
+    "surface-dark": "green-darkest",
+    "text": "ink",
+    "text-muted": "gray",
+    "emphasis": "lime",
+    "positive": "green",
+    "negative": "danger",
+    "hl": "lime",
+    "hl-ink": "ink",
+    "layer-1": "green-darkest",
+    "layer-2": "green",
+    "layer-3": "lime",
+    "layer-4": "sand",
+    "flow-data": "ink",
+    "flow-money": "green",
+    "risk": "danger"
+  },
+  "modes": {
+    "light": {
+      "default": true,
+      "bg": "paper",
+      "fg": "ink",
+      "que": "Papel. Es el look de exploración y el único look de todos los días."
+    },
+    "green": {
+      "bg": "green-deep",
+      "fg": "paper",
+      "que": "Verde pleno cuando la respuesta aterriza y en la tarjeta final."
+    }
+  },
+  "retiredModes": ["dark"],
+  "fonts": {
+    "display": "Instrument Sans",
+    "displayWeight": 600,
+    "sans": "Instrument Sans",
+    "sansWeight": 400,
+    "mono": "Geist Mono",
+    "fallback": "sans-serif"
+  },
+  "fontDir": "design_system/fonts",
+  "fontFiles": {
+    "Instrument Sans": {
+      "400 700": "InstrumentSans-Variable.woff2"
+    },
+    "Geist Mono": {
+      "100 900": "GeistMono-Variable.woff2"
+    }
+  },
+  "_fontItalic": "InstrumentSans-Italic-Variable.woff2 es la misma familia en itálica. brand.mjs tokens emite font-style:normal; la itálica la carga pipeline/componentes/fuentes.css.",
+  "_fontLicense": "Instrument Sans: SIL OFL, del sitio quotemydata.com (woff2 del 2026-11-01). Geist Mono: SIL OFL 1.1. Ver biblioteca/design_system/fonts/GEIST-LICENSE.txt.",
+  "surfaces": {
+    "card": "#f6f6f2",
+    "cardRadius": "24-60px",
+    "rim": "inset 0 0 0 1.5px rgba(11,77,53,.10)",
+    "shadowMax": 34
+  },
+  "energy": "sobria",
+  "energyNotes": "Sin overshoot. Las entradas son power3.out; los floods, power2.inOut. Un número héroe puede tener brillo y un roll de odómetro, no un stamp elástico.",
+  "logo": {
+    "tipo": "svg blanco sobre el verde de cierre; sobre papel se usa el wordmark en tinta de la marca",
+    "wordmark": "biblioteca/logos/qmd/qmd-wordmark-white.svg",
+    "horizontal": "biblioteca/logos/qmd/qmd-horizontal-white.svg",
+    "dominio": "quotemydata.com"
+  },
+  "watermark": { "text": null },
+  "estiloPorDefecto": "qmd-vertical",
+  "subtitulos": {
+    "fuente": "Instrument Sans",
+    "peso": 500,
+    "tracking": "-.012em",
+    "color": "#13211b",
+    "enfasis": {
+      "fondo": "lime",
+      "texto": "ink",
+      "radio": "0.12em"
+    },
+    "nuncaSobre": "ojos o boca",
+    "_formato": "Tamaño y alineación los da el formato: qmd-vertical 50px centrados (goldmine v3.3, .cap). En FULL el texto es papel con sombra; en STAGE es tinta; en GREEN es papel y el énfasis sigue en tinta sobre lima."
+  },
+  "encuadre": {
+    "qmd-vertical": {
+      "canvas": [1080, 1920],
+      "canvasHorizontal": [1920, 1080],
+      "safeTop": 211,
+      "safeSides": 64,
+      "placa": { "x": 64, "y": 960, "w": 952, "h": 640, "r": 60 },
+      "tablero": { "x": 44, "y": 70, "w": 992, "h": 700 },
+      "captionFullY": 1384,
+      "captionStageY": 778,
+      "note": "Placa apaisada; la cabeza rompe el borde de arriba. Subtítulos entre el tablero y la placa en STAGE (y 778) y sobre la toma en FULL (y 1384).",
+      "_fuente": "goldmine v3.3 layout.json PLATE/BOARD y master/index.html .cap"
+    }
+  },
+  "prohibido": [
+    "Look oscuro (mode-dark): se retiró el 31-oct-2026",
+    "Una frase de CTA en el cierre: sólo el logo y quotemydata.com",
+    "Grano sobre la cara",
+    "Estirar el habla o meter pausas para que se lea",
+    "Un tween de filter que arranque en none o en brightness(0) sobre la persona",
+    "Números que la persona no dijo, y la línea «our claim»"
+  ]
+}

@@ -11,7 +11,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(node "$HERE/project.mjs" root)"                       # video-edit/
 # La versión vive en tools/HF_VERSION (una sola fuente). Override: HF_VER=x.y.z
-HF_VER="${HF_VER:-$(cat "$HERE/HF_VERSION" 2>/dev/null || echo 0.8.29)}"
+HF_VER="${HF_VER:-$(cat "$HERE/HF_VERSION" 2>/dev/null || echo 0.8.214)}"
 HF="npx --yes hyperframes@$HF_VER"
 
 [ $# -ge 1 ] || { echo "uso: tools/preview.sh <slug> <escena>   (una escena; '<slug> --all' para todas)"; exit 1; }

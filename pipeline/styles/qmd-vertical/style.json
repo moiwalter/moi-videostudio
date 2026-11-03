@@ -1,0 +1,200 @@
+{
+  "id": "qmd-vertical",
+  "version": 1,
+  "label": "QMD vertical (talking-head short)",
+  "aliases": [
+    "qmd",
+    "goldmine",
+    "talking-head corto con placa apaisada"
+  ],
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": false,
+  "captionPolicy": "explicit-in-brief",
+  "reviewMode": "scene-by-scene",
+  "engines": {
+    "hyperframes": "0.8.214",
+    "orientaciones": ["1080x1920", "1920x1080"],
+    "videoFrameFormat": "png"
+  },
+  "principles": [
+    "The scene plan is approved before anything is built. A technical check is not an approval.",
+    "The speaker stays on screen for the whole piece, large, with the body running off the bottom. A landscape panel sits behind the torso and the head breaks its top edge.",
+    "Every join changes the zoom. The speaker scale stays at or under 1.19. Transitions land in speech pauses. Speech is never stretched and pauses are never added.",
+    "The ground keeps moving (gradient blobs, topo, dots, a light beam, grain). Grain sits under the speaker, never on the face. Render frames are PNG so the browser only downscales the pre-scaled cut-out.",
+    "A filter tween never starts at brightness 0 or at the keyword none: GSAP fills the missing brightness with 0 and the speaker flashes as a black silhouette.",
+    "The cut-out is an RVM matte with motion-compensated temporal smoothing, a 1 px choke, an edge-only feather, colour decontamination and a light wrap, plus a static contact shadow.",
+    "Hero numbers, logos and UI are real and credited. No disclaimer chip and no invented figure.",
+    "The outro is the brand lockup and the domain only, held a few seconds after the last word. No CTA line. Deliver both 1080x1920 and 1920x1080 from the same markup.",
+    "One mixed track: voice at least 12 dB over the music in 300-3500 Hz, integrated loudness -14 LUFS, true peak at or under -1 dBTP."
+  ],
+  "reference": "pipeline/styles/qmd-vertical/referencia/layout.json (goldmine v3.3, aprobado 2026-11-01)",
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos de la primera escena: el golpe entra completo desde el cuadro 0 y recién ahí cambia el modo",
+      "default": 3.033,
+      "rango": [1.5, 6],
+      "unidad": "s",
+      "medido": "goldmine v3.3 (aprobado 2026-11-01): referencia/layout.json modes FULL 0–3.0333 s y J[0]=3.0333"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántas escenas arrancan en los primeros 10 s, el hook incluido",
+      "default": 5,
+      "rango": [3, 8],
+      "medido": "goldmine v3.3: layout.json J arranca escenas en 0, 3.0333, 4.6, 6.3167 y 9.5833 (10.6167 ya pasa de 10)"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura una escena entre joins, el cierre con outro incluido",
+      "default": 2.083,
+      "rango": [1, 6],
+      "unidad": "s",
+      "medido": "goldmine v3.3: 11 tramos de layout.json J hasta DUR 27.3; ordenados, la mediana (6.º) es 2.0833 s"
+    },
+    "zoomMax": {
+      "que": "techo de la escala del orador, relativa al modo",
+      "default": 1.19,
+      "rango": [1, 1.19],
+      "medido": "goldmine v3.3: qa exige ≤1.19; camplan llega a 1.17 (ESCENAS.md «measured max 1.170»)"
+    },
+    "escalaOradorMin": {
+      "que": "escala mínima del recorte respecto de la fuente (1 = tamaño de la toma, el cuerpo sale por abajo)",
+      "default": 1,
+      "rango": [0.8, 1.19],
+      "medido": "goldmine v3.3: ESCENAS.md, orador 1.00–1.17 de la fuente; camplan set en 1.00"
+    },
+    "lightWrap": {
+      "que": "fracción máxima del color de la escena que se mezcla en el borde exterior del recorte",
+      "default": 0.22,
+      "rango": [0, 0.4],
+      "medido": "goldmine v3.3: tools/make_alpha.py «22% light wrap»; ESCENAS.md v3.3"
+    },
+    "chokePx": {
+      "que": "píxeles que se come el borde del alfa antes de emplumar (erosión)",
+      "default": 1,
+      "rango": [0, 3],
+      "unidad": "px",
+      "medido": "goldmine v3.3: make_alpha.py erosión con kernel 3×3 («choke 1 px»)"
+    },
+    "featherSigma": {
+      "que": "sigma del emplume, sólo en la banda del borde",
+      "default": 1.4,
+      "rango": [0, 3],
+      "unidad": "px",
+      "medido": "goldmine v3.3: make_alpha.py GaussianBlur sigma 1.4 sobre la banda del borde"
+    },
+    "preescala": {
+      "que": "cuánto se agranda el recorte antes del navegador, para que Chrome sólo lo reduzca",
+      "default": 1.2,
+      "rango": [1, 1.6],
+      "medido": "goldmine v3.3: make_alpha.py SC=1.2 → 1296×2304, Lanczos; unsharp sólo en el interior sólido"
+    },
+    "placaAncho": {
+      "que": "ancho de la placa apaisada que la cabeza rompe",
+      "default": 952,
+      "rango": [640, 1080],
+      "unidad": "px",
+      "medido": "goldmine v3.3: layout.json PLATE.w 952 en un lienzo de 1080 (más ancha que alta)"
+    },
+    "placaAlto": {
+      "que": "alto de la placa apaisada",
+      "default": 640,
+      "rango": [360, 900],
+      "unidad": "px",
+      "medido": "goldmine v3.3: layout.json PLATE.h 640, y 960, radio 60"
+    },
+    "subtitulosTamano": {
+      "que": "tamaño de los subtítulos (la fuente y el color son de la marca)",
+      "default": 50,
+      "rango": [40, 72],
+      "unidad": "px",
+      "medido": "goldmine v3.3: master/index.html .cap .t font-size 50px / line-height 75px, Instrument Sans 500"
+    },
+    "subtitulosAlineacion": {
+      "que": "alineación de los subtítulos",
+      "default": "centro",
+      "opciones": ["izquierda", "centro"],
+      "medido": "goldmine v3.3: .cap text-align:center y justify-content:center, x=87, ancho 907"
+    },
+    "musicaBajoVoz": {
+      "que": "cuántos LU queda la música integrada por debajo de la voz, ya con el duck",
+      "default": 14.6,
+      "rango": [12, 20],
+      "unidad": "LU",
+      "medido": "goldmine v3.3: referencia/music-report.json music_LU_under_voice_final 14.6 (voz -13.9 LUFS, música -28.5)"
+    },
+    "margenVozDb": {
+      "que": "margen mínimo de la voz sobre la música en 300–3500 Hz mientras se habla",
+      "default": 12.4,
+      "rango": [12, 24],
+      "unidad": "dB",
+      "medido": "goldmine v3.3: music-report.json voice_over_music_300_3500Hz_dB.min 12.4 (el gate pide ≥12)"
+    },
+    "loudness": {
+      "que": "sonoridad integrada de la mezcla de entrega",
+      "default": -14,
+      "rango": [-16, -12],
+      "unidad": "LUFS",
+      "medido": "goldmine v3.3: music-report.json preview_mix_LUFS -14.3; master_mix.py deja la mezcla para que el render caiga en -14"
+    },
+    "truePeak": {
+      "que": "techo de true peak de la entrega",
+      "default": -1,
+      "rango": [-3, -1],
+      "unidad": "dBTP",
+      "medido": "goldmine v3.3: el gate de qa.py exige ≤ -1 dBTP; el limitador de master_mix.py trabaja a -1.8 dBTP para que el AAC de HyperFrames no baje toda la mezcla"
+    },
+    "duckDb": {
+      "que": "cuánto baja la cama mientras hay voz",
+      "default": 5,
+      "rango": [0, 8],
+      "unidad": "dB",
+      "medido": "goldmine v3.3: music-report.json duck_dB_while_talking -5.0; cama 9.5 LU bajo la voz antes del duck"
+    },
+    "outro": {
+      "que": "segundos del cierre (logo y dominio) desde que arranca el flood hasta el último cuadro",
+      "default": 3.95,
+      "rango": [2.5, 4.31],
+      "unidad": "s",
+      "medido": "goldmine v3.3: layout.json OUTRO.len 3.95 (t0 23.35, end 27.3); la última palabra termina en 23.01"
+    },
+    "solapeMax": {
+      "que": "segundos máximos que dos cajas pueden superponerse antes de fallar el gate",
+      "default": 0.27,
+      "rango": [0.1, 0.5],
+      "unidad": "s",
+      "medido": "goldmine v3.3: qa.py v3.3, un par que se cruza más del 6 % de la caja chica durante más de 0.27 s falla"
+    },
+    "granoOpacidad": {
+      "que": "opacidad del grano sobre el fondo (nunca sobre la cara: va en una capa debajo del recorte)",
+      "default": 0.42,
+      "rango": [0, 0.6],
+      "medido": "goldmine v3.3: #grain opacity .42, z-index 17, debajo de #fgwrap z-index 18"
+    }
+  },
+  "escenas": [
+    {
+      "id": "completo",
+      "que": "La calle real de la toma, gráficos detrás de la persona, un número héroe",
+      "cuando": "El hook, la tesis en sus palabras",
+      "ejemplos": ["goldmine v3.3 S01 FULL 0–3.03"]
+    },
+    {
+      "id": "placa",
+      "que": "Recorte grande sobre una placa apaisada que la cabeza rompe; el material vive en un tablero arriba",
+      "cuando": "Nombra algo que se puede mostrar (logos, UI, diagrama)",
+      "ejemplos": ["goldmine v3.3 S02–S10 STAGE"]
+    },
+    {
+      "id": "flood",
+      "que": "Un takeover de color que crece desde un punto (papel, menta, verde) sin tapar la frase que se está diciendo",
+      "cuando": "Cambia el mundo del plano en un golpe ya aprobado",
+      "ejemplos": ["goldmine v3.3 flood en 1.0, 9.78 y 21.36"]
+    },
+    {
+      "id": "cierre",
+      "que": "Flood al color de cierre, logo real y el dominio, sin frase de CTA",
+      "cuando": "Después de la última palabra, con aire antes de tapar la toma",
+      "ejemplos": ["goldmine v3.3 OUTRO 23.35–27.30"]
+    }
+  ],
+  "_medicion": "Perillas medidas el 2026-11-03 sobre goldmine v3.3 (aprobado 2026-11-01): referencia/layout.json, referencia/ESCENAS.md, referencia/music-report.json y el master generado. Otra marca ajusta en biblioteca/marcas/<marca>.json → perillas.qmd-vertical. El formato entrega 1080×1920 y 1920×1080."
+}

@@ -1,0 +1,5 @@
+/* Fuentes de QuoteMyData, las mismas que sirve el sitio (woff2 del 2026-11-01).
+   Viven en biblioteca/design_system/fonts. Ajustá la url si la escena no está junto a biblioteca/. */
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:75% 100%;font-display:block;src:url('../../biblioteca/design_system/fonts/InstrumentSans-Variable.woff2') format('woff2')}
+@font-face{font-family:'Instrument Sans';font-style:italic;font-weight:400 700;font-stretch:75% 100%;font-display:block;src:url('../../biblioteca/design_system/fonts/InstrumentSans-Italic-Variable.woff2') format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:100 900;font-display:block;src:url('../../biblioteca/design_system/fonts/GeistMono-Variable.woff2') format('woff2')}

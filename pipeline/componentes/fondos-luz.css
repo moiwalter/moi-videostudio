@@ -1,0 +1,17 @@
+/* Suelo vivo, medido en goldmine v3.3 (#world / #worldm / #worldg).
+   Cuatro manchas, topo, puntos, un haz. Nada quieto más de 1 s: la animación la pone el episodio.
+   El grano va en .qmd-grano, SIEMPRE debajo del recorte (z 17 < z 18). */
+.qmd-mundo{position:absolute;inset:0;overflow:hidden}
+.qmd-mundo.papel{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
+.qmd-mundo.menta{background:linear-gradient(180deg,var(--mint) 0%,var(--paper) 100%)}
+.qmd-mundo.verde{background:radial-gradient(120% 80% at 50% 30%,var(--green) 0%,var(--green-deep) 55%,var(--green-darkest) 100%)}
+.qmd-blob{position:absolute;border-radius:50%;pointer-events:none}
+.qmd-topo{position:absolute;left:-160px;top:-120px;width:1400px;height:2500px;background:var(--green);opacity:.085;
+  -webkit-mask:url(assets/tex/topo.png) 0 0/1400px 2500px no-repeat;mask:url(assets/tex/topo.png) 0 0/1400px 2500px no-repeat}
+.qmd-mundo.verde .qmd-topo{background:var(--lime);opacity:.12}
+.qmd-puntos{position:absolute;inset:0;background:var(--green);opacity:.16;
+  -webkit-mask:radial-gradient(70% 45% at 50% 22%,#000,transparent);mask:radial-gradient(70% 45% at 50% 22%,#000,transparent)}
+.qmd-haz{position:absolute;left:0;top:-200px;width:1080px;height:2320px;
+  background:linear-gradient(105deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 62%);pointer-events:none}
+.qmd-grano{position:absolute;inset:0;z-index:17;pointer-events:none;mix-blend-mode:soft-light;opacity:.42;
+  background-image:url(assets/tex/grain.png);background-size:384px 384px}

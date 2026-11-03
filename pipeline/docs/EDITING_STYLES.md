@@ -12,8 +12,9 @@ A style is the editing language. The engine renders it; the client brand supplie
 | [Moderno limpio](../styles/moderno-limpio/STYLE.md) | Resource-heavy talking head: cut-out speaker on dark plates, film/archive, real tweets | Cvander optimismo r4 (approved 31-oct), HyperFrames | Speaker always present, muted-readable resources, captured embeds, no overlap |
 | [Hilo de chat](../styles/hilo-chat/STYLE.md) | Two-sided chat thread where each beat is a video message | Cvander Telegram × Maria la del Valley, HyperFrames | Data-driven episode, the second voice rules, explicit fiction |
 | [Vlog de evento](../styles/vlog/STYLE.md) | Event recap: voice track over many takes of the same event + official/archive footage + real news pages with a TikTok swipe; one stretch may change tone | Cvander Cloudflare Connect (delivered 25-oct-2026), HyperFrames | The voice leads the cuts, real captures, facts verified before they go on screen |
+| [QMD vertical](../styles/qmd-vertical/STYLE.md) | Short talking-head: the speaker stays large, a landscape panel the head breaks out of, light ground, both 1080×1920 and 1920×1080 | goldmine v3.3 (approved 1-nov-2026), HyperFrames | Plan approved first, PNG frames, grain under the face, logo+domain outro, one mix at −14 LUFS |
 
-Most of these styles were born in client work (6 of 7 in Cvander); the contract keeps the method and leaves the client's identity behind. Not promoted: the Cvander «ensayo documental» attempt (rejected r4/r5, replaced by Moderno limpio). Rules that apply to every style: [REGLAS.md](REGLAS.md); client rules: `biblioteca/clientes/<client>.json`.
+Most of these styles were born in client work; the contract keeps the method and leaves the client's identity behind. QMD vertical was measured on goldmine v3.3 and ships both orientations. Not promoted: the Cvander «ensayo documental» attempt (rejected r4/r5, replaced by Moderno limpio). Rules that apply to every style: [REGLAS.md](REGLAS.md); client rules: `biblioteca/clientes/<client>.json`.
 
 ## Layers and knobs (1-nov-2026)
 

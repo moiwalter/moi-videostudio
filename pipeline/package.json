@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "hyperframes": "0.8.214",
     "puppeteer-core": "^23.11.1"
   }
 }

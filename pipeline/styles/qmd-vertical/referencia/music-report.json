@@ -1,0 +1,71 @@
+{
+ "bpm": 110.6,
+ "bar_s": 2.17,
+ "downbeats": {
+  "million": 1.08,
+  "mint takeover (bar 5)": 9.76,
+  "goldmine": 22.78
+ },
+ "drop_out_s": [
+  21.45,
+  22.78
+ ],
+ "fade_out_s": [
+  26.34,
+  27.3
+ ],
+ "voice_LUFS": -13.9,
+ "bed_pre_duck_LU_under_voice": 9.5,
+ "music_LUFS_final": -28.5,
+ "music_LU_under_voice_final": 14.6,
+ "music_LUFS_speech_part": -30.3,
+ "cadence": [
+  [
+   22.78,
+   "Fadd9"
+  ],
+  [
+   23.865,
+   "Bbmaj9"
+  ],
+  [
+   24.95,
+   "Csus"
+  ],
+  [
+   25.493,
+   "C"
+  ],
+  [
+   26.035,
+   "Fadd9"
+  ]
+ ],
+ "picture_s": 27.3,
+ "speech_s": 24.067,
+ "duck_dB_while_talking": -5.0,
+ "carve_mid_bus_dB": {
+  "1000 Hz": -1.1,
+  "2000 Hz": -4.4,
+  "3000 Hz": -7.0,
+  "4000 Hz": -5.3,
+  "6000 Hz": -2.3
+ },
+ "voice_over_music_300_3500Hz_dB": {
+  "min": 12.4,
+  "p10": 15.4,
+  "median": 21.7,
+  "windows": 215
+ },
+ "music_sample_peak_dBFS": -10.83,
+ "drop_out_peak_dBFS": -240.0,
+ "sections_LUFS": {
+  "pickup": -40.1,
+  "verse": -31.4,
+  "build": -29.7,
+  "goldmine": -27.6,
+  "outro": -22.7
+ },
+ "preview_mix_LUFS": -14.3,
+ "preview_mix_sample_peak_dBFS": -0.53
+}

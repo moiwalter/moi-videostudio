@@ -1,0 +1,24 @@
+/* Dos looks. El oscuro no existe: se retiró el 31-oct-2026.
+   Los hex son los de biblioteca/marcas/qmd.json (brand.mjs check los acepta). */
+.mode-light{
+  --bg:#f6f6f2; --bg-rgb:246,246,242;
+  --bg-2:#efefe9; --bg-2-rgb:239,239,233;
+  --fg:#13211b; --fg-rgb:19,33,27;
+  --muted:#68655e; --muted-rgb:104,101,94;
+  --line:#e1dfda; --line-rgb:225,223,218;
+  --accent:#0b4d35; --accent-rgb:11,77,53;
+  --hl:#8fd9b0; --hl-rgb:143,217,176;
+  --hl-ink:#13211b; --hl-ink-rgb:19,33,27;
+  --card:#f6f6f2; --card-fg:#13211b;
+}
+.mode-green{
+  --bg:#083b29; --bg-rgb:8,59,41;
+  --bg-2:#0b4d35; --bg-2-rgb:11,77,53;
+  --fg:#f6f6f2; --fg-rgb:246,246,242;
+  --muted:#9fbfac; --muted-rgb:159,191,172;
+  --line:#c9dccf; --line-rgb:201,220,207;
+  --accent:#8fd9b0; --accent-rgb:143,217,176;
+  --hl:#8fd9b0; --hl-rgb:143,217,176;
+  --hl-ink:#062e20; --hl-ink-rgb:6,46,32;
+  --card:#062e20; --card-fg:#f6f6f2;
+}

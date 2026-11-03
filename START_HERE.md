@@ -38,7 +38,7 @@ El modo rápido **omite QA técnica**. Estados: 0 = controles reportados vigente
 
 ## 3. Separar marca, estilo, episodio y plataforma
 
-[Estilos disponibles](pipeline/docs/EDITING_STYLES.md): Paper Collage, Layered Talking Head, Moi Overlay, Micro-podcast, Investigación cinematográfica, Moderno limpio e Hilo de chat, cada uno con su contrato. La marca determina paleta, fuentes y tono; el estilo determina el tratamiento. El episodio determina guion, recursos y escenas. La plataforma determina encuadre y zonas seguras.
+[Estilos disponibles](pipeline/docs/EDITING_STYLES.md): Paper Collage, Layered Talking Head, Moi Overlay, Micro-podcast, Investigación cinematográfica, Moderno limpio, Hilo de chat, Vlog de evento y QMD vertical, cada uno con su contrato. La marca determina paleta, fuentes y tono; el estilo determina el tratamiento. El episodio determina guion, recursos y escenas. La plataforma determina encuadre y zonas seguras.
 
 Resolver estas decisiones desde el contexto; preguntar solamente lo que falte. Inicializar con `pipeline/tools/new-video.sh` según los [comandos](pipeline/docs/PIPELINE-OPERATIONS.md). Una carpeta `intake-pending` se adopta sin perder originales. Un editor existente nunca se reinicializa.
 
