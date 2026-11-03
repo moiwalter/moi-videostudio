@@ -54,7 +54,8 @@ import {approvalReport,approvalState,scenes,outputState} from './scene-state.mjs
 import {preflight} from './preflight.mjs';
 import {sourceState} from './source-state.mjs';
 const AQUI = dirname(fileURLToPath(import.meta.url));
-const RAIZ = ROOT;
+/* FLUJO_RAIZ sólo la usan los tests: una carpeta con 2–3 proyectos de juguete en vez de leer todo el disco. */
+const RAIZ = process.env.FLUJO_RAIZ || ROOT;  // las subherramientas reciben la RUTA del proyecto (base), no el nombre: así no se resuelve contra otra raíz
 const NO_PROYECTO = new Set(["tools", "templates", "design_system", "brands", "assets", "node_modules", "_legacy", "_fixture"]);
 
 /* ── args ─────────────────────────────────────────────────────────────────────────────
@@ -174,7 +175,7 @@ function esDelPipeline(base) {
 }
 
 function revisar(slug) {
-  const base = resolveProject(slug);
+  const base = resolverSlug(slug);
   const descriptor=config(base);
   if(descriptor)return registeredStatus(base,slug,{fast:RAPIDO});
   if (!esDelPipeline(base)) {
@@ -295,7 +296,7 @@ function revisar(slug) {
      Las preguntas del arranque dependían de que yo me acordara de hacerlas. Una regla que vive
      en la memoria de alguien es una intención, no una regla. Ahora bloquea. */
   if (carril === "MASTER" || carril === "KIT+MASTER") {
-    const r = correr("node", [join(AQUI, "brief.mjs"), slug, "--check"]);
+    const r = correr("node", [join(AQUI, "brief.mjs"), base, "--check"]);
     push(r.ok ? "OK" : "BLOQUEADO", "BRIEF", r.resumen, r.ok ? null : {
       texto: "Faltan las dos preguntas del arranque: de quién es el video (la marca) y si tenés una dirección o te propongo 5 conceptos.",
       cmds: [`node tools/brief.mjs ${slug}`],
@@ -319,7 +320,7 @@ function revisar(slug) {
         cmds: [`node tools/map-beats.mjs ${slug} --carril master`, `# revisalo y después:`, `node tools/map-beats.mjs ${slug} --carril master --aplicar`],
       });
     } else {
-      const r = correr("node", [join(AQUI, "map-beats.mjs"), slug, "--check"]);
+      const r = correr("node", [join(AQUI, "map-beats.mjs"), base, "--check"]);
       push(r.ok ? "OK" : "BLOQUEADO", "MAPA DE BEATS", r.resumen, r.ok ? null : {
         texto: "El mapa del master está a medias. Lo que falta son decisiones tuyas, no cálculo.",
         cmds: [`node tools/map-beats.mjs ${slug} --check`],
@@ -415,7 +416,7 @@ function revisar(slug) {
     if (carril === "KIT" || carril === "KIT+MASTER")
       gates.push(["validate-kit", "validate-kit.mjs", "El contrato del kit no cierra."]);
     for (const [nombre, script, texto] of gates) {
-      const r = correr("node", [join(AQUI, script), slug]);
+      const r = correr("node", [join(AQUI, script), base]);
       const estado = r.ok ? "OK" : r.codigo === 2 ? "NO VERIFICABLE" : "BLOQUEADO";
       push(estado, `GATE ${nombre}`, r.resumen,
         r.ok ? null : { texto: r.codigo === 2 ? "El gate no pudo medir. Eso NO es «limpio»: revisá que el entregable de este video sea el de este carril." : texto,
@@ -431,7 +432,7 @@ function revisar(slug) {
   if (!ch.some(c => c.estado === "BLOQUEADO") && (carril === "MASTER" || carril === "KIT+MASTER") && usesReview(base)) {
     let stage = "preview";
     try { if (JSON.parse(readFileSync(join(base, "REVIEW.json"), "utf8")).export?.file) stage = "export"; } catch {}
-    const r = correr("node", [join(AQUI, "review-video.mjs"), slug, "--check", "--stage", stage]);
+    const r = correr("node", [join(AQUI, "review-video.mjs"), base, "--check", "--stage", stage]);
     push(r.ok ? "OK" : "BLOQUEADO", "REVISIÓN VISUAL", r.resumen, r.ok ? null : {
       texto: "Revisar Studio/MP4 según la etapa y completar REVIEW.json con evidencia vigente. El recibo no sustituye la inspección ni pide nueva aprobación del usuario.",
       cmds: [`node tools/review-video.mjs ${slug} --check --stage ${stage}`],

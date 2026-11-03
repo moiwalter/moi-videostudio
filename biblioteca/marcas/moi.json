@@ -115,12 +115,8 @@
     }
   },
   "prohibido": [
-    "escenas de solo texto (eso es un subtítulo, no un overlay)",
     "velo oscuro / scrim global — legibilidad por text-shadow",
     "destellos o wipes champán entre escenas",
-    "HEVC con alpha para CapCut (muestra fondo negro) — siempre ProRes 4444",
-    "concatenar con -c copy (rompe timestamps)",
-    "números sin separador de miles o cifras incoherentes",
     "camera movement interpolado (zoom / Ken-Burns)",
     "dorado, cream y navy de la paleta vieja — son de otra identidad, no de esta",
     "serif de display (Cormorant) en material nuevo"
@@ -135,5 +131,6 @@
       1520
     ]
   },
-  "_qc": "Dónde está Walter en el cuadro y dónde va la banda de subtítulos. Lo lee qc-master para poder decir 'esta placa le tapa la cara'. MEDIDO el 30-ago-2026 mirando 3 tomas de tu-carrera (8s/55s/92s) con grilla de 192px: cabeza 740-1100, constante en las tres. Va acá y no en cada video porque el encuadre es del SETUP —mismo cuarto, misma cámara, misma distancia—, no del corte. Un cliente con otro encuadre declara el suyo en SU marca, una vez. El data-qc-cara del #frame sigue mandando por encima para el caso raro."
+  "_qc": "Dónde está Walter en el cuadro y dónde va la banda de subtítulos. Lo lee qc-master para poder decir 'esta placa le tapa la cara'. MEDIDO el 30-ago-2026 mirando 3 tomas de tu-carrera (8s/55s/92s) con grilla de 192px: cabeza 740-1100, constante en las tres. Va acá y no en cada video porque el encuadre es del SETUP —mismo cuarto, misma cámara, misma distancia—, no del corte. Un cliente con otro encuadre declara el suyo en SU marca, una vez. El data-qc-cara del #frame sigue mandando por encima para el caso raro.",
+  "_prohibido": "2-nov-2026: sólo lo que no es de esta marca. Lo que valía para todo video pasó a pipeline/docs/REGLAS.md: escenas de solo texto → V16 · HEVC con alpha → V30 · -c copy → V31 · cifras → V32. Respaldo: archivo/marcas-antes-de-capas/moi-2026-11-02.json"
 }

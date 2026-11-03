@@ -36,6 +36,12 @@ tools/new-video.sh <new-slug> --marca <brand> --carril master --engine remotion 
 tools/new-video.sh <new-slug> --marca <brand> --carril master --engine hyperframes --style layered-talking-head
 tools/new-video.sh <new-slug> --marca moi --carril kit --engine hyperframes --style moi-overlay
 node tools/brand.mjs brief <brand> <style>
+node tools/capas.mjs <slug>          # style → brand → client → episode, with the origin of each value
+node tools/pitch.mjs <slug> --propuesta caminos.json   # 2–3 paths (style or mix) before the scene map; then --elegir <id> --decision "…"
+node tools/cliente-check.mjs <slug>                     # client rules that code can check (Chris: C04 «AI» on screen, C06 vetoed Freddy clip); the router row CLIENTE enforces it on new projects
+node tools/perillas.mjs <slug> --escribir                # writes perillas.js + perillas.css next to the active composition (generated from the layers; never edit by hand). The composition loads both and marks its subtitle box data-perilla="subtitulos"
+node tools/perillas.mjs <slug> [--navegador] [--check]  # measures the map against the format (hook, changes in first 10 s incl. hook, median, short scenes → AVISO) and, with --navegador, the real subtitle size in Chrome; router rows PERILLAS / PERILLAS EN PANTALLA
+python3 tools/alinear.py --audio <voz> --texto <txt> --out local/words-aligned.json   # the ONE forced aligner (anglicisms in tools/pron-es.json)
 ```
 
 Resolve existing brand, style, source, direction and platform from the request before asking anything. Scaffolds are empty, not completed videos; install their dependencies when needed. Remotion scaffold currently supports MASTER. Existing registered projects can declare KIT+MASTER with both native deliverables. No automatic engine migration.

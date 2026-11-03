@@ -1,0 +1,191 @@
+{
+  "id": "moderno-limpio",
+  "version": 1,
+  "label": "Moderno limpio",
+  "aliases": [
+    "moderno",
+    "estilo Saraev",
+    "cine techie",
+    "tweets reales"
+  ],
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": false,
+  "captionPolicy": "explicit-in-brief",
+  "reviewMode": "scene-by-scene",
+  "principles": [
+    "The speaker is always present (cut-out plate or full screen); the cut-out head breaks the edge of its plate for depth.",
+    "Resources are chosen by what reads MUTED in 2 seconds; few of them, each held 2.5-3 s.",
+    "Tweets and posts are official embeds captured with the real text, never retyped; the camera moves to the phrase without cropping a side.",
+    "Never two resources overlapping in the same place; one leaves, then the next enters.",
+    "Premium without flash: breathing camera, focus, layered shadows, glass reflection; nostalgic grade only on archive and film clips, grain as a CSS layer.",
+    "The approved voice is never stretched to make room for reading."
+  ],
+  "reference": "2026-10-cvander-optimismo/edicion/moderno/APRENDIZAJES.md",
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos del hook: título grande + recurso + la persona, completo desde el cuadro 0, sin fundido",
+      "default": 3.9,
+      "rango": [
+        2,
+        6
+      ],
+      "unidad": "s",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): edicion/moderno/BEATS.json escena hook 0–3,90 s"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántas escenas arrancan en los primeros 10 s, el hook incluido (misma definición en todos los formatos)",
+      "default": 5,
+      "rango": [
+        2,
+        7
+      ],
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): hook 0 · sf0 3,90 · sf 4,85 · amigos 7,05 · ansiedad 9,16 = 5 (2-nov: antes decía 4 porque no contaba el hook; layered sí lo cuenta)"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura una escena (pocos recursos, cada uno sostenido)",
+      "default": 3.08,
+      "rango": [
+        2,
+        5
+      ],
+      "unidad": "s",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): mediana 3,08 s (22 escenas en 60,6 s)"
+    },
+    "minimoRecurso": {
+      "que": "lo mínimo que se sostiene un recurso en pantalla; si pasa más rápido, se alarga o se saca",
+      "default": 2.5,
+      "rango": [
+        1.5,
+        4
+      ],
+      "unidad": "s",
+      "medido": "regla de Walter en la revisión 3 de optimismo (31-oct, DECISIONES.md: «MENOS recursos, cada uno ≥2,5 s»). En el r4 final quedan 8 escenas bajo 2,5 s (sf0 0,95 · break 1,25 · fuck 1,45 · diviertete 1,55 · positivos 1,55 · herramientas 1,75 · amigos 2,11 · sf 2,2; recontado con tools/perillas.mjs el 2-nov, antes decía 6): respiros a cámara, golpes o recursos cortos que se aprobaron igual — por eso el chequeo avisa y no bloquea"
+    },
+    "maxSinPersona": {
+      "que": "lo más que la persona puede faltar de pantalla (fuera de la placa y fuera de pantalla completa)",
+      "default": 4.5,
+      "rango": [
+        2,
+        6
+      ],
+      "unidad": "s",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): DECISIONES.md «Chris nunca falta >~4,5 s»; lo más largo sin él fue lideres (modo V) 3,45 s"
+    },
+    "escalaPlaca": {
+      "que": "escala de la persona recortada en su placa, debajo de la ventana",
+      "default": 0.72,
+      "rango": [
+        0.5,
+        0.85
+      ],
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): tools/build.py PL S=.72, headY 1050 (Walter rev. 1: «más grande y más abajo», antes .56)"
+    },
+    "ventana": {
+      "que": "tamaño de la ventana del recurso con la placa abajo (modo VP)",
+      "default": "1000x720",
+      "opciones": [
+        "1000x720",
+        "936x600"
+      ],
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): tools/build.py G.VP win 1000×720 (Walter rev. 5: «más grandes»); 936×600 era el tamaño anterior"
+    },
+    "respiroTweet": {
+      "que": "cuánto queda el tweet entero antes de que la cámara baje a la frase",
+      "default": 0.9,
+      "rango": [
+        0.4,
+        1.5
+      ],
+      "unidad": "s",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): tools/template.tpl A = T0 + .9 (rev. 3: animaciones más lentas)"
+    },
+    "acercamientoTweet": {
+      "que": "duración del acercamiento a la frase marcada, sin cortar un costado",
+      "default": 0.75,
+      "rango": [
+        0.4,
+        1.2
+      ],
+      "unidad": "s",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): tools/template.tpl duration .75"
+    },
+    "barrido": {
+      "que": "duración del barrido (whip) entre dos recursos",
+      "default": 0.34,
+      "rango": [
+        0.2,
+        0.6
+      ],
+      "unidad": "s",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): tools/template.tpl whip .34 (entrada y salida)"
+    },
+    "subtitulosTamano": {
+      "que": "tamaño de los subtítulos sobre fondo claro/oscuro (sobre la persona a pantalla completa suben a 70)",
+      "default": 62,
+      "rango": [
+        48,
+        76
+      ],
+      "unidad": "px",
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): template.tpl .sg 700 62px/1.1 · .sg.on-full 70px"
+    },
+    "subtitulosAlineacion": {
+      "que": "alineación de los subtítulos",
+      "default": "centro",
+      "opciones": [
+        "centro",
+        "izquierda"
+      ],
+      "medido": "optimismo (r4 aprobado por Walter 31-oct + cambios de Chris en Studio): subtítulos centrados, top 900 en VP"
+    }
+  },
+  "escenas": {
+    "_que_es": "los tipos de escena del formato; cada escena de BEATS.json es uno (campo mode del template)",
+    "hook": {
+      "modo": "VP + title",
+      "que_se_ve": "recurso arriba, título grande (Lineal 900) en la unión, Chris en su placa",
+      "cuando": "la tesis del video en sus palabras, del cuadro 0",
+      "ejemplos": [
+        "optimismo hook"
+      ]
+    },
+    "placa": {
+      "modo": "VP",
+      "que_se_ve": "ventana con el recurso (tweet, clip, foto) y Chris recortado abajo; la cabeza rompe el borde de la placa",
+      "cuando": "nombra algo que se puede mostrar; es la escena por defecto",
+      "ejemplos": [
+        "optimismo ansiedad (tweet)",
+        "optimismo nadie (tweet → Rocky)",
+        "optimismo sf (foto)"
+      ]
+    },
+    "completo": {
+      "modo": "FULL",
+      "que_se_ve": "Chris a pantalla completa, subtítulos grandes",
+      "cuando": "respiro entre bloques, opinión o golpe",
+      "ejemplos": [
+        "optimismo sf0",
+        "optimismo olvida",
+        "optimismo fuck",
+        "optimismo enjoy"
+      ]
+    },
+    "grande": {
+      "modo": "V",
+      "que_se_ve": "ventana grande o pila de pantallas, Chris fuera (≤ maxSinPersona)",
+      "cuando": "una ráfaga que necesita toda la pantalla (cara + cita)",
+      "ejemplos": [
+        "optimismo lideres"
+      ]
+    },
+    "blanco": {
+      "modo": "WHITE",
+      "que_se_ve": "fundido a blanco con capturas reales de producto",
+      "cuando": "nombra herramientas concretas",
+      "ejemplos": [
+        "optimismo herramientas"
+      ]
+    }
+  },
+  "_medicion": "1-nov-2026: un solo video aprobado (optimismo). Los defaults son de ese video; con un segundo video aprobado se revisan."
+}

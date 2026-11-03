@@ -1,0 +1,133 @@
+{
+  "id": "micro-podcast",
+  "version": 1,
+  "label": "Micro-podcast (conversación a distancia)",
+  "aliases": [
+    "pregúntale a un humano",
+    "episodio con invitado",
+    "pregunta y respuesta grabadas aparte"
+  ],
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": false,
+  "captionPolicy": "explicit-in-brief",
+  "reviewMode": "scene-by-scene",
+  "principles": [
+    "Two or more separately recorded vertical takes must read as one conversation: the listener is never frozen (generated listening clip from a real closed-mouth frame).",
+    "Level each speaker's loudness separately before the final normalization.",
+    "Every join of the footage is a decision: a change of speaker gets the strongest transition; inside the host's take a lighter one; inside the guest's answer a dry cut by default (Walter, ep02 31-oct) — knobs transicionCambioPersona / transicionDentroConductor / transicionDentroInvitado.",
+    "The guest is introduced with verifiable authority: official logo, name, role and one sourced fact.",
+    "Reuse the series' approved intro and tag exactly; take colors, fonts and captions from the host's brand."
+  ],
+  "reference": "2026-10-cvander-preguntale-humano-ep01/pipeline.json",
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos de la primera escena: tarjeta/teles arriba + título al medio + quien conduce abajo, los tres desde el cuadro 0 y sin subtítulos",
+      "default": 3.45,
+      "rango": [
+        2.5,
+        6
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): master/BEATS.json S01 0–3,45 s · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): corte-data.json bloques.H [0, 3.65]"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántas escenas arrancan en los primeros 10 s, el hook incluido (misma definición en todos los formatos)",
+      "default": 3,
+      "rango": [
+        2,
+        6
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): BEATS.json 0 · 3,48 · 8,28 = 3 · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct) (sin BEATS; escena = tramo entre uniones de corte-data.json cortes[]): v3 0 · 3,65 · 8,48 = 3; corta = 2"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura una escena (una idea o un tramo de respuesta); dentro, algo cambia cada ~2 s (V17)",
+      "default": 6.55,
+      "rango": [
+        2,
+        9
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): BEATS.json mediana 6,55 s (21 escenas en 173,1 s) · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): mediana 6,16 s en v3 (13 escenas) y en corta (15)"
+    },
+    "subtitulosTamano": {
+      "que": "tamaño de los subtítulos (la identidad —fuente, caja de énfasis— es de la marca)",
+      "default": 54,
+      "rango": [
+        44,
+        66
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): master/index.html #caps .g 700 54px/1.15 Rubik · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): master-corta y master-v3 idéntico"
+    },
+    "subtitulosAlineacion": {
+      "que": "alineación de los subtítulos",
+      "default": "izquierda",
+      "opciones": [
+        "izquierda",
+        "centro"
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): #caps left:100px, .g text-align:left · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): idéntico"
+    },
+    "transicionCambioPersona": {
+      "que": "fuerza del zoom-blur cuando cambia quien habla (blur 9×f px, brillo 1+.12×f, escala 1+.05×f)",
+      "default": 1.6,
+      "rango": [
+        1.2,
+        2.2
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): master/index.html cortes [24.1,1.6] [67.233,1.6] [83.1,1.6] [130.667,1.6] · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): corte-data.json [8.48,1.6] al entrar Victoriano, [54.78,1.6] al volver Chris (v3)"
+    },
+    "transicionDentroConductor": {
+      "que": "fuerza del zoom-blur en una unión dentro de la toma de quien conduce (retake o pausa quitada)",
+      "default": 1,
+      "rango": [
+        0.5,
+        1.4
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): [76.333,1] [131.8,1] · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): [75.48,1] (v3)"
+    },
+    "transicionDentroInvitado": {
+      "que": "fuerza del zoom-blur en una unión dentro de la respuesta del invitado (0 = corte seco)",
+      "default": 0,
+      "rango": [
+        0,
+        1.4
+      ],
+      "medido": "ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): master-v3 filtra los cortes dentro de Victoriano («dentro de Victoriano: corte seco»); Walter 31-oct quitó «los zoom-blur entre cortes de Victoriano». ep01 (entregado 14-oct, «le gustó todo») usaba 1 (6 cortes de Ricardo). Default = la decisión más reciente de Walter"
+    },
+    "entradaInvitado": {
+      "que": "cómo sale la pregunta y entra la respuesta: swipe lateral de tomas, o las bandas del tercio se abren",
+      "default": "swipe",
+      "opciones": [
+        "swipe",
+        "bandas"
+      ],
+      "medido": "ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): #qpip x:-1080 y #bot x:1080→0 en 0,42 s power3.inOut (Walter 31-oct «SWIPE, fuera el recuadro de Chris») · ep01 (entregado 14-oct, «le gustó todo»): bandas #topband/#botband en 0,3 s"
+    },
+    "oyente": {
+      "que": "cómo aparece el que escucha mientras el otro habla: recuadro con el clip de escucha, los dos en paralelo, o no aparece",
+      "default": "ninguno",
+      "opciones": [
+        "recuadro",
+        "en-paralelo",
+        "ninguno"
+      ],
+      "medido": "ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): ninguno, el invitado responde a pantalla completa (Walter 31-oct «fuera el recuadro de Chris») · ep01 (entregado 14-oct, «le gustó todo»): #pip 260×420 con assets/chris-escucha-loop.mp4 24,1–67,23 y #parchris en paralelo 89,4–95,9. Default = la decisión más reciente"
+    },
+    "duracionTag": {
+      "que": "cuánto queda la placa del invitado (logo + nombre + cargo + dato) desde que entra hasta que sale",
+      "default": 5.6,
+      "rango": [
+        4,
+        7
+      ],
+      "medido": "ep01 (entregado 14-oct, «le gustó todo»): #tag 24,3 → 29,9 = 5,6 s · ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): #tag VS+0,95 → VS+6,6 = 5,65 s"
+    },
+    "volumenMusica": {
+      "que": "volumen de la música bajo las voces (0 = sin música)",
+      "default": 0.36,
+      "rango": [
+        0,
+        0.5
+      ],
+      "medido": "ep02 (v1 corta + v3 entregadas 30-oct, v3 publicada 31-oct): <audio id=\"music\" data-volume=\"0.36\"> (CONTEXT 31-oct «Música −10 %», de .4 a .36) · ep01 (entregado 14-oct, «le gustó todo»): sin música"
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "id": "hilo-chat",
+  "version": 1,
+  "label": "Hilo de chat con video adentro",
+  "aliases": [
+    "hilo de telegram",
+    "conversación de chat",
+    "chat con video-mensajes"
+  ],
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": true,
+  "captionPolicy": "explicit-in-brief",
+  "reviewMode": "scene-by-scene",
+  "principles": [
+    "A chat thread fills the screen; each beat is a video message inside a bubble with its text below.",
+    "It is natively a collab: one side confesses or asks, the other rules; the second voice must give a verdict, not just inform.",
+    "An episode is data (one beats file); the machine is reused between episodes.",
+    "Fiction is explicit, never hidden.",
+    "The current brief decides whether the video may leave the chat (0910 did; the August episode never did)."
+  ],
+  "reference": "cvander-telegram/edicion/ESTADO.md",
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos del primer beat: el «escribiendo…» de quien abre, hasta que aterriza el mensaje #1 (no hay título aparte)",
+      "default": 2.87,
+      "rango": [
+        1.5,
+        6
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): beats.js typing t:-1.9 dur:2.867 + meta.lead 1.9 → 0–2,867 s"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántos beats arrancan en los primeros 10 s, el hook incluido (misma definición en todos los formatos)",
+      "default": 4,
+      "rango": [
+        2,
+        7
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): inicio = t + lead 1,9 → 0 · 2,867 · 3,567 · 5,633 = 4 (el primer texto de María cae en 10,000)"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura un beat en pantalla, desde que aterriza un mensaje hasta el siguiente",
+      "default": 2.18,
+      "rango": [
+        1.5,
+        4
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): mediana 2,175 s de inicio a inicio (26 beats en 85,14 s, total de timing.js). Calculado a mano: el proyecto no tiene mapa {start,end}"
+    },
+    "textoBurbuja": {
+      "que": "tamaño del texto dentro de la burbuja (este formato no tiene subtítulos aparte: el pie del mensaje ES el texto, con karaoke por palabra)",
+      "default": 46,
+      "rango": [
+        38,
+        56
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): index.html .caption font-size:46px · igual en 0910 montaje-completo/compositions/telegram/index.html"
+    },
+    "diametroNota": {
+      "que": "diámetro del video-mensaje redondo (la firma de Telegram)",
+      "default": 470,
+      "rango": [
+        380,
+        600
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): index.html --note-d:470px · igual en 0910"
+    },
+    "anchoAdjunto": {
+      "que": "ancho del video/foto adjunto en la burbuja; el alto sale a 4:5. Más grande, un mensaje se come el frame y deja de leerse como chat",
+      "default": 580,
+      "rango": [
+        480,
+        680
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): index.html --media-w:580px --media-h:725px (descarta 660×880) · igual en 0910"
+    },
+    "duracionScroll": {
+      "que": "lo que tarda el hilo en subir cuando entra un mensaje nuevo (el scroll ES la aparición)",
+      "default": 0.5,
+      "rango": [
+        0.3,
+        0.8
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): index.html const SCROLL = 0.5, power2.out · igual en 0910"
+    },
+    "entradaMensaje": {
+      "que": "duración del rebote con que aterriza cada burbuja (sube 46 px, escala .94 → 1)",
+      "default": 0.42,
+      "rango": [
+        0.25,
+        0.6
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): index.html const ENTER = 0.42, back.out(1.7) · igual en 0910"
+    },
+    "separacionMensajes": {
+      "que": "separación vertical entre burbujas",
+      "default": 28,
+      "rango": [
+        16,
+        48
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): index.html const GAP = 28 · igual en 0910"
+    },
+    "duracionEscribiendo": {
+      "que": "cuánto dura el «escribiendo…» antes de un mensaje a mitad del hilo",
+      "default": 2.07,
+      "rango": [
+        0.8,
+        3.5
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): beats.js typing t:1.667 dur:2.066"
+    },
+    "pantallaCompleta": {
+      "que": "segundos en que el video-mensaje sale del chat a pantalla completa (0 = nunca sale); lo decide el brief",
+      "default": 0,
+      "rango": [
+        0,
+        12
+      ],
+      "medido": "María la del Valley (entregado 18-ago, Chris: «Está demasiado bueno este video»): ESTADO.md, Chris «así nunca sales del chat» → 0 · 0910 (Chris sobre v4: «Quedó perfecto. Se imprime.»): telegram-maria/beats.js out 3,9 → back 14,25 = 10,35 s"
+    },
+    "transicionPantallaCompleta": {
+      "que": "lo que tarda el video en crecer de la burbuja a pantalla completa, y en volver",
+      "default": 0.55,
+      "rango": [
+        0.3,
+        0.9
+      ],
+      "medido": "0910 (Chris sobre v4: «Quedó perfecto. Se imprime.»): telegram-maria/beats.js outDuration 0.55 / backDuration 0.55, power2.inOut"
+    }
+  }
+}

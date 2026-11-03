@@ -2,9 +2,12 @@
 import {existsSync,readFileSync,readdirSync,statSync,realpathSync} from 'node:fs';
 import {resolve,dirname,relative,extname,join} from 'node:path';
 import {createHash} from 'node:crypto';
-export const digest=file=>createHash('sha256').update(readFileSync(file)).digest('hex');
+/* Un hash por archivo y por corrida: antes cada escena volvía a leer el footage entero (programar-profesion, 33 escenas,
+   148 s sobre el Extreme Pro). La clave lleva tamaño, mtime, ctime e inodo: un reemplazo que conserva el mtime (cp -p, copy2 al Extreme Pro) igual cambia el ctime. */
+const cache=new Map();
+export const digest=file=>{const st=statSync(file),k=`${resolve(file)}\0${st.size}\0${st.mtimeMs}\0${st.ctimeMs}\0${st.ino}`;let h=cache.get(k);if(!h){h=createHash('sha256').update(readFileSync(file)).digest('hex');cache.set(k,h);}return h;};
 export const stable=value=>JSON.stringify(value&&typeof value==='object'?Array.isArray(value)?value.map(v=>JSON.parse(stable(v))):Object.fromEntries(Object.keys(value).sort().map(k=>[k,JSON.parse(stable(value[k]))])):value??null);
-export function inputGraph(base,{roots=[],publicDir='public',assetBase=null,values=null}={}){
+export function inputGraph(base,{roots=[],publicDir='public',assetBase=null,values=null,hash=true,faltantes=null}={}){  // hash:false = sólo la lista (cliente-check no necesita leer el footage)
  const found=new Map(),seenDirs=new Set(),remote=new Set();const pub=resolve(base,publicDir);
  function localRef(ref,file,kind='media'){
   if(/^(?:[a-z][\w+.-]*:|\/\/|#)/i.test(ref)){if(/^https?:/.test(ref))remote.add(ref);return;}
@@ -18,11 +21,12 @@ export function inputGraph(base,{roots=[],publicDir='public',assetBase=null,valu
    const options=kind==='import'?[candidate,...['.ts','.tsx','.js','.jsx','.mjs','.cjs','.json','.css'].map(e=>candidate+e),...['index.ts','index.tsx','index.js','index.jsx'].map(n=>join(candidate,n))]:[candidate];
    for(const p of options)if(existsSync(p)&&statSync(p).isFile()){visit(p);return;}
   }
+  if(faltantes){faltantes.push({ref,desde:relative(base,file)});return;}  // cliente-check: anotar y seguir
   throw Error(`Input ausente: ${ref} (desde ${relative(base,file)})`);
  }
  function visit(file){file=resolve(file);if(found.has(file))return;if(!existsSync(file))throw Error(`Input ausente: ${file}`);
   if(statSync(file).isDirectory()){const real=realpathSync(file);if(seenDirs.has(real))return;seenDirs.add(real);for(const n of readdirSync(file).sort())if(!n.startsWith('.')&&n!=='node_modules')visit(join(file,n));return;}
-  found.set(file,digest(file));const ext=extname(file).toLowerCase();if(!['.html','.css','.js','.mjs','.cjs','.jsx','.ts','.tsx'].includes(ext))return;
+  found.set(file,hash?digest(file):null);const ext=extname(file).toLowerCase();if(!['.html','.css','.js','.mjs','.cjs','.jsx','.ts','.tsx'].includes(ext))return;
   const s=readFileSync(file,'utf8');
   if(ext==='.html'||ext==='.css'){
    for(const m of s.matchAll(/\b(?:src|href|poster|data-composition-src)\s*=\s*["']([^"']+)["']/g))localRef(m[1],file);

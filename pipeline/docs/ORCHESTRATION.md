@@ -38,7 +38,7 @@
 
 ## Perfil y revisión compartidos · 13-sep-2026
 
-`build-master.mjs` recibe `brand.mjs brief`; ese brief ahora incluye `videoWorkflow` cuando la marca lo declara. Cvander tiene perfil recuperado de0910, sin copiar su timing. Los nuevos proyectos MASTER incluyen un recibo REVIEW.json: `flujo` comprueba vigencia y evidencia, y `--entregado` exige la etapa export. Ver [REVIEW.md](REVIEW.md). El recibo lo completa el revisor; no es un modelo de visión ni una nueva solicitud de aprobación del usuario. Los gates técnicos no garantizan limpieza de máscara.
+`build-master.mjs` recibe `brand.mjs brief`; ese brief ahora incluye `videoWorkflow` cuando la marca lo declara. (1-nov-2026: cvander ya no lo declara; el brief lleva el formato del proyecto o `estiloPorDefecto`, la identidad de subtítulos de la marca y las reglas de `biblioteca/clientes/cvander.json`. Ver EDITING_STYLES.md «Layers and knobs».) Cvander tiene perfil recuperado de0910, sin copiar su timing. Los nuevos proyectos MASTER incluyen un recibo REVIEW.json: `flujo` comprueba vigencia y evidencia, y `--entregado` exige la etapa export. Ver [REVIEW.md](REVIEW.md). El recibo lo completa el revisor; no es un modelo de visión ni una nueva solicitud de aprobación del usuario. Los gates técnicos no garantizan limpieza de máscara.
 
 ## El principio
 

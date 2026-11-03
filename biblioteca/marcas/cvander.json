@@ -50,13 +50,7 @@
   },
   "energy": "énfasis selectivo",
   "energyNotes": "Revelado por palabra, cajas en palabras importantes y transformaciones que explican una idea; dar tiempo para leer. Sin cuota de zooms/takeovers.",
-  "prohibido": [
-    "sustituir logos de producto por caras de fundadores en una recap",
-    "usar una demo que queda ilegible detrás del sujeto",
-    "ocultar mala segmentación cortando el pelo",
-    "adelantar recursos por llenar espacio; conservar excepciones aprobadas",
-    "usar otro reproductor HTML como sustituto de Studio nativo"
-  ],
+  "prohibido": [],
   "mimesis": {
     "telegram-night": {
       "bg": "#0e1621",
@@ -67,21 +61,28 @@
       "accent": "#6ba3dc"
     }
   },
-  "videoWorkflow": {
-    "id": "cvander-layered",
-    "guide": "/Users/TERABYTE10/second-brain/02-projects/cvander/workflow/edicion_por_capas.md",
-    "reference": "/Users/TERABYTE10/second-brain/02-projects/cvander/workflow/referencias_visuales.md",
-    "referenceEpisode": "2026-09-cvander-0910/montaje-completo/index.html",
-    "principles": [
-      "Si HyperFrames entrega el MP4 completo, usar carril MASTER también para cliente; KIT si Walter ensambla en CapCut.",
-      "Base original → recurso con feather → misma persona recortada → captions. Toma, tiempos y transformaciones compartidas.",
-      "Rubik Bold/Lineal, captions a la izquierda y cajas moradas con borde rosa seleccionadas; coherencia entre hablantes.",
-      "Anuncio exacto y material actual cuando se pide; fuentes locales con procedencia; logos auténticos en recap.",
-      "Entradas por voz y duración legible; las excepciones viven en el mapa de ESTE episodio.",
-      "Antes de replicar, probar recorte difícil en movimiento. Un defecto compartido exige revisar todos sus usos.",
-      "Revisar en Studio nativo y verificar el MP4 después de exportarlo. Exportar cuando Walter lo pida sin reconfirmación."
-    ],
-    "layoutReference": {
+  "estiloPorDefecto": "layered-talking-head",
+  "subtitulos": {
+    "fuente": "Rubik",
+    "peso": 700,
+    "tracking": "-.02em",
+    "color": "#ffffff",
+    "sombraTexto": "0 3px 12px rgba(0,0,0,.62),0 1px 3px rgba(0,0,0,.5)",
+    "enfasis": {
+      "fondo": "purple",
+      "texto": "white",
+      "borde": "2px pink",
+      "radio": 8,
+      "padding": "2px 16px",
+      "sombra": "0 5px 0 violet, 0 9px 18px rgba(0,0,0,.22)"
+    },
+    "nuncaSobre": "ojos o boca: franja libre entre el recurso y la cabeza, o bajo el mentón",
+    "_fuente": "#caps del master de ep02 (publicado 31-oct-2026) = el de adobe (8-oct); L038 en second-brain/02-projects/cvander/lessons.md",
+    "_formato": "Tamaño, posición y alineación son del FORMATO, no de la marca: layered 54px/1.15 a la izquierda (x=100, top=1400, ep02); moderno limpio 62px/1.1 centrado (top=900, optimismo).",
+    "hablantes": "el mismo sistema en todas las personas del video (Chris, María, invitados) — L022"
+  },
+  "encuadre": {
+    "layered-talking-head": {
       "canvas": [
         1080,
         1920
@@ -90,9 +91,16 @@
       "safeSides": 108,
       "captionLeft": 120,
       "captionWidth": 840,
-      "note": "Punto de partida medido en0910; adaptar al encuadre/app. Y420 y el feather exacto no son constantes universales."
+      "note": "Punto de partida medido en0910; adaptar al encuadre/app. Y420 y el feather exacto no son constantes universales.",
+      "_fuente": "medido en 2026-09-cvander-0910; adaptar a cada grabación. ⚠️ captionLeft/captionWidth son de 0910: adobe y ep02 ponen los subtítulos en x=100 (820–880 px de ancho)."
     },
-    "episodeExceptions": "No copiar automáticamente los tiempos de0910, su lista de asistentes ni su segmento María. Si se usa Telegram, seguir el brief actual;0910 pidió video sin canción, ampliación y regreso.",
-    "reviewGuide": "REVIEW.md"
+    "_por_formato": "el encuadre depende del formato y de la grabación: sólo se da el del formato elegido"
+  },
+  "_capas": {
+    "fecha": "2026-11-01",
+    "que_paso": "Las reglas generales que vivían en la marca salieron a sus capas. Respaldo: archivo/marcas-antes-de-capas/cvander-2026-11-01.json.",
+    "videoWorkflow": "principios → styles/layered-talking-head + pipeline/docs/REGLAS.md (V09, V10, V14, V24); guía → estiloPorDefecto; layoutReference → encuadre; episodeExceptions (no copiar tiempos de 0910) → principio del formato layered",
+    "prohibido": "los 5 eran reglas para todo video: V13 (logos vs caras), V09 (demo ilegible detrás), V10 (no esconder la máscara cortando el pelo), V14 (no adelantar recursos; excepciones aprobadas), V24 (Studio nativo)",
+    "reglas_de_chris": "biblioteca/clientes/cvander.json"
   }
 }

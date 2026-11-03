@@ -196,19 +196,17 @@
     "la paleta de Moi (#FD551D naranja, Geist, dorado) — es otra identidad",
     "radios de esquina: Carbon es radio 0. Un radio de 8-28px es la falla de marca más visible",
     "IBM Plex Sans a 700+ — la cara no existe en disco, el navegador la falsea",
-    "sombras >8px: se hornean en el alpha como mancha (SCENE_PLAYBOOK §3b regla 1)",
     "`jewel` #0E6027 o `rule` #525252 como color de TEXTO (2.34 y 2.32 sobre ink)",
     "blanco o paper como tinta CHICA sobre placa eucalyptus (3.35 y 3.05) — ahí la tinta es `ink`",
     "dos verdes vecinos encimados (eucalyptus sobre jewel = 2.30) — barro",
     "el verde como señal de 'bien' — en esta pieza el verde ES la máquina",
     "círculos como nodos — Carbon es rectangular",
-    "cifras inventadas: el habla no tiene un solo número, así que ningún contador puede aparecer sin fuente",
-    "rojo fuera de `mimesis.terminator-eye` — EXCEPTO los colores de marca de terceros en `mimesis.logos-terceros` (el rojo de Microsoft y el coral de Anthropic son suyos, no acentos nuestros)",
-    "teñir un logo ajeno a nuestra paleta: es una cita, se respeta su color"
+    "rojo fuera de `mimesis.terminator-eye` — EXCEPTO los colores de marca de terceros en `mimesis.logos-terceros` (el rojo de Microsoft y el coral de Anthropic son suyos, no acentos nuestros)"
   ],
   "_pendiente": [
     "¿cierre de marca? Hoy asumido NO (default de la receta talking-head).",
     "el ojo del Terminator: rojo cita (#DA1E28) vs. verde fósforo (#6FDC8C). Se decide mirando S02.",
     "¿esta pieza sale por el canal de Nacho o por el de Stacksync? Cambia si hace falta wordmark."
-  ]
+  ],
+  "_prohibido": "2-nov-2026: sombras >8px en alpha → REGLAS V34 · cifras inventadas → V32 · teñir un logo ajeno → V33. Respaldo: archivo/marcas-antes-de-capas/nacho-2026-11-02.json"
 }

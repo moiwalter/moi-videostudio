@@ -1,1 +1,125 @@
-{"id":"moi-overlay","version":1,"label":"Moi Overlay KIT","resourcePolicy":"real-first","continuousOverlayCoverage":true,"captionPolicy":"legacy-moi-graphic-suppression","reviewMode":"scene-by-scene","principles":["Use the existing Moi scene library within the selected client identity.","Continuous graphic coverage applies only to this selected style.","CapCut alpha output must be premultiplied; scene placement comes from metadata."]}
+{
+  "id": "moi-overlay",
+  "version": 1,
+  "label": "Moi Overlay KIT",
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": true,
+  "captionPolicy": "legacy-moi-graphic-suppression",
+  "reviewMode": "scene-by-scene",
+  "principles": [
+    "Use the existing Moi scene library within the selected client identity.",
+    "Continuous graphic coverage applies only to this selected style.",
+    "CapCut alpha output must be premultiplied; scene placement comes from metadata."
+  ],
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos de la primera escena (el hook): el primer overlay entero antes de que entre el segundo",
+      "default": 5.0,
+      "rango": [
+        4,
+        10
+      ],
+      "medido": "niveles-control (publicado 28-jul, 17.100 vistas): scenes/S02-titulo/meta.json durationFrames 150 = 5,0 s, place 0:00.0 · wallbit-invertir (publicado 10-jul): S01 5,4 s · opciones (approved 2026-08-12, publicado 12-ago): S01 9,13 s"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántas escenas del kit arrancan en los primeros 10 s, el hook incluido; el ritmo de Moi cambia DENTRO del clip, no entre clips",
+      "default": 2,
+      "rango": [
+        1,
+        4
+      ],
+      "medido": "niveles-control (publicado 28-jul, 17.100 vistas): S02 0:00 · S01b 0:05.4 = 2 · opciones (approved 2026-08-12, publicado 12-ago): 0:00 · 0:09.4 = 2 · wallbit-invertir (publicado 10-jul): 0:00 · 0:05.5 = 2"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura un overlay del kit",
+      "default": 5.8,
+      "rango": [
+        3.5,
+        9
+      ],
+      "medido": "niveles-control (publicado 28-jul, 17.100 vistas): mediana 5,8 s de 19 meta.json · siete-pasos (publicado 27-ago, 16.600 vistas): 5,53 s · opciones (approved 2026-08-12, publicado 12-ago): 4,03 s · wallbit-invertir (publicado 10-jul): 8,5 s (la duración bajó con el tiempo)"
+    },
+    "duracionEntrada": {
+      "que": "lo que tarda un elemento en aparecer",
+      "default": 0.32,
+      "rango": [
+        0.2,
+        0.6
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): mediana .32 s de 49 fromTo{opacity:0} · siete-pasos (publicado 27-ago, 16.600 vistas): .32 s de 36"
+    },
+    "sobrepasoEntrada": {
+      "que": "cuánto rebota un elemento al entrar (parámetro de back.out; 0 = power2.out, sin rebote)",
+      "default": 0,
+      "rango": [
+        0,
+        2.6
+      ],
+      "medido": "Walter 3-oct (feedback moi marca seria): «sin rebote/overshoot», los rebotes leen infantil → 0. Lo publicado antes usaba back.out ≈2: opciones (approved 2026-08-12, publicado 12-ago) mediana 2,0 en 35 entradas · siete-pasos (publicado 27-ago, 16.600 vistas) 1,9 en 27"
+    },
+    "desplazamientoEntrada": {
+      "que": "cuántos px viaja un elemento al entrar",
+      "default": 23,
+      "rango": [
+        10,
+        45
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): mediana |y| 23 px en 22 entradas · siete-pasos (publicado 27-ago, 16.600 vistas): 26 px en 17"
+    },
+    "duracionSalida": {
+      "que": "lo que tarda un elemento en irse (power2.in)",
+      "default": 0.3,
+      "rango": [
+        0.14,
+        0.62
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): mediana .30 s de 11 salidas · siete-pasos (publicado 27-ago, 16.600 vistas): .26 s de 9"
+    },
+    "topeZonaSuperior": {
+      "que": "hasta qué y (px) puede bajar un overlay de la franja superior sin tocar la cabeza; depende del encuadre de ESE corte",
+      "default": 564,
+      "rango": [
+        400,
+        760
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): #banda termina en 564 (S02 top 140 + 424); KIT_README «tu cabeza arranca en y≈570»"
+    },
+    "zonaPrincipal": {
+      "que": "dónde vive la mayoría de los overlays sobre el talking head",
+      "default": "superior",
+      "opciones": [
+        "superior",
+        "centro",
+        "inferior"
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): meta zone superior 7 · centro 4 · full 2 · siete-pasos (publicado 27-ago, 16.600 vistas): superior 7 · full 4"
+    },
+    "proporcionFull": {
+      "que": "fracción de escenas que TAPAN al talking head (mp4 opaco) en vez de ir encima en alpha",
+      "default": 0.15,
+      "rango": [
+        0,
+        0.4
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): 2/13 · siete-pasos (publicado 27-ago, 16.600 vistas): 4/11 · niveles-control (publicado 28-jul, 17.100 vistas) y wallbit: 0"
+    },
+    "coberturaOverlay": {
+      "que": "fracción del corte con algún overlay en pantalla (el resto es la persona a cámara sin gráfico)",
+      "default": 0.966,
+      "rango": [
+        0.8,
+        1
+      ],
+      "medido": "opciones (approved 2026-08-12, publicado 12-ago): KIT_README «Cobertura 96,6 %» (recalculado 58,2/60,3 s) · niveles-control (publicado 28-jul, 17.100 vistas): 0,82"
+    },
+    "tablero": {
+      "que": "si hay un HUD persistente (la lista contada) visible todo el video",
+      "default": "ninguno",
+      "opciones": [
+        "ninguno",
+        "persistente"
+      ],
+      "medido": "opciones, niveles-control, wallbit: ninguno · siete-pasos (publicado 27-ago, 16.600 vistas): scenes/S00-tablero 96,03 s, #tab 620×290"
+    }
+  }
+}

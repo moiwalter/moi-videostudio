@@ -1,7 +1,148 @@
 {
- "id":"layered-talking-head","version":1,"label":"Layered Talking Head",
- "aliases":["resources behind the speaker","recorte con recursos detrás"],
- "resourcePolicy":"real-first","continuousOverlayCoverage":false,"captionPolicy":"explicit-in-brief","reviewMode":"scene-by-scene",
- "principles":["Original video, background resource, synchronized subject cutout, then captions.","Base and foreground share source, time origin, FPS and one pose/transform definition.","Test difficult hair, hands and head movement before processing a long matte.","Use the current client's brand and actual recording geometry; do not copy 0910 timings."],
- "reference":"2026-09-cvander-0910/pipeline.json"
+ "id": "layered-talking-head",
+ "version": 1,
+ "label": "Layered Talking Head",
+ "aliases": [
+  "resources behind the speaker",
+  "recorte con recursos detrás"
+ ],
+ "resourcePolicy": "real-first",
+ "continuousOverlayCoverage": false,
+ "captionPolicy": "explicit-in-brief",
+ "reviewMode": "scene-by-scene",
+ "principles": [
+  "Original video, background resource, synchronized subject cutout, then captions.",
+  "Base and foreground share source, time origin, FPS and one pose/transform definition.",
+  "Test difficult hair, hands and head movement before processing a long matte.",
+  "Use the current client's brand and actual recording geometry; do not copy 0910 timings."
+ ],
+ "reference": "2026-09-cvander-0910/pipeline.json",
+ "perillas": {
+  "duracionHook": {
+   "que": "segundos de la primera escena: todo el hook entra de un golpe (REGLAS V15) y recién ahí cambia",
+   "default": 3.5,
+   "rango": [
+    1.5,
+    6
+   ],
+   "unidad": "s",
+   "medido": "BEATS S01: programar-profesion (aprobado por Chris 30-sep) 3,50 s · adobe (entregado v3, 9-oct) 4,16 s"
+  },
+  "cambiosPrimeros10s": {
+   "que": "cuántas escenas arrancan en los primeros 10 s (el ritmo del hook)",
+   "default": 6,
+   "rango": [
+    3,
+    8
+   ],
+   "medido": "BEATS: programar-profesion (aprobado por Chris 30-sep) 6 · adobe (entregado v3, 9-oct) 4"
+  },
+  "duracionEscena": {
+   "que": "mediana de lo que dura una escena (una idea); dentro, algo cambia cada ~1,5–2 s (V17)",
+   "default": 3.35,
+   "rango": [
+    2,
+    6
+   ],
+   "unidad": "s",
+   "medido": "BEATS: programar-profesion (aprobado por Chris 30-sep) mediana 3,35 s (33 escenas en 123,7 s) · adobe (entregado v3, 9-oct) 4,44 s (24 en 107 s)"
+  },
+  "recuerdo": {
+   "que": "cómo se corre la persona cuando el material sube: achicarla o bajarla",
+   "default": "achicar",
+   "opciones": [
+    "achicar",
+    "bajar"
+   ],
+   "medido": "programar-profesion (aprobado por Chris 30-sep): recuerdo() escala .58 · adobe (entregado v3, 9-oct): recuerdo() baja 600 px a escala 1"
+  },
+  "escalaRecuerdo": {
+   "que": "escala de la persona en recuerdo=achicar (bordes fundidos, V11)",
+   "default": 0.58,
+   "rango": [
+    0.45,
+    0.75
+   ],
+   "medido": "programar-profesion (aprobado por Chris 30-sep): master/index.html recuerdo() scale .58"
+  },
+  "bajadaRecuerdo": {
+   "que": "cuántos px baja la persona en recuerdo=bajar",
+   "default": 600,
+   "rango": [
+    300,
+    800
+   ],
+   "unidad": "px",
+   "medido": "adobe (entregado v3, 9-oct): master/index.html recuerdo() y:600"
+  },
+  "derivaCamara": {
+   "que": "zoom lento de todo el video para que ningún cuadro quede quieto (1 = sin deriva)",
+   "default": 1.035,
+   "rango": [
+    1,
+    1.08
+   ],
+   "medido": "programar-profesion (aprobado por Chris 30-sep): #cam/#fg scale 1→1,035 de principio a fin"
+  },
+  "subtitulosTamano": {
+   "que": "tamaño de los subtítulos (la identidad —fuente, caja— es de la marca)",
+   "default": 54,
+   "rango": [
+    44,
+    72
+   ],
+   "unidad": "px",
+   "medido": "adobe (entregado v3, 9-oct) y ep02 (publicado 31-oct): #caps .g 700 54px/1.15"
+  },
+  "subtitulosAlineacion": {
+   "que": "alineación de los subtítulos",
+   "default": "izquierda",
+   "opciones": [
+    "izquierda",
+    "centro"
+   ],
+   "medido": "adobe (entregado v3, 9-oct) y ep02: text-align:left, x=100"
+  }
+ },
+ "escenas": [
+  {
+   "id": "hook",
+   "que": "Todo en un golpe desde el cuadro 0: texto + logo/objeto + prueba, la persona delante",
+   "cuando": "Los primeros segundos; dice la tesis con sus palabras (V18)",
+   "ejemplos": [
+    "adobe S01",
+    "programar-profesion S01"
+   ]
+  },
+  {
+   "id": "presente",
+   "que": "La persona a pantalla completa, nada flotando encima; a lo sumo un push-in lento",
+   "cuando": "Opina, confiesa, remata",
+   "ejemplos": [
+    "adobe S03",
+    "adobe S07",
+    "adobe S18"
+   ]
+  },
+  {
+   "id": "recuerdo",
+   "que": "Material real arriba, la persona achicada o bajada (perilla recuerdo), fondo oscurecido; los subtítulos suben",
+   "cuando": "Nombra algo que se puede mostrar",
+   "ejemplos": [
+    "adobe S06 (Octoverse: la barra que crece)",
+    "adobe S12 (dato McKinsey)",
+    "programar-profesion S05 (DHH en halftone)"
+   ]
+  },
+  {
+   "id": "takeover",
+   "que": "El material ocupa toda la pantalla",
+   "cuando": "Cuenta una memoria o entra a un objeto",
+   "ejemplos": [
+    "adobe S13 (el agente construye)",
+    "adobe S20 (downgrade a Windows 3.1)"
+   ]
+  }
+ ],
+ "_medicion": "Perillas y escenas medidas el 1-nov-2026 sobre los BEATS.json y master/index.html de programar-profesion y adobe (los dos de Chris). Otra marca las ajusta en biblioteca/marcas/<marca>.json → perillas.layered-talking-head."
 }

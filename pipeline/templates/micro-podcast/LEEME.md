@@ -4,7 +4,7 @@ Copias de las herramientas de ep01 (16-oct-2026). Se copian al episodio nuevo y 
 
 | Archivo | Va a | Qué cambiar |
 |---|---|---|
-| `alinear.py` | `edicion/tools/` | nada: `python3.13 alinear.py <wav> <out.json> <texto.txt>` (torchaudio ES, L033) |
+| `alinear.py` | `edicion/tools/` | nada: `python3.13 alinear.py <wav> <out.json> <texto.txt>`. Es un atajo a `pipeline/tools/alinear.py` (la única versión, 2-nov-2026); los anglicismos nuevos van en `pipeline/tools/pron-es.json` |
 | `pagina-cortes.py` | `edicion/tools/` | nada: página para escuchar propuestas de limpieza (L036/L045) |
 | `unir-palabras.py` | `edicion/master/tools/` | la tabla `TR` (tramos y offsets del corte de Walter) y `D1`/`D2` (duración de cada respuesta) |
 | `make-captions.py` | `edicion/master/tools/` | la lista `G` de grupos de subtítulo (`*palabra` = caja de énfasis) |
@@ -16,6 +16,7 @@ Fuera de esta carpeta, en `pipeline/`:
 
 Master de referencia: `proyectos/cvander/2026-10-cvander-preguntale-humano-ep01/edicion/master/index.html`.
 Paso a paso: `second-brain/02-projects/cvander/workflow/micro_podcast.md`.
+Contrato del formato (cualquier marca): `pipeline/styles/micro-podcast/STYLE.md`. Reglas generales: `pipeline/docs/REGLAS.md` (V01–V29); las de Chris: `biblioteca/clientes/cvander.json`.
 
 ## Catálogo visual (para VER las escenas y las transiciones)
 `catalogo-ep01/index.html` — 21 escenas (cuadro + formato + cómo se hizo + palabra ancla + cómo entra + línea del código)

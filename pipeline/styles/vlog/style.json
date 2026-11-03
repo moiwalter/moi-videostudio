@@ -1,0 +1,148 @@
+{
+ "id": "vlog",
+ "version": 1,
+ "label": "Vlog de evento (recap)",
+ "aliases": [
+  "vlog",
+  "recap de evento",
+  "blog recap",
+  "estilo blog"
+ ],
+ "resourcePolicy": "real-first",
+ "continuousOverlayCoverage": true,
+ "captionPolicy": "explicit-in-brief",
+ "reviewMode": "scene-by-scene",
+ "principles": [
+  "The base is a voice track (often recorded apart, with a mic) over many short takes of the SAME event; the cuts land on the beat of the voice.",
+  "External material fills what the takes do not show: official keynote footage, archive (an IPO, a press photo) and real news pages captured vertically like a phone screen.",
+  "A news page is a real capture (never retyped); it enters and leaves with a TikTok-style vertical swipe and keeps drifting up slowly, like someone reading.",
+  "A tonal shift is allowed for one stretch (e.g. a security story): its own grade, sound and transitions, with an explicit way in and out, and then the vlog tone returns.",
+  "One commercial, clean grade for all the takes; the takes of different phones must read as one event.",
+  "Facts on screen are verified before they are written; what cannot be confirmed stays as footage, with no name, logo or label."
+ ],
+ "reference": "proyectos/cvander/2026-10-cvander-cloudflare/edicion/CONTEXT.md (rondas 1–19)",
+ "perillas": {
+  "duracionHook": {
+   "que": "segundos del hook antes de que entre la voz base (una toma cruda del evento, con su propio audio)",
+   "default": 8.9,
+   "rango": [
+    3,
+    12
+   ],
+   "unidad": "s",
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): master/BEATS.json S01 0–8,89 s (selfie con Freddy → Chris frente al Moscone)"
+  },
+  "duracionEscena": {
+   "que": "mediana de lo que dura una escena; dentro, los cortes van al golpe de la voz",
+   "default": 4.58,
+   "rango": [
+    2.5,
+    7
+   ],
+   "unidad": "s",
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): mediana 4,58 s (21 escenas en 100,4 s)"
+  },
+  "tramoDeTono": {
+   "que": "qué parte del video puede cambiar de tono (0 = ninguno)",
+   "default": 0.26,
+   "rango": [
+    0,
+    0.4
+   ],
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): el tramo ciber S03–S07 va de 14,7 a 40,7 s = 26 % de 100,4 s"
+  },
+  "swipe": {
+   "que": "duración del swipe vertical de TikTok entre notas o de una toma a una nota",
+   "default": 0.36,
+   "rango": [
+    0.2,
+    0.6
+   ],
+   "unidad": "s",
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): master/plantilla.tpl D_ = .36 (power3.inOut), ronda 11"
+  },
+  "derivaNota": {
+   "que": "cuánto sigue subiendo la página ya posada, como alguien leyendo",
+   "default": 70,
+   "rango": [
+    0,
+    160
+   ],
+   "unidad": "px",
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): plantilla.tpl .pag y:-70 en 2,6 s"
+  },
+  "color": {
+   "que": "grade de las tomas del evento",
+   "default": "comercial-limpio",
+   "opciones": [
+    "comercial-limpio",
+    "cine-teal-naranja",
+    "film-portra",
+    "naranja-de-marca"
+   ],
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): Walter eligió «1 · Comercial limpio» (25-oct) entre las 4 de revision/color-prueba-2.jpg; fórmula ffmpeg en color/grades-prueba-2.json"
+  },
+  "subtitulosTamano": {
+   "que": "tamaño de los subtítulos (la identidad —fuente, caja— es de la marca)",
+   "default": 66,
+   "rango": [
+    48,
+    76
+   ],
+   "unidad": "px",
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): master/estilo.css .cap 700 66px/1.18"
+  },
+  "subtitulosAlineacion": {
+   "que": "alineación de los subtítulos",
+   "default": "centro",
+   "opciones": [
+    "centro",
+    "izquierda"
+   ],
+   "medido": "cloudflare (entregado 25-oct, Chris: «El video está buenísimo. Realmente bueno»): Walter 25-oct «CENTRADOS y dentro de la zona segura» · #caps left 54 top 1300 ancho 798"
+  }
+ },
+ "escenas": {
+  "_que_es": "los tipos de escena del formato, con ejemplos del video donde se midió",
+  "hook": {
+   "que_se_ve": "una toma cruda del evento con su audio, sin nombre en pantalla; recién después entra la voz base",
+   "cuando": "el arranque",
+   "ejemplos": [
+    "cloudflare S01"
+   ]
+  },
+  "vlog": {
+   "que_se_ve": "tomas del evento cortadas al golpe de la voz (exteriores, registro, salas, escenarios, amigos)",
+   "cuando": "cuenta lo que pasó o lo que vio",
+   "ejemplos": [
+    "cloudflare S02",
+    "cloudflare S10",
+    "cloudflare S17"
+   ]
+  },
+  "nota": {
+   "que_se_ve": "la página real de una noticia como pantalla de celular, con swipe vertical",
+   "cuando": "nombra un hecho o una persona con fuente",
+   "ejemplos": [
+    "cloudflare S12",
+    "cloudflare S13"
+   ]
+  },
+  "tono": {
+   "que_se_ve": "tramo con otro mundo visual y sonoro, con entrada y salida explícitas",
+   "cuando": "una historia que pide tensión dentro del vlog",
+   "ejemplos": [
+    "cloudflare S03–S07 (ciber: glitch, documentos por golpe, muro de titulares, apagado CRT)"
+   ]
+  },
+  "archivo": {
+   "que_se_ve": "material oficial o de archivo (keynote, IPO)",
+   "cuando": "algo que las tomas no muestran",
+   "ejemplos": [
+    "cloudflare S19",
+    "cloudflare S20"
+   ]
+  }
+ },
+ "_medicion": "2-nov-2026: un solo video entregado (cloudflare). Los defaults son de ese video; con un segundo vlog aprobado se revisan."
+}

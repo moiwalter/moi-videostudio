@@ -35,7 +35,14 @@ Whisper se adelanta hasta 3 s en tramos con pausas, y el desfase varía por tram
 - En cada **unión del corte** se mira la energía del original ±1,5 s: si hay voz tocando el corte, hay una palabra mochada.
 - **Un solo reloj:** todo tiempo de la composición es el segundo real del corte. Si el corte cambia en un punto, se corren todas las anclas posteriores de una vez.
 
-Herramientas (viven en el proyecto de referencia, `master/tools/`; todavía no están en `pipeline/tools/`):
+En el pipeline (1-nov-2026): `tools/palabras-onda.py` corrige con la onda el fin de cada palabra que la alineación
+marca antes de tiempo ([REGLAS V04](REGLAS.md#v04--cada-palabra-se-mide-en-la-onda-antes-de-cortar)), y
+`tools/alinear.py` es el alineador, uno solo para todos los videos (2-nov-2026; antes había 8 copias, una por proyecto):
+`--audio <voz> --texto <texto.txt> --out local/words-aligned.json`, o por bloques del corte con `--texto bloques.json --bloques local/cut.json`.
+El texto es obligatorio (una copia vieja alineaba en silencio el guion de Adobe si faltaba). Los anglicismos van en
+`tools/pron-es.json`, compartido; los de un solo video, en `--pron`.
+
+Herramientas del proyecto de referencia (`master/tools/`, atadas a su corte; para un video nuevo, el alineador es `tools/alinear.py`):
 
 | Archivo | Qué hace |
 |---|---|
@@ -48,12 +55,13 @@ Herramientas (viven en el proyecto de referencia, `master/tools/`; todavía no e
 
 El mapa es `BEATS.json`. Una escena = una idea. En la referencia: 32 escenas en 123 s.
 
-Cada escena lleva cuatro campos que no se saltan:
+Cada escena lleva cuatro campos que no se saltan (cinco si el video mezcla formatos):
 
 - `words` — la frase exacta y sus segundos.
 - `tratamiento` — qué se ve.
 - `transicion_entrada` — cómo se llega.
 - `estado` — construida / revisada / aprobada.
+- `formato` — sólo si el pitch eligió una mezcla: de qué formato es la escena (`pitch.mjs --check` lo exige).
 
 **La escena cambia en la pausa**, entre una idea y la siguiente. Nunca a mitad de frase.
 

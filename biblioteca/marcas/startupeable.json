@@ -132,7 +132,6 @@
     "la paleta de Moi (#FD551D naranja, Geist) — es otra identidad, no un preset",
     "gris (gray o gray-soft) sobre teal: 1.6:1 y 1.5:1 medidos — desaparece",
     "hot #FCC600 como COLOR DE TEXTO sobre teal: 2.2:1, ilegible. Es color de PLACA con texto ink encima (13.2:1)",
-    "restilizar una captura de prensa a la paleta: una captura vale porque conserva la identidad del medio — si se repinta deja de ser evidencia",
     "HK Grotesk a 900 — la cara no existe, el navegador la falsea (tope real: 700)",
     "box-shadows: su lenguaje es plano, borde y bloque",
     "radios de 20-28px — los suyos van de 3 a 10px",
@@ -159,5 +158,6 @@
       1520
     ]
   },
-  "_qc": "Encuadre de Enzo en el CRUDO, sin escala de cámara. Medido el 30-ago-2026 mirando 3 tomas de fuente-48k.mp4 (12s/48s/88s) con grilla de 192px: cabeza ~400, mentón ~870. ⚠️ Si el video aplica escala de cámara, el valor OPERATIVO es otro y va en el data-qc-cara del #frame: en tecnico-vs-no-tecnico, con base 1.20 anclada arriba (originY:0), da 470,1150 — que es exactamente 400x1.2 y 880x1.2 con margen. Enzo está MÁS ALTO en cuadro que Walter (700-1150): no se hereda de moi.json."
+  "_qc": "Encuadre de Enzo en el CRUDO, sin escala de cámara. Medido el 30-ago-2026 mirando 3 tomas de fuente-48k.mp4 (12s/48s/88s) con grilla de 192px: cabeza ~400, mentón ~870. ⚠️ Si el video aplica escala de cámara, el valor OPERATIVO es otro y va en el data-qc-cara del #frame: en tecnico-vs-no-tecnico, con base 1.20 anclada arriba (originY:0), da 470,1150 — que es exactamente 400x1.2 y 880x1.2 con margen. Enzo está MÁS ALTO en cuadro que Walter (700-1150): no se hereda de moi.json.",
+  "_prohibido": "2-nov-2026: restilizar una captura de prensa → REGLAS V33. Respaldo: archivo/marcas-antes-de-capas/startupeable-2026-11-02.json"
 }

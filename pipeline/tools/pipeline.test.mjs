@@ -50,7 +50,18 @@ test('declaring delivered cannot bypass approvals and final review',t=>{const f=
 test('audio and export QC measures actual streams, format and decode',t=>{const f=fixture(t);const file=join(f.base,'test.mp4');const r=spawnSync('ffmpeg',['-v','error','-f','lavfi','-i','color=c=purple:s=160x284:r=30:d=1','-f','lavfi','-i','sine=frequency=440:sample_rate=48000:duration=1','-c:v','libx264','-pix_fmt','yuv420p','-c:a','aac','-shortest',file],{encoding:'utf8'});assert.equal(r.status,0,r.stderr);const audio=checkSound(file);assert.equal(audio.ok,true);assert.equal(audio.measured.sampleRate,48000);assert.equal(checkSound(file,{targetLUFS:-1}).ok,false);const qa=verifyExport(file,{width:160,height:284,fps:30,frames:30});assert.equal(qa.ok,true,JSON.stringify(qa.errors));assert.equal(qa.visualReview,'pending');assert.equal(verifyExport(file,{width:1080}).ok,false);});
 test('Cvander production reference exports remain byte-for-byte identical',()=>{const saved=JSON.parse(readFileSync(join(ROOT,'archivo/auditoria-pipeline/before-pipeline-fixes/preserved-exports.json')));for(const [file,hash] of Object.entries(saved))assert.equal(digest(join(resolveProject(file.split('/')[0]),...file.split('/').slice(1))),hash);for(const slug of ['2026-09-cvandersep2-paper','2026-09-cvander-0910'])assert.equal(registeredStatus(resolveProject(slug),slug).entregado,true);});
 test('recorded Remotion pin must match the actual local runtime',async t=>{const {assertEngineRuntime}=await import('./project.mjs');const f=fixture(t);f.put('node_modules/remotion/package.json',{version:'4.0.525'});f.put('node_modules/@remotion/cli/package.json',{version:'4.0.525'});assert.equal(assertEngineRuntime(f.base),'4.0.525');f.put('node_modules/remotion/package.json',{version:'4.0.526'});assert.throws(()=>assertEngineRuntime(f.base),/difiere/);});
-test('malformed project in aggregate status cannot hide other results',t=>{const slug=`_test-malformed-${process.pid}`,base=join(ROOT,slug);mkdirSync(base);writeFileSync(join(base,'pipeline.json'),'{broken');t.after(()=>rmSync(base,{recursive:true,force:true}));const r=cli('flujo.mjs',['--rapido','--json']);assert.equal(r.status,1,r.stderr);const reports=JSON.parse(r.stdout);assert.ok(reports.find(r=>r.slug===slug)?.bloqueo);assert.ok(reports.find(r=>r.slug==='2026-09-cvandersep2-paper')?.entregado);});
+test('malformed project in aggregate status cannot hide other results',t=>{
+ /* Proyectos de juguete (2-nov-2026): antes corría sobre todos los proyectos reales y leía decenas de GB del disco (90 s). */
+ const root=mkdtempSync(join(tmpdir(),'flujo-raiz-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
+ const put=(p,v)=>{mkdirSync(dirname(join(root,p)),{recursive:true});writeFileSync(join(root,p),v);};
+ put('_roto/pipeline.json','{broken');
+ put('cerrado/kit.config.sh','# legacy kit\n');put('cerrado/ENTREGADO.json',JSON.stringify({fecha:'2026-09-30'}));
+ const r=cli('flujo.mjs',['--rapido','--json'],{env:{...process.env,FLUJO_RAIZ:root}});
+ assert.equal(r.status,1,r.stderr);const reports=JSON.parse(r.stdout);
+ assert.equal(reports.length,2);
+ assert.ok(reports.find(x=>x.slug==='_roto')?.bloqueo);
+ assert.ok(reports.find(x=>x.slug==='cerrado')?.entregado);
+});
 test('bound Whisper JSON becomes timed cues and ignores harmless mtime drift',async t=>{const {hallarTranscripts,cuadraConElCorte}=await import('./lib-corte.mjs');const f=fixture(t);f.put('speech.json',{transcription:[{offsets:{from:0,to:1000},text:'Real timed words'}]});f.cfg.transcript={file:join(f.base,'speech.json'),sha256:digest(join(f.base,'speech.json')),sourceSha256:f.cfg.source.sha256,language:'en'};f.save();const transcript=hallarTranscripts(f.base)[0];assert.equal(transcript.cues[0].end,1);assert.equal(transcript.cues[0].text,'Real timed words');assert.equal(cuadraConElCorte(transcript,{dur:1,mtime:Date.now()+10000}).veredicto,'ok');});
 test('review CLI follows the active variant receipt and preserves historical review',t=>{const f=fixture(t);f.cfg.activeVariant='B';f.cfg.variants={B:{review:'review/B.json'}};f.save();f.put('REVIEW.json',{historical:true});assert.equal(cli('review-video.mjs',[f.base,'--init']).status,0);assert.equal(JSON.parse(readFileSync(join(f.base,'REVIEW.json'))).historical,true);assert.equal(JSON.parse(readFileSync(join(f.base,'review/B.json'))).composition,'src/index.ts');});
 
@@ -100,4 +111,20 @@ test('historical delivery text status exits like JSON and remains read-only',t=>
  Object.assign(f.cfg,{state:'reference',export:{file:'delivered.mp4',sha256:digest(join(f.base,'delivered.mp4'))},evidence:['evidence.json']});f.save();
  const before=tree(f.base),text=cli('flujo.mjs',[f.base,'--rapido']),json=cli('flujo.mjs',[f.base,'--rapido','--json']);
  assert.equal(text.status,0,text.stderr);assert.equal(text.status,json.status,json.stderr);assert.match(text.stdout,/ENTREGADO/);assert.equal(JSON.parse(json.stdout).entregado,true);assert.deepEqual(tree(f.base),before);
+});
+test('registered project declared ENTREGADO is closed, and reopening it lifts the marker',t=>{
+ /* 2-nov-2026: 8 videos de Chris ya entregados (programar, adobe, cloudflare…) tienen pipeline.json pero no el recibo de
+    entrega con huella (son anteriores a él). El router los mostraba pendientes y pedía construir el hook. Walter: «entregados todos». */
+ const f=fixture(t);f.approve(scenes(f.base)[0]);
+ assert.equal(registeredStatus(f.base,'x',{fast:true}).entregado,undefined);
+ f.put('ENTREGADO.json',{fecha:'2026-10-08',donde:null,nota:'#15 Adobe'});
+ const r=registeredStatus(f.base,'x',{fast:true});
+ assert.equal(r.entregado,true);assert.equal(r.declarado,true);assert.equal(r.bloqueo,null);
+ const e=r.ch.find(c=>c.estado==='ENTREGADO');assert.match(e.detalle,/2026-10-08/);assert.match(e.detalle,/sin huella/);
+ assert.ok(!r.ch.some(c=>['NO VERIFICABLE','BLOQUEADO'].includes(c.estado)),JSON.stringify(r.ch));
+ assert.equal(cli('workflow-state.mjs',[f.base,'reopen','--task','cambio autorizado de prueba']).status,0);
+ assert.ok(!existsSync(join(f.base,'ENTREGADO.json')));assert.ok(readdirSync(f.base).some(n=>/^ENTREGADO\.reabierto-.+\.json$/.test(n)));
+ assert.notEqual(registeredStatus(f.base,'x',{fast:true}).entregado,true);
+ f.put('ENTREGADO.json','{roto');const b=registeredStatus(f.base,'x',{fast:true});
+ assert.notEqual(b.entregado,true);assert.ok(b.ch.some(c=>c.estado==='NO VERIFICABLE'&&c.nombre==='ENTREGA'));
 });

@@ -1,0 +1,167 @@
+{
+ "id": "cvander",
+ "persona": "Christian Van Der Henst",
+ "marca": "cvander",
+ "_que_es": "Reglas de ESTA persona, no de su marca ni del pipeline. La marca (biblioteca/marcas/cvander.json) es identidad: colores, tipografía, subtítulos. El pipeline (pipeline/docs/REGLAS.md) vale para todo video. Cada regla lleva su fuente; 'chequeo' dice cómo se verifica (un gate lo puede leer como dato; hoy sólo portada.py lee el veto de IA, desde pipeline/portadas/cvander.json).",
+ "creado": "2026-11-01",
+ "guias": {
+  "edicion_por_capas": "/Users/TERABYTE10/second-brain/02-projects/cvander/workflow/edicion_por_capas.md",
+  "referencias_visuales": "/Users/TERABYTE10/second-brain/02-projects/cvander/workflow/referencias_visuales.md",
+  "episodio_de_referencia": "proyectos/cvander/2026-09-cvander-0910/edicion/montaje-completo/index.html",
+  "_de_donde": "estaban en marcas/cvander.json → videoWorkflow hasta el 1-nov-2026"
+ },
+ "reglas": [
+  {
+   "id": "C01",
+   "tema": "idioma",
+   "regla": "Lo que Chris dice en inglés va en inglés en los subtítulos, palabra por palabra, sin traducir. Lo que dice en español no se reemplaza por inglés. Se transcribe como lo dice (REGLAS V29: cada tramo en su idioma).",
+   "chequeo": {
+    "tipo": "manual",
+    "cuando": "subtítulos"
+   },
+   "fuente": [
+    "proyectos/cvander/2026-10-cvander-adobe/edicion/MAPA.md: «I know, pero hay soluciones para eso»",
+    "proyectos/cvander/2026-10-cvander-preguntale-humano-ep01/revision/cortes/cortes.json: «uno de estos frontier models»",
+    "proyectos/cvander/2026-10-cvander-optimismo/RELATO-PROPUESTO-v2-TABLA-COMPLETA.md: «fuck them», «enjoy vibe coding»",
+    "proyectos/cvander/2026-09-cvandersep2-paper/edicion/local/versions/instagram-b-blue/VARIANT-B-BRIEF.md §2: anglicismos pronunciados conservados (AI, data centers, founder, CEO, chips), «evitando sustituir otras palabras españolas por inglés»"
+   ]
+  },
+  {
+   "id": "C02",
+   "tema": "idioma",
+   "regla": "Tweets y posts en inglés se muestran originales, sin traducción: embed real, nada retipeado.",
+   "chequeo": {
+    "tipo": "manual",
+    "cuando": "recursos"
+   },
+   "fuente": [
+    "proyectos/cvander/2026-10-cvander-optimismo/edicion/moderno/PLAN.md: «Tweets (EN INGLÉS, sin traducción — Walter 31-oct)»"
+   ]
+  },
+  {
+   "id": "C03",
+   "tema": "idioma",
+   "regla": "Una cita de una fuente ajena (no la dice Chris) va en su idioma original + traducción.",
+   "chequeo": {
+    "tipo": "manual",
+    "cuando": "recursos"
+   },
+   "fuente": [
+    "proyectos/cvander/2026-10-cvander-jobs/recursos/RECURSOS.md: «Las citas van en idioma original + traducción»"
+   ]
+  },
+  {
+   "id": "C04",
+   "tema": "texto",
+   "regla": "En pantalla siempre «AI», nunca «IA»: hooks, rótulos, datos, subtítulos que escribimos, portadas. Lo que Chris dice en voz se transcribe tal cual. Un screenshot de una fuente se respeta tal cual.",
+   "chequeo": {
+    "tipo": "texto-prohibido",
+    "patron": "\\bIAs?\\b",
+    "donde": [
+     "pantalla",
+     "portada"
+    ],
+    "implementado": [
+     "pipeline/portadas/cvander.json → portada.py init",
+     "pipeline/tools/cliente-check.mjs (router: fila CLIENTE; pantalla de la composición)"
+    ],
+    "_patron": "2-nov-2026: «IAs» también (antes \\bIA\\b lo dejaba pasar). La portada sigue con su propio patrón en pipeline/portadas/cvander.json."
+   },
+   "fuente": [
+    "second-brain/02-projects/cvander/lessons.md L039 — Chris, 8-oct: «AI aquí y en todos los videos siempre. AI soul.md»"
+   ]
+  },
+  {
+   "id": "C05",
+   "tema": "guiño",
+   "regla": "Cada video lleva al menos un easter egg sutil y verídico para quien lo nota (bandera del Barça; emojis 🌋🚤🇬🇹 sobre el lago en adobe). Nunca un texto tipo ubicación; nunca compite con el mensaje.",
+   "chequeo": {
+    "tipo": "manual",
+    "cuando": "antes de entregar"
+   },
+   "fuente": [
+    "lessons.md L040 — Chris, 8-oct: «Voy a tirar siempre algo para quien lo nota»"
+   ]
+  },
+  {
+   "id": "C06",
+   "tema": "recursos",
+   "regla": "El clip de Chris con Freddy en el Moscone (amigos-moscone) no se usa en ningún video. Para SF, el material que él mandó (recursos/chris-31oct/ de optimismo).",
+   "chequeo": {
+    "tipo": "recurso-vetado",
+    "patrones": [
+     "amigos-moscone",
+     "hook-walter",
+     "2000344A-8DC0-4A97-B32A-558CCD5DAB33"
+    ],
+    "_patrones": "amigos-moscone = el nombre en optimismo; es un recorte de cloudflare/originales/hook-walter.mp4, que sale de la selfie 2000344A… (la escalera con Freddy). Un clip renombrado se detecta por su origen en el INDEX.json de su carpeta.",
+    "implementado": [
+     "pipeline/tools/cliente-check.mjs (router: fila CLIENTE)"
+    ]
+   },
+   "fuente": [
+    "lessons.md L059 — Chris, 31-oct: «No volvamos a usar el clip con Freddy»"
+   ]
+  },
+  {
+   "id": "C07",
+   "tema": "recursos",
+   "regla": "Antes de dibujar, buscar material de su propia vida: intelligence/source/, Wayback (Maestros del Web, su sitio de 2006) y eventos suyos ya editados (Vibecoders Anónimos). Lo que sólo este canal puede mostrar gana.",
+   "chequeo": {
+    "tipo": "manual",
+    "cuando": "mapa de escenas"
+   },
+   "fuente": [
+    "lessons.md L034 y L030 (partes «Chris»)"
+   ]
+  },
+  {
+   "id": "C08",
+   "tema": "portada",
+   "regla": "La portada usa el texto que dicta Chris, exacto; él va como foto real recortada (el generador nunca lo dibuja), cerca, con energía. Si el material es ≤720 px (WhatsApp), se usa su recorte de la portada del AI slop.",
+   "chequeo": {
+    "tipo": "herramienta",
+    "implementado": [
+     "tools/portada.sh + pipeline/portadas/cvander.json"
+    ]
+   },
+   "fuente": [
+    "lessons.md L041, L050, L054, L055, L060",
+    "pipeline/docs/PORTADAS.md"
+   ]
+  },
+  {
+   "id": "C09",
+   "tema": "entrega",
+   "regla": "El borrador de CapCut se llama «cvander <slug>». El cobro se anota en second-brain/02-projects/cvander/client/payments.md el mismo día.",
+   "chequeo": {
+    "tipo": "manual",
+    "cuando": "entrega"
+   },
+   "fuente": [
+    "lessons.md L049 y L051 (partes «Chris»)"
+   ]
+  }
+ ],
+ "series": {
+  "preguntale-a-un-humano": {
+   "reglas": [
+    {
+     "id": "C10",
+     "regla": "La intro de la serie va sin sus SFX dentro del episodio.",
+     "fuente": [
+      "lessons.md L046 (parte «Chris»)"
+     ]
+    },
+    {
+     "id": "C11",
+     "regla": "Todo invitado entra con autoridad verificable (REGLAS V19), en todo episodio y toda colab.",
+     "fuente": [
+      "lessons.md L044 (parte «Chris»)"
+     ]
+    }
+   ]
+  }
+ },
+ "en_la_marca": "Paleta, tipografías (Rubik/Lineal, L022) y la identidad de los subtítulos (Rubik 700, caja #3c0058 con borde rosa, L038) viven en biblioteca/marcas/cvander.json → subtitulos. Tamaño y posición de los subtítulos son del formato. No se duplican acá."
+}

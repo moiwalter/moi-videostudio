@@ -1,9 +1,137 @@
 {
-  "id": "paper-collage", "version": 1,
-  "label": "Paper Collage", "aliases": ["paper edit", "recortes de papel", "cvandersep2"],
-  "resourcePolicy": "real-first", "continuousOverlayCoverage": false,
-  "captionPolicy": "explicit-in-brief", "reviewMode": "scene-by-scene",
-  "principles": ["Use recognizable real photographs, authentic documents, logos and real footage; keep provenance.", "Build the real hook first and obtain the user's decision before propagating the look.", "Animate the relationship being narrated; give objects meaningful changes after their entrance.", "Select paper, text and emphasis colors from the client's verified brand; preserve resource colors.", "Keep speaker presence, caption treatment and platform margins specific to this recording.", "Inspect the changed scene and its joins first; widen review only for shared causes."],
-  "engines": {"remotion": "production-reference", "hyperframes": "supported-contract; style pilot still required"},
-  "reference": "2026-09-cvandersep2-paper/pipeline.json"
+  "id": "paper-collage",
+  "version": 1,
+  "label": "Paper Collage",
+  "aliases": [
+    "paper edit",
+    "recortes de papel",
+    "cvandersep2"
+  ],
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": false,
+  "captionPolicy": "explicit-in-brief",
+  "reviewMode": "scene-by-scene",
+  "principles": [
+    "Use recognizable real photographs, authentic documents, logos and real footage; keep provenance.",
+    "Build the real hook first and obtain the user's decision before propagating the look.",
+    "Animate the relationship being narrated; give objects meaningful changes after their entrance.",
+    "Select paper, text and emphasis colors from the client's verified brand; preserve resource colors.",
+    "Keep speaker presence, caption treatment and platform margins specific to this recording.",
+    "Inspect the changed scene and its joins first; widen review only for shared causes."
+  ],
+  "engines": {
+    "remotion": "production-reference",
+    "hyperframes": "supported-contract; style pilot still required"
+  },
+  "reference": "2026-10-cvander-univguate/edicion/pipeline.json (aprobado por Chris 5-oct; antes apuntaba a cvandersep2, sin aprobación registrada)",
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos del hook: franja de papel con título + escudo + ventana sobre la persona a pantalla completa",
+      "default": 6.44,
+      "rango": [
+        3,
+        8
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): edicion/master/BEATS.json S01 0 → S02 6,44 (el corte de Walter en CapCut no toca el hook). cvandersep2 (sin aprobación registrada): 4,9 s"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántas escenas arrancan en los primeros 10 s, el hook incluido",
+      "default": 3,
+      "rango": [
+        2,
+        6
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): master/BEATS.json S01 0 · S02 6,44 · S03 9,83 = 3"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura una escena (una escena por idea)",
+      "default": 2.48,
+      "rango": [
+        1.8,
+        5.5
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): master/BEATS.json pasado por revision/corte-walter-1005.json (lo que Chris vio) = mediana 2,475 s en 36 escenas; el mapa sin ese corte da 2,825 s en 38"
+    },
+    "subtitulosTamano": {
+      "que": "tamaño de los subtítulos (la identidad —fuente, caja— es de la marca)",
+      "default": 60,
+      "rango": [
+        48,
+        72
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): edicion/src/style.css .caption font-size:60px. cvandersep2: 57px"
+    },
+    "subtitulosAlineacion": {
+      "que": "alineación de los subtítulos (en «recuerdo» suben de top 1500 a 722)",
+      "default": "izquierda",
+      "opciones": [
+        "izquierda",
+        "centro"
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Captions.tsx left:108 width:864, «Alineados a la izquierda»"
+    },
+    "fondo": {
+      "que": "papel de fondo: el oscuro de la marca o crema",
+      "default": "oscuro",
+      "opciones": [
+        "oscuro",
+        "crema"
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Film.tsx Backdrop C.purple #3c0058. cvandersep2 A/v4: crema #eee6e1"
+    },
+    "granoPapel": {
+      "que": "opacidad de la textura de fibras de papel sobre el fondo",
+      "default": 0.2,
+      "rango": [
+        0.08,
+        0.9
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Film.tsx Backdrop opacity .2 (tira «rasga» .6). cvandersep2: .13–.85 según variante"
+    },
+    "sombraOpacidad": {
+      "que": "opacidad de la sombra del recorte ya asentado (en el aire crece y baja a .20)",
+      "default": 0.34,
+      "rango": [
+        0.15,
+        0.5
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Paper.tsx drop-shadow(… rgba(0,0,0,${.34-.14*lift})). cvandersep2: .25"
+    },
+    "giroRecortes": {
+      "que": "giro típico en grados con que se asienta cada recorte; el signo alterna por pieza",
+      "default": 2,
+      "rango": [
+        0,
+        8
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): master/BEATS.json 54 piezas con rot −6…+5, mediana |rot| = 2"
+    },
+    "derivaRecortes": {
+      "que": "multiplicador de la deriva viva tras asentarse (±5 px x, ±7 px y, ±0,7°); 0 = quieto",
+      "default": 1,
+      "rango": [
+        0,
+        2
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Paper.tsx drift; src/Film.tsx drift 1 en piezas, .5 en tiras de título"
+    },
+    "duracionTransicion": {
+      "que": "lo máximo que dura la transición entre escenas; ocupa el final de la pausa (mínimo 0,3 s)",
+      "default": 0.6,
+      "rango": [
+        0.3,
+        1
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Film.tsx d = Math.min(Math.max(b − a, .3), .6); la tira «rasga» tope .8"
+    },
+    "escalaPersonaRecuerdo": {
+      "que": "ancho de la persona en «recuerdo» (anclada abajo, material arriba), como fracción de 1080",
+      "default": 0.57,
+      "rango": [
+        0.45,
+        0.75
+      ],
+      "medido": "univguate (r5 aprobado por Christian 5-oct: «quedó perfecto, realmente bueno»): src/Film.tsx BOX.R w:616 → 616/1080 = 0,57"
+    }
+  }
 }

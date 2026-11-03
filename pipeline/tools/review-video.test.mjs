@@ -79,7 +79,11 @@ test('new Cvander MASTER receives brand, guidance and pending review; existing b
   const run = (cmd, args) => spawnSync(cmd, args, { cwd: root, encoding: 'utf8' });
   const built = run('bash', ['tools/new-video.sh', slug, '--marca', 'cvander', '--carril', 'master']); assert.equal(built.status, 0, built.stderr);
   assert.equal(JSON.parse(readFileSync(join(dir, 'brand.json'))).name, 'cvander');
-  assert.match(readFileSync(join(dir, 'PRODUCTION.md'), 'utf8'), /FLUJO DE VIDEO: cvander-layered/);
+  // 1-nov-2026: la marca ya no trae videoWorkflow; el formato sale de estiloPorDefecto y la guía de Chris del archivo de cliente.
+  const production = readFileSync(join(dir, 'PRODUCTION.md'), 'utf8');
+  assert.match(production, /EDITING STYLE: Layered Talking Head/);
+  assert.match(production, /CLIENTE: Christian Van Der Henst/);
+  assert.match(production, /edicion_por_capas\.md/);
   assert.match(readFileSync(join(dir, 'master/_tokens.css'), 'utf8'), /font-family:'Rubik'/);
   assert.match(readFileSync(join(dir, 'master/_tokens.css'), 'utf8'), /font-weight:200 900/);
   assert.equal(JSON.parse(readFileSync(join(dir, 'REVIEW.json'))).preview.checks.layers.status, 'pending');

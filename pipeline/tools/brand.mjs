@@ -21,6 +21,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import {styleBrief} from "./style.mjs";
+import {loadCliente,clienteBrief} from "./capas.mjs";
 import {resolveProject,config,ROOT} from './project.mjs';
 import {inputGraph} from "./input-graph.mjs";
 
@@ -34,6 +35,9 @@ const [cmd, arg1, arg2] = process.argv.slice(2);
 // ─────────────────────────────────────────────────────────── helpers
 const listBrands = () =>
   existsSync(BRANDS) ? readdirSync(BRANDS).filter((f) => f.endsWith(".json")).map((f) => basename(f, ".json")) : [];
+
+/** «V01–V34»: el rango sale del archivo, no de memoria (decía V01–V29 después de sumar V30–V34). */
+function rangoReglas(){try{const ids=[...readFileSync(join(ROOT,"pipeline/docs/REGLAS.md"),"utf8").matchAll(/^\| V(\d+) \|/gm)].map(m=>+m[1]);return ids.length?`V01–V${String(Math.max(...ids)).padStart(2,"0")}`:"V…";}catch{return "V…";}}
 
 function loadBrand(name) {
   if (!name) { console.error(`✗ falta la marca. Disponibles: ${listBrands().join(" · ") || "(ninguna)"}`); process.exit(1); }
@@ -276,6 +280,11 @@ function newBrand(name) {
 }
 
 function brief(b, style = null) {
+  /* Capas (1-nov-2026): el formato lo da el proyecto; si no, la marca (`estiloPorDefecto`); si no, el
+     `videoWorkflow` viejo, que sigue funcionando para una marca que todavía lo tenga. Las reglas de UNA
+     persona vienen de biblioteca/clientes/<cliente>.json, no de la marca. */
+  style = style || b.estiloPorDefecto || null;
+  const sub = b.subtitulos;
   const pal = Object.entries(b.palette).map(([k, v]) => `${k} ${v}`).join(" · ");
   return [
     `MARCA: ${b.label || b.name}`,
@@ -311,7 +320,14 @@ function brief(b, style = null) {
       `Alcance: ${b.videoWorkflow.episodeExceptions}`,
       `Revisión compartida: ${b.videoWorkflow.reviewGuide}`,
     ].join("\n") : "",
-    `PROHIBIDO: ${(b.prohibido || []).join(" · ")}`,
+    sub ? `Subtítulos (identidad de marca; tamaño y posición los da el formato): ${sub.fuente} ${sub.peso}, tracking ${sub.tracking}, color ${sub.color}`
+      + (sub.enfasis ? `\n  énfasis: caja ${sub.enfasis.fondo} + texto ${sub.enfasis.texto}, borde ${sub.enfasis.borde}, radio ${sub.enfasis.radio}, sombra ${sub.enfasis.sombra}` : "")
+      + (sub.nuncaSobre ? `\n  nunca sobre ${sub.nuncaSobre}` : "")
+      + (sub.hablantes ? `\n  ${sub.hablantes}` : "") : "",
+    b.encuadre?.[style] ? `Encuadre de referencia de ${style} (adaptar al plano): ${JSON.stringify(Object.fromEntries(Object.entries(b.encuadre[style]).filter(([k]) => !k.startsWith("_"))))}` : "",
+    clienteBrief(loadCliente(b.name)),
+    (b.prohibido || []).length ? `PROHIBIDO (marca): ${b.prohibido.join(" · ")}` : "",
+    `REGLAS DEL PIPELINE (todo video, ${rangoReglas()}): ${join(ROOT, "pipeline/docs/REGLAS.md")}`,
     `Usá var(--token) del bloque :root, nunca un hex literal. El gate brand.mjs check lo verifica.`,
   ].filter(Boolean).join("\n");
 }

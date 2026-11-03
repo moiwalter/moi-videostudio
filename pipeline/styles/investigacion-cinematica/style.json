@@ -1,0 +1,135 @@
+{
+  "id": "investigacion-cinematica",
+  "version": 1,
+  "label": "Investigación cinematográfica",
+  "aliases": [
+    "investigación",
+    "formato investigación",
+    "la mesa del investigador",
+    "cinematográfico con intriga"
+  ],
+  "resourcePolicy": "real-first",
+  "continuousOverlayCoverage": false,
+  "captionPolicy": "explicit-in-brief",
+  "reviewMode": "scene-by-scene",
+  "principles": [
+    "The speaker's audio order stays intact; the visual layer imposes the investigation structure (anomaly, question, evidence, turn, stakes, open case).",
+    "The real source enters first, zoomed to the exact line; the speaker interprets it after.",
+    "Everything is muted except one brand accent color, which means 'this matters'.",
+    "Three transitions repeated with intent (defocus, zoom-through into evidence, shape match cut), plus J-cuts on sound.",
+    "Original music as one continuous arc with a single silence at the turn.",
+    "No red-string boards, permanent glitch or evidence without a visible source."
+  ],
+  "reference": "2026-10-cvander-jobs/pipeline.json",
+  "perillas": {
+    "duracionHook": {
+      "que": "segundos del hook: la fuente con el título centrado que se encoge mientras la puerta se cierra, hasta la rendija → la persona ya hablando",
+      "default": 3.59,
+      "rango": [
+        2,
+        6
+      ],
+      "medido": "jobs-r6 (entregado 22-oct, Chris: «Genial… Ya publico»; 23-oct «Este último de los junior le pegó»): master/BEATS.json S01 0–3,59 s"
+    },
+    "cambiosPrimeros10s": {
+      "que": "cuántas escenas arrancan en los primeros 10 s, el hook incluido (misma definición en todos los formatos): este formato abre lento y deja que la evidencia respire",
+      "default": 2,
+      "rango": [
+        1,
+        5
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/BEATS.json S01 0 · S03 3,59 = 2 (S04 arranca en 12,41)"
+    },
+    "duracionEscena": {
+      "que": "mediana de lo que dura una escena (un archivo o una idea); dentro, la cámara de la mesa viaja de línea en línea",
+      "default": 7.06,
+      "rango": [
+        4,
+        12
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/BEATS.json mediana 7,06 s (18 escenas en 135,74 s; la más corta S06 3,48, la más larga S10 13,42)"
+    },
+    "subtitulosTamano": {
+      "que": "tamaño de los subtítulos (la identidad —fuente, caja de palabra clave— es de la marca)",
+      "default": 54,
+      "rango": [
+        44,
+        72
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/estilo.css .cap font:700 54px/1.15, left:100px width:820px top:1420px"
+    },
+    "subtitulosAlineacion": {
+      "que": "alineación de los subtítulos",
+      "default": "izquierda",
+      "opciones": [
+        "izquierda",
+        "centro"
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/estilo.css .cap left:100px sin text-align (izquierda)"
+    },
+    "colorAcento": {
+      "que": "el único color con croma: líneas de gráficas, sellos, círculos de plumón, rendija. Significa «esto importa»; el resto es papel. Es un ROL de la paleta de la marca",
+      "default": "accent-strong",
+      "opciones": [
+        "accent",
+        "accent-strong",
+        "emphasis"
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/estilo.css var(--violet) (rol accent-strong de cvander, #a43ff1) en .graf .ln, .g-sello, #rendija, .chk path"
+    },
+    "saturacionPersona": {
+      "que": "saturación del grade de la persona y su recorte (1 = sin tocar); lo apagado lo sostienen además el tinte y la fuente de archivo más desaturada",
+      "default": 0.95,
+      "rango": [
+        0.3,
+        1
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/estilo.css #chrisCam video,.recorte-chris saturate(.95) + .grade-tinte opacity .35 (ronda 4 «menos opaco»; antes .52). Archivo: #rauchCam saturate(.35), .polaroid img saturate(.6)"
+    },
+    "zoomLinea": {
+      "que": "escala de la cámara de la mesa al posarse en la línea exacta de la fuente (1 = el papel a tamaño nativo)",
+      "default": 0.85,
+      "rango": [
+        0.6,
+        2.2
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/plantilla.tpl ir(…{s}) al leer la línea: .82 · .7 · .85 · .78 · .85 · .88 · .78 · 1 · 1 → mediana .85; la tarjeta chica del mapa (S08) 2,05→2,25"
+    },
+    "desenfoqueTransicion": {
+      "que": "cuánto se desenfoca la persona al pasar a la mesa; la mesa entra desenfocada y se enfoca",
+      "default": 16,
+      "rango": [
+        6,
+        24
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/plantilla.tpl mesaIn() #chrisCam scale 1.16, blur(16px) brightness(.6) en .45 s; la mesa entra con blur 14 → 0 en .9 s"
+    },
+    "desenfoqueBarrido": {
+      "que": "desenfoque de movimiento del viaje (zoom-through) entre dos evidencias de la mesa",
+      "default": 7,
+      "rango": [
+        0,
+        14
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/plantilla.tpl barrido() tl.to(cam,{blur:7, duration:d/2, yoyo:true})"
+    },
+    "duracionBarrido": {
+      "que": "lo que dura el viaje de cámara de una evidencia a la siguiente",
+      "default": 0.78,
+      "rango": [
+        0.4,
+        1.4
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): master/plantilla.tpl ir() con barrido(): .7 ×6 · .75 · .8 ×5 · .9 · 1.0 (14 viajes) → mediana .78 s, power3.inOut"
+    },
+    "silencioGiro": {
+      "que": "el único silencio de la música, justo antes del giro (todo calla menos el golpe)",
+      "default": 0.67,
+      "rango": [
+        0.3,
+        2
+      ],
+      "medido": "jobs-r6 (entregado 22-oct): tools/score2.py giro_sil = «Así» − .75 · giro = «Así» − .08 → 0,67 s"
+    }
+  }
+}

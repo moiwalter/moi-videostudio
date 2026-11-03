@@ -30,7 +30,7 @@ proyectos/<cliente>/<video>/
 node pipeline/tools/flujo.mjs <slug> --rapido --json
 ```
 
-Usar cliente/slug si el nombre se repite. Leer la petición actual, CONTEXT y `pipeline.json` de la variante activa. Mantener motor, pin, corte cerrado, aprobaciones y autorización existentes. Remotion sigue en Remotion; usar una herramienta de HyperFrames no cambia el motor.
+Usar cliente/slug si el nombre se repite. **Leer [REGLAS.md](pipeline/docs/REGLAS.md)**: las reglas de edición que valen para cualquier marca (corte, audio, recorte, escenas, revisión, entrega). Las reglas de UNA persona están en `biblioteca/clientes/<cliente>.json` (hoy: cvander). `node tools/capas.mjs <proyecto>` muestra formato → marca → cliente → episodio y de dónde salió cada valor. Cada corrección nueva de Walter se anota el mismo día en la bitácora [LECCIONES.md](pipeline/docs/LECCIONES.md); ahí se decide si se vuelve regla. Leer la petición actual, CONTEXT y `pipeline.json` de la variante activa. Mantener motor, pin, corte cerrado, aprobaciones y autorización existentes. Remotion sigue en Remotion; usar una herramienta de HyperFrames no cambia el motor.
 
 En proyectos antiguos sin `pipeline.json`, reconciliar las decisiones fechadas del brief, dirección y mapa. Una pausa vieja puede preceder una decisión más reciente. Un mapa elegido tampoco demuestra aprobación de escenas. Registrar el estado reconciliado antes de retomar producción.
 
@@ -38,14 +38,20 @@ El modo rápido **omite QA técnica**. Estados: 0 = controles reportados vigente
 
 ## 3. Separar marca, estilo, episodio y plataforma
 
-[Estilos disponibles](pipeline/docs/EDITING_STYLES.md): Paper Collage, Layered Talking Head y Moi Overlay, cada uno con su contrato. La marca determina paleta, fuentes y tono; el estilo determina el tratamiento. El episodio determina guion, recursos y escenas. La plataforma determina encuadre y zonas seguras.
+[Estilos disponibles](pipeline/docs/EDITING_STYLES.md): Paper Collage, Layered Talking Head, Moi Overlay, Micro-podcast, Investigación cinematográfica, Moderno limpio e Hilo de chat, cada uno con su contrato. La marca determina paleta, fuentes y tono; el estilo determina el tratamiento. El episodio determina guion, recursos y escenas. La plataforma determina encuadre y zonas seguras.
 
 Resolver estas decisiones desde el contexto; preguntar solamente lo que falte. Inicializar con `pipeline/tools/new-video.sh` según los [comandos](pipeline/docs/PIPELINE-OPERATIONS.md). Una carpeta `intake-pending` se adopta sin perder originales. Un editor existente nunca se reinicializa.
 
 Vincular el corte exacto y su transcripción por contenido. Escuchar idioma, palabras dudosas y cierre. Un hash demuestra identidad; no demuestra que las palabras sean correctas. Un corte cambiado exige revisar su reloj y dependencias.
 
-## 4. Mapa → recursos → hook → una escena
+## 4. Pitch → mapa → recursos → hook → una escena
 
+0. **Pitch** (proyectos nuevos desde el 1-nov-2026; `flujo` no da por listo el mapa sin él). Con el corte transcrito, proponer a Walter 2–3 caminos: un formato o una mezcla («layered, y el tramo de los tweets en moderno limpio»). Cada camino lleva su porqué y frases del corte como evidencia; `pitch.mjs` rechaza una frase que no esté en el transcript. Walter elige y su decisión queda en `master/BRIEF.json`; el formato pasa a `pipeline.json`. Si es una mezcla, cada escena de `BEATS.json` lleva `formato`.
+   `node tools/pitch.mjs <proyecto> --propuesta caminos.json` → `--elegir <id> --decision "<sus palabras>"` → `--check`.
+   Las reglas de la persona que se revisan en código (Chris: «AI» en pantalla, el clip de Freddy) las corre `flujo` en la fila
+   CLIENTE (`tools/cliente-check.mjs`); en proyectos anteriores al 1-nov sólo se auditan.
+   PERILLAS (`tools/perillas.mjs`, 2-nov): la composición carga `perillas.js`/`perillas.css` generados de las capas
+   (`--escribir`); si una perilla cambia y no se regenera, BLOQUEADO. Lo medido fuera del formato es AVISO.
 1. Recuperar o proponer la dirección y mapa; conservar decisiones ya dadas. En un talking-head MASTER, el mapa se arma con [Segmentar por ideas](pipeline/docs/SEGMENTAR-POR-IDEAS.md): tiempos reales por palabra, una escena por idea, tres posturas, acento en palabras puntuales. Recursos de arte ya construidos (ASCII, dithering, halftone): [ARTE-MARCAS.md](pipeline/docs/ARTE-MARCAS.md).
 2. Buscar recursos reales con procedencia. Revisar el candidato y su recorte antes de animarlo.
 3. Construir el hook real con la persona, la voz y la marca de este cliente. No trasladar colores o textos de otro episodio por defecto.
