@@ -41,3 +41,12 @@ entregas/
 .compat/
 archivo/migracion-*/
 biblioteca/design_system/fonts/
+
+# ── nunca al repo (2-nov-2026): material de clientes, respaldos y estado local ──────
+# El repo es EL PIPELINE. Los proyectos (footage y trabajo de Chris, Nacho, Moi…) se quedan en el Mac / el disco.
+proyectos/
+archivo/
+_mover-estado-*/
+catalogo.json
+__pycache__/
+*.pyc
