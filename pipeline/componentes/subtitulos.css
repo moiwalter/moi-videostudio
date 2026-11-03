@@ -1,0 +1,13 @@
+/* Subtítulos del formato. Tamaño y alineación los pisa perillas.css
+   ([data-perilla="subtitulos"]). Acá queda la identidad: peso 500, tracking, énfasis en lima.
+   FULL: texto papel con sombra. STAGE: tinta. GREEN: papel, y la palabra caliente en tinta. */
+.cap{position:absolute;left:87px;width:907px;height:75px;z-index:50;display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap}
+.cap .t{font-family:var(--font-sans), 'Instrument Sans', sans-serif;font-weight:500;font-size:var(--subtitulos-tamano, 50px);line-height:75px;letter-spacing:-.012em}
+.cap .w{display:inline-block;position:relative;z-index:0;isolation:isolate}
+.cap .w.hot{margin:0 .14em}
+.cap .w.hot::before{content:"";position:absolute;inset:.1em -.12em .04em;background:var(--lime);border-radius:.12em;z-index:-1;transform-origin:0 50%;transform:scaleX(var(--hl-p, 0))}
+.cap-full .t{color:var(--paper);text-shadow:0 2px 3px rgba(var(--ink-rgb),.55), 0 4px 22px rgba(var(--ink-rgb),.55)}
+.cap-full .w.hot{color:var(--green-darkest);text-shadow:none}
+.cap-stage .t{color:var(--ink)}
+.cap-green .t{color:var(--paper)}
+.cap-green .w.hot{color:var(--green-darkest)}

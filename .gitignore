@@ -33,6 +33,7 @@ node_modules/
 
 # scrub del preview de HyperFrames — se regeneran solas
 .thumbnails/
+.hyperframes/
 
 # Unified workspace: physical media, compatibility aliases and migration evidence
 originales/

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>qmd-vertical arranque</title>
+<style>
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-display:block;src:url('fonts/InstrumentSans-Variable.woff2') format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:100 900;font-display:block;src:url('fonts/GeistMono-Variable.woff2') format('woff2')}
+:root{
+  --paper:#f6f6f2;--ink:#13211b;--green:#0b4d35;--green-deep:#083b29;--lime:#8fd9b0;--on-green:#c9dccf;
+  --font-sans:'Instrument Sans',sans-serif;--font-mono:'Geist Mono',monospace;
+}
+html,body{margin:0;background:var(--paper)}
+#frame{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--paper);font-family:'Instrument Sans',sans-serif}
+.num{position:absolute;left:80px;right:80px;top:280px;text-align:center;font-weight:700;font-size:92px;line-height:110px;color:var(--green-deep)}
+.cap{position:absolute;left:87px;width:907px;top:1500px;height:75px;display:flex;align-items:center;justify-content:center}
+.cap .t{font-weight:500;font-size:50px;line-height:75px;color:var(--ink)}
+.fin{position:absolute;left:140px;top:1680px;width:800px;height:120px;border-radius:24px;background:var(--green-deep);display:flex;align-items:center;justify-content:center}
+.fin span{font-family:'Geist Mono',monospace;font-size:32px;color:var(--on-green)}
+</style>
+</head><body>
+<div id="frame" data-composition-id="main" data-start="0" data-duration="2" data-width="1080" data-height="1920">
+  <div class="num" id="num">$1,000,000</div>
+  <div class="cap" data-perilla="subtitulos"><span class="t">a goldmine</span></div>
+  <div class="fin" id="fin"><span>quotemydata.com</span></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+const tl = gsap.timeline({paused:true});
+tl.fromTo("#num", {opacity:0, y:24}, {opacity:1, y:0, duration:0.4, ease:"power3.out"}, 0.2);
+tl.fromTo("#fin", {opacity:0}, {opacity:1, duration:0.4, ease:"power2.out"}, 1.2);
+window.__timelines = {main: tl};
+</script>
+</body></html>

@@ -67,4 +67,4 @@ El ancla es **Walter + sus palabras**; los gráficos SIRVEN a las palabras, nunc
 
 ## Nota de tooling
 
-Esta categoría usa `ffmpeg-full` (tonemap, composite, audio) + HyperFrames (versión en `tools/HF_VERSION`, hoy `0.8.29`) (renders alpha reales) + whisper (transcribe). **El comp de referencia es una HERRAMIENTA COMPARTIDA** (`tools/assemble-ref.sh` + `kit.config.sh` por video) — nunca copies un script de ensamblado al folder del video.
+Esta categoría usa `ffmpeg-full` (tonemap, composite, audio) + HyperFrames (versión en `tools/HF_VERSION`, hoy `0.8.214`) (renders alpha reales) + whisper (transcribe). **El comp de referencia es una HERRAMIENTA COMPARTIDA** (`tools/assemble-ref.sh` + `kit.config.sh` por video) — nunca copies un script de ensamblado al folder del video.

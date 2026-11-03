@@ -46,6 +46,7 @@ Formatos incluidos:
 | `hilo-chat` | Un hilo de chat donde cada mensaje es un video |
 | `paper-collage` | Recortes de papel, en Remotion |
 | `moi-overlay` | Kit de capas alpha para montar en CapCut |
+| `qmd-vertical` | Talking-head corto: la persona grande sobre una placa apaisada, en 9:16 y en 16:9 |
 
 ### 3. La composición LEE las perillas
 

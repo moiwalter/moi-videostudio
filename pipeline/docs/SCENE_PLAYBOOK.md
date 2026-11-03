@@ -53,7 +53,7 @@ BUILD → SELF-QC → PREVIEW EN NAVEGADOR → APROBAR → LOCK → SIGUIENTE
 - **Fuentes** — self-hosted vía `design_system/fonts/`. **Solo existen estos pesos:** Geist **400/500/600/700/900** · Geist Mono **400**. Referenciar otro peso = 404 + fallback feo.
   ⛔ **Cormorant Garamond e IBM Plex quedaron fuera de la marca el 12-ago-2026** (alineación con la web). Sus `.ttf` siguen en la carpeta **solo** para re-renderizar videos anteriores — en material nuevo son un fallo de marca. Ver `BRAND.md`.
 - Symlink por escena: `ln -s ../../../design_system design_system` (lo crea `new-video.sh`; toda escena NUEVA necesita el suyo).
-- **Sin `package.json`** — la escena canónica es `index.html + meta.json + design_system`; las tools corren `npx hyperframes@$(cat tools/HF_VERSION)` — la versión vive SÓLO ahí (hoy `0.8.29`).
+- **Sin `package.json`** — la escena canónica es `index.html + meta.json + design_system`; las tools corren `npx hyperframes@$(cat tools/HF_VERSION)` — la versión vive SÓLO ahí (hoy `0.8.214`).
 - 1080×1920, `html,body{overflow:hidden}`. Nada de `Date.now()`/`Math.random()`/fetch (render determinista).
 - Fondo = estándar Moi (§4), como primeros hijos del root.
 

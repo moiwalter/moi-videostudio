@@ -3,8 +3,13 @@
 > El equivalente auditivo de `BRAND.md`. Qué se puede volver código y qué necesita tu oreja.
 > Investigado el 12/13-sep-2026. **Cada número trae su fuente. Lo que no tiene fuente dice que no la tiene.**
 >
-> Estado: **doctrina escrita, módulo NO construido.** Este archivo existe para que la construcción
-> no arranque adivinando.
+> Estado: **doctrina escrita, y el módulo de qmd-vertical ya está.** `pipeline/tools/music.py`
+> compone la partitura (pretty_midi; FluidSynth si hay soundfonts), `sfx.py` coloca muestras
+> reales en su pico y `master_mix.py` entrega una sola pista. Los pesos, soundfonts y one-shots
+> no están en el repo: [ACTIVOS-EXTERNOS.md](ACTIVOS-EXTERNOS.md). Lo medido en goldmine v3.3
+> (aprobado 2026-11-01): cama 9.5 LU bajo la voz antes de un duck de 5 dB, 14.6 LU ya duckada,
+> la voz 12.4 dB por encima en 300–3500 Hz, preview a −14.3 LUFS. El limitador de `master_mix.py`
+> trabaja a −1.8 dBTP para que el recorte de AAC de HyperFrames no baje toda la mezcla de −14.
 
 ## Por qué existe
 
@@ -288,7 +293,9 @@ el primer contacto**.
 
 ## 6. LO QUE HYPERFRAMES YA RESUELVE Y NO HAY QUE CONSTRUIR
 
-Verificado contra el código de `hyperframes@0.8.29`, no contra su documentación.
+Verificado contra el código de `hyperframes@0.8.29` el 12-sep-2026, no contra su documentación.
+El pin del repo pasó a `0.8.214` (noviembre 2026). Esta sección no se reescribió contra el
+código nuevo: un proyecto que no arranque en 0.8.214 se queda con su `engine.version`.
 
 | Ya existe | Cómo |
 |---|---|

@@ -1,0 +1,13 @@
+/* Odómetro del número héroe. goldmine v3.3: Instrument Sans 700, 186 px, tabular-nums.
+   El fantasma lleva un 8 % de lima DENTRO del trazo: un fill de alfa 0 lo marca
+   hyperframes check como texto invisible y se come el stroke.
+   Cada cinta (.qmd-strip) tiene 11 o 12 dígitos de 200 px; el episodio anima yPercent. */
+.qmd-numwrap{position:absolute;left:0;right:0;height:200px;display:flex;justify-content:center}
+.qmd-num{position:absolute;top:0;white-space:nowrap;font-family:var(--font-display);font-weight:700;font-size:186px;line-height:200px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--green-deep)}
+.qmd-num.reels{display:flex}
+.qmd-reel{display:inline-block;height:200px;overflow:hidden;position:relative}
+.qmd-strip{display:flex;flex-direction:column}
+.qmd-strip i{font-style:normal;height:200px;line-height:200px;display:block;text-align:center}
+.qmd-num .sym{display:inline-block;color:var(--green)}
+.qmd-num.ghost{color:rgba(var(--lime-rgb),.08);-webkit-text-stroke:3px var(--lime)}
+.qmd-num.shine{background:linear-gradient(100deg,var(--green-deep) 0%,var(--green-deep) 40%,var(--lime) 50%,var(--green-deep) 60%,var(--green-deep) 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}

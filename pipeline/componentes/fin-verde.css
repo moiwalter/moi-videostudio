@@ -1,0 +1,7 @@
+/* Tarjeta final verde. takeovers.css §6 (.tk-end) + el timing de goldmine v3.3:
+   logo a 7cqmin (76 px en 1080) y el dominio en mono, sin frase de CTA.
+   El flood lo hace TK.flood sobre este bloque. */
+.qmd-fin{position:absolute;inset:0;z-index:60;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;text-align:center;
+  background:radial-gradient(120% 80% at 50% 30%,var(--green) 0%,var(--green-deep) 55%,var(--green-darkest) 100%)}
+.qmd-fin .logo{height:7cqmin;opacity:0}
+.qmd-fin .dominio{font-family:var(--font-mono);font-size:30px;letter-spacing:.01em;color:var(--on-green);opacity:0}
