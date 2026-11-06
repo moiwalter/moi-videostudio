@@ -32,6 +32,10 @@ tools/portada.sh <proyecto> estado
    lejos del lente, porque el gran angular de cerca lo envejece (L041). Si Walter señala un plano, se barre ESE plano.
 3. **foto.** Extrae el cuadro, lo recorta con `hyperframes remove-background` y limpia el borde (el recorte arrastra el
    color del fondo en el pelo). **Es la foto real: el generador nunca dibuja a Chris** (L055).
+   **Antes, medir el clip:** con ≤720 px de ancho (WhatsApp da 576×1024) el cuadro no sirve para portada; agrandado queda
+   blando. Se usa un recorte nítido ya aprobado de esa persona, con el mismo encuadre. Si `remove-background` se trae
+   el fondo (un edificio, una pared), recortar con BiRefNet-portrait (`rembg`). (L060; la foto concreta de Chris que se
+   usa en ese caso está en las lecciones de cvander.)
 4. **fondos.** Codex genera en paralelo **el diseño SIN persona**: patrón, tag, titular y chips, con la mitad de abajo
    libre. Cada opción = paleta × tratamiento del acento, que son **direcciones distintas, no 3 colores** (L050). Las
    referencias se arman solas: las fijas, las **2 últimas portadas entregadas** de la marca (L041), en JPG chico (un PNG

@@ -1,11 +1,56 @@
 {
  "_regla": "Sólo logos OFICIALES descargados de la fuente de la marca (o Wikimedia Commons del archivo oficial). Nunca generados. JPG blanco de fondo, ~680 px de ancho. Para agregar uno: bajar el SVG, rasterizar (Quick Look: qlmanage -t -s 800, si magick rompe los clipPath) y anotarlo acá.",
- "cloudflare": {"fuente": "Cloudflare press kit · CF_logo_horizontal_singlecolor_wht.svg, wordmark recoloreado #404041 para chip blanco", "fecha": "2026-10-25"},
- "php": {"fuente": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg", "fecha": "2026-10-25"},
- "nodejs": {"fuente": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg (rasterizado con Quick Look)", "fecha": "2026-10-25"},
- "anthropic": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
- "stanford": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
- "mercadolibre": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
- "hackerrank": {"fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)", "fecha": "2026-10-22"},
- "qmd": {"fuente": "SVG del master goldmine v3.3 (aprobado 2026-11-01). Ver biblioteca/logos/qmd/PROCEDENCIA.md", "fecha": "2026-11-01"}
+ "cloudflare": {
+  "fuente": "Cloudflare press kit · CF_logo_horizontal_singlecolor_wht.svg, wordmark recoloreado #404041 para chip blanco",
+  "fecha": "2026-10-25"
+ },
+ "php": {
+  "fuente": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg",
+  "fecha": "2026-10-25"
+ },
+ "nodejs": {
+  "fuente": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg (rasterizado con Quick Look)",
+  "fecha": "2026-10-25"
+ },
+ "anthropic": {
+  "fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)",
+  "fecha": "2026-10-22"
+ },
+ "stanford": {
+  "fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)",
+  "fecha": "2026-10-22"
+ },
+ "mercadolibre": {
+  "fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)",
+  "fecha": "2026-10-22"
+ },
+ "hackerrank": {
+  "fuente": "copiado de cvander-jobs/portadas/refs (22-oct-2026)",
+  "fecha": "2026-10-22"
+ },
+ "claude-code-lockup": {
+  "fuente": "logo oficial de code.claude.com (mintcdn.com/claude-code/.../logo/light.svg y dark.svg = «Claude Code Docs»), recortado antes de «Docs»; versiones negro y blanco",
+  "fecha": "2026-10-30"
+ },
+ "clawd": {
+  "fuente": "Clawd, mascota de Claude Code: dibujado píxel a píxel desde el pixel art del banner de bienvenida del CLI (▐▛███▜▌ / ▝▜█████▛▘ / ▘▘ ▝▝), color rgb(215,119,87); celda de terminal 1:2. No generado.",
+  "fecha": "2026-10-30"
+ },
+ "claude-wikimedia": {
+  "fuente": "commons.wikimedia.org Claude_AI_logo.svg y Claude_AI_symbol.svg (símbolo CC0)",
+  "fecha": "2026-10-30"
+ },
+ "graphext": {
+  "fuente": "SVG del header de graphext.com (el mismo del tag del ep02, recursos/teles-hackeadas/FUENTES.md)",
+  "fecha": "2026-10-30",
+  "variantes": "graphext.png = blanco original del sitio · graphext-morado.png = mismo logo en monocromo #3c0058 para fondos claros"
+ },
+ "chatgpt": {
+  "fuente": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg — se quitó el cuadrado verde de fondo y el nudo pasó de blanco a negro para chip blanco (rasterizado con Quick Look)",
+  "fecha": "2026-11-01"
+ },
+ "qmd": {
+  "fuente": "SVG del master goldmine v3.3 (aprobado 2026-11-01). Ver biblioteca/logos/qmd/PROCEDENCIA.md",
+  "fecha": "2026-11-01"
+ }
 }

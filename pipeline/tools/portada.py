@@ -146,7 +146,7 @@ def normalizar(f):
 def fondos(P, a):
     P.need('tag', 'init'); sp = P.spec(); rs = refs(P, sp)
     lineas = ' / '.join(f'"{l.lstrip("*")}" ({"the biggest, accent" if l.startswith("*") else "medium"})' for l in P.s['lineas'])
-    nombres = {'cloudflare': 'Cloudflare', 'php': 'PHP', 'nodejs': 'Node.js', 'mercadolibre': 'Mercado Libre', 'hackerrank': 'HackerRank'}
+    nombres = {'cloudflare': 'Cloudflare', 'php': 'PHP', 'nodejs': 'Node.js', 'mercadolibre': 'Mercado Libre', 'hackerrank': 'HackerRank', 'clawd': 'Claude', 'chatgpt': 'ChatGPT'}
     v = P.dir / 'v'; v.mkdir(exist_ok=True); procs = {}
     letras = iter('ABCDEFGH')
     for op in a.opciones.split(','):

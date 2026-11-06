@@ -2,6 +2,17 @@
 
 Regla permanente indicada por Walter el 20 de septiembre de 2026: cuando entrega un archivo local para trabajar en un video, el agente lo **mueve dentro de la carpeta de ese video, sin pedir confirmación**, y comunica su ubicación nueva antes de continuar con la edición.
 
+## Regla dura: una sola copia en disco (Walter, 3 de noviembre de 2026)
+
+El espacio del Mac es el problema principal: nunca dejar dos copias de lo mismo. La entrada termina cuando el origen ya no está en Downloads, Desktop o WhatsApp.
+
+- **Fotos, audio y clips de Christian o de cualquier cliente:** todo se mueve con `mv`; no usar `cp`, ni extraer dejando el original.
+- **ZIP:** extraer al proyecto, verificar y retirar el ZIP y cualquier archivo suelto junto a él.
+- **Si se convierte o redimensiona:** mover también el original a `recursos/` y registrarlo. Un hash no detecta estas copias.
+- **Al renombrar:** mover con el nombre nuevo y registrar `originalPath`.
+- **Carpeta de origen:** cuando quede vacía, retirarla también.
+- **Antes de dar la entrada por terminada:** comprobar que el origen ya no existe.
+
 ## Secuencia obligatoria
 
 1. Recuperar el proyecto de la conversación. Si es nuevo, crear su carpeta en `~/Movies/VideoStudio/proyectos/<cliente>/<video>/`. La incorporación del archivo no espera a decidir motor, marca visual, estilo, hook o escenas.
